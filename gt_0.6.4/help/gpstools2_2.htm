@@ -1,0 +1,243 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META name="GENERATOR" content="IBM HomePage Builder 2001 V5.0.3 for Windows">
+<TITLE>GpsTools : Parameter Estimator</TITLE>
+<STYLE type="text/css">
+<!--
+BODY{
+  font-family : Arial,sans-serif;
+}
+-->
+</STYLE>
+</HEAD>
+<BODY bgcolor="#ffffff" text="#666666" link="#33cc66" vlink="#006666" alink="#99ff00"><TABLE width="100%" cellspacing="0"><TBODY><TR><TD><FONT size="-1"><FONT size="-1"><A href="gpstools.htm">Overview</A> | <A href="gpstools0.htm">Specifications</A> | <A href="gpstools1.htm">Program Execution</A> | Parameter Estimator | <A href="gpstools3.htm">Plot Data</A> | <A href="gpstools4.htm">Utilities</A> | <A href="gpstools5.htm">Data Files</A> | <A href="gpstools6.htm">Libraries</A> </FONT></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<TABLE width="100%" cellpadding="0" height="60">
+  <TBODY>
+    <TR>
+      <TD width="90%">
+      <P><B><FONT size="+1">GPS Precise Analysis Software GpsTools: Parameter
+      Estimator (3)</FONT></B></P>
+      </TD>
+      <TD valign="bottom" align="right"></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<HR>
+<TABLE>
+  <TBODY>
+    <TR>
+      <TD><FONT size="-1"><A href="gpstools2.htm">(1)</A> <A href="gpstools2_1.htm">(2)</A> (3) <A href="gpstools2_3.htm">(4)</A> <A href="gpstools2_4.htm">(5)</A> <A href="gpstools2_5.htm">(6)</A> <A href="gpstools2_6.htm">(7)</A> <A href="gpstools2_7.htm">(8)</A></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P><A name="obsedit"></A><A name="obsedit"><U><B>Observation Data Editor Setting</B></U></A></P>
+<P align="center"><A name="exclude"><FONT size="-1"><IMG src="image/image10.jpg" border="0" width="536" height="372"></FONT></A></P>
+<CENTER>
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="200">
+  <COL span="1" width="600">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">Item</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">Operation</FONT></TH>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">L1 Frequency</FONT></I></TD>
+      <TD><FONT size="-1">Set L1 carrier frequency (GHz). Usually set
+      it 1.57542GHz.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">L2 Frequency</FONT></I></TD>
+      <TD><FONT size="-1">Set L2 carrier frequency (GHz). Usually set
+      it </FONT><FONT size="-1">1.22760GHz.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Obs Time Tolerance</FONT></I></TD>
+      <TD><FONT size="-1">Set observation time tolerance <I>ttol</I> (s). If <I>ep-ttol</I>/2 &lt; <I>rtime</I> &lt; <I>ep+ttol</I>/2, the observation data at the reception-time
+      <I>rtime</I> are extracted as the epoch <I>ep</I> measurements.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Min Elevation Angle</FONT></I></TD>
+      <TD><FONT size="-1">Set minimum elevation angle (deg).</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Max Arc Gap</FONT></I></TD>
+      <TD><FONT size="-1">Set maximum length of the arc gap (s). If
+      there is longer outage than the gap in the
+      observation data, the arc is separated at
+      the outage.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Min Arc Length</FONT></I></TD>
+      <TD><FONT size="-1">Set minimum length of an arc (s). If an arc
+      is shorter than the length, it is excluded
+      as invalid.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Min Arc Points</FONT></I></TD>
+      <TD><FONT size="-1">Set minimum number of observation epochs
+      in an arc. If an arc has less observation
+      epochs than the number of points, it is excluded
+      as invalid.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Noise of MW Code</FONT></I></TD>
+      <TD><FONT size="-1">Set approximate standard deviation of MW
+      (Melbourne Wubbena wide lane LC) noise (m)
+      for cycle-slip detection.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Noise of Ion-Free Code</FONT></I></TD>
+      <TD><FONT size="-1">Set approximate standard deviation of LC
+      (ionospheric-free code LC) noise (m) for
+      cycle-slip detection.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Slip Threshold of LG</FONT></I></TD>
+      <TD><FONT size="-1">Set the threshold for cycle-slip detection
+      by LG (geometry-free carrier-phase LC) jump
+      (m).</FONT><FONT size="-1"> If a LG jump is over the threshold, the
+      jump is recognized as a cycle-slip. If you
+      set it 0, any cycle-slip is not detected
+      by LG jump.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Slip Threshold of WL</FONT></I></TD>
+      <TD><FONT size="-1">Set the threshold for cycle-slip detection
+      by MW jump (cycle). If a WM jump is over
+      the threshold, <FONT size="-1"><FONT size="-1">the jump is recognized as a cycle-slip. If
+      you set it 0, any cycle-slip is not detected
+      by MW jump.</FONT></FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Slip Threshold of MP1</FONT></I></TD>
+      <TD><FONT size="-1">Set the threshold for cycle-slip detection
+      by MP1 LC jump (m).</FONT><FONT size="-1"> If a MP1 jump is over the threshold, <FONT size="-1">the jump is recognized as a cycle-slip. If
+      you set it 0, any cycle-slip is not
+      detected
+      by MP1 jump.</FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1"><FONT size="-1">Slip Threshold of MP2</FONT></FONT></I></TD>
+      <TD><FONT size="-1"><FONT size="-1"><FONT size="-1">Set the threshold for cycle-slip detection
+      by MP2 LC jump (m).</FONT><FONT size="-1"> If a MP2 jump is over the threshold, <FONT size="-1">the jump is recognized as a cycle-slip. If
+      you set it 0, any cycle-slip is not detected
+      by MP2 jump.</FONT></FONT></FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Outlier Thres. of MW</FONT></I></TD>
+      <TD><FONT size="-1">Set the condition for outlier rejection (sigma).
+      If amplitude of MW LC exceed the standard
+      deviation of MW LC in the arc multiplied
+      by the threshold, the observation data is
+      rejected as an outlier.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Ionos Smoothing Window</FONT></I></TD>
+      <TD></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Moving Ave. Window 1</FONT></I></TD>
+      <TD><FONT size="-1">Set the number of observation data (points)
+      to detect cycle-slip by MW WL, MP1, MP2 LC
+      jump. The number is used as the window size
+      of moving average/standard deviation before
+      or after the detection point.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Moving Ave. Window 2</FONT></I></TD>
+      <TD><FONT size="-1"><FONT size="-1">Set the number of observation data (points)
+      to detect cycle-slip by MW WL, MP1, MP2 LC
+      jump. The number is used as the window size
+      of moving average/standard deviation before
+      or after the detection point.</FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Slip Threshold Elevation Weighting</FONT></I></TD>
+      <TD><FONT size="-1">Set the condition of the cycle-slip threshold
+      weighting by elevation angle. If you set
+      it on, the threshold is set to specified
+      threshold / sin (elevation angle).</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Repair Steered Clock-Jump</FONT></I></TD>
+      <TD><FONT size="-1">Set whether the inconsistency between code
+      and phase is repaired or not. The inconsistency
+      is usually due to the receiver clock-jump
+      derived from the intermittent clock steering
+      in the receiver like Trimble, Ashtech etc.
+      If setting it Adjust Phase, the phase observable
+      are adjusted to the code. if setting it Adjust
+      Code, the code observations are adjusted
+      to the phase.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Repair Cycle-Slip</FONT></I></TD>
+      <TD><FONT size="-1">Set the condition of cycle-slip fixing. If
+      setting it ON, the cycle-slip is repaired
+      and the arcs before and after the slip are
+      connected to a continuous arc. If setting
+      it OFF, these arcs are treated as separated
+      arcs.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1"># of Points for Poly Fitting</FONT></I></TD>
+      <TD><FONT size="-1">Set the number of observation data before
+      or after the detected cycle-slip for polynomial
+      fitting in order to repair cycle-slip.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Degree for Poly Fitting</FONT></I></TD>
+      <TD><FONT size="-1">Set the order of polynomial for fitting to
+      repair cycle-slip.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Separate Arc at Eclipse In/Out</FONT></I></TD>
+      <TD><FONT size="-1">Set the condition of arc separation at the
+      boundary of eclipse. If setting it on, carrier-phase
+      ambiguity is initialized when the satellite
+      put in or put out eclipse. If setting it
+      off, the arc is treated as continuous one.</FONT><FONT size="-1">Å@</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Phase Multipath Correction</FONT></I></TD>
+      <TD><FONT size="-1">(not supported by current version)</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Phase MP Profile Start/End</FONT></I></TD>
+      <TD><FONT size="-1">(<FONT size="-1">not supported by current version)</FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Adjustment of Sidereal Day</FONT></I></TD>
+      <TD><FONT size="-1">(<FONT size="-1">not supported by current version)</FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Code Multipath Profile</FONT></I></TD>
+      <TD><FONT size="-1">(not supported by current version)</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">OK</FONT></I></TD>
+      <TD><FONT size="-1">Enable changes and close the window.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Cancel</FONT></I></TD>
+      <TD><FONT size="-1">Abandon changes and close the window.</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE><BR>
+</CENTER>
+<HR>
+<TABLE width="100%" cellpadding="0">
+  <TBODY>
+    <TR>
+      <TD align="center"><FONT size="-2"><FONT size="-2">Copyright (C) 2004-2008, T.Takasu, All Rights
+      Reserved.</FONT></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+</BODY>
+</HTML>

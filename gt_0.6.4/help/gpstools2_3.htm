@@ -1,0 +1,265 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META name="GENERATOR" content="IBM HomePage Builder 2001 V5.0.3 for Windows">
+<TITLE>GpsTools : Parameter Estimator</TITLE>
+<STYLE type="text/css">
+<!--
+BODY{
+  font-family : Arial,sans-serif;
+}
+-->
+</STYLE>
+</HEAD>
+<BODY bgcolor="#ffffff" text="#666666" link="#33cc66" vlink="#006666" alink="#99ff00"><TABLE width="100%" cellspacing="0"><TBODY><TR><TD><FONT size="-1"><A href="gpstools.htm">Overview</A> | <A href="gpstools0.htm">Specifications</A> | <A href="gpstools1.htm">Program Execution</A> | Parameter Estimator | <A href="gpstools3.htm">Plot Data</A> | <A href="gpstools4.htm">Utilities</A> | <A href="gpstools5.htm">Data Files</A> | <A href="gpstools6.htm">Libraries</A> </FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<TABLE width="100%" cellpadding="0" height="60">
+  <TBODY>
+    <TR>
+      <TD width="90%">
+      <P><B><FONT size="+1">GPS Precise Analysis Software GpsTools:</FONT><FONT size="+1"> Parameter Estimator (4)</FONT></B></P>
+      </TD>
+      <TD valign="bottom" align="right"></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<HR>
+<TABLE>
+  <TBODY>
+    <TR>
+      <TD><FONT size="-1"><A href="gpstools2.htm">(1)</A> <A href="gpstools2_1.htm">(2)</A> <A href="gpstools2_2.htm">(3)</A> (4) <A href="gpstools2_4.htm">(5)</A> <A href="gpstools2_5.htm">(6)</A> <A href="gpstools2_6.htm">(7)</A> <A href="gpstools2_7.htm">(8)</A></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P><A name="estmeasmodel"><U><B>Estimation/Measurement Model Setting</B></U></A></P>
+<P align="center"><A name="measmodel"><FONT size="-1"><IMG src="image/image11.jpg" border="0" width="566" height="435"></FONT></A></P>
+<CENTER>
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="200">
+  <COL span="1" width="600">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">Item</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">Operation</FONT></TH>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Min/Max Elevation Angle</FONT></I></TD>
+      <TD width="606"><FONT size="-1">Set the minimum elevation angle (cutoff angle)
+      (deg) and maximum elevation angle (deg)</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Tropospheric Model</FONT></I></TD>
+      <TD width="606"><FONT size="-1">Set the zenith tropospheric delay model.<BR>
+      - No Tropos : no tropospheric delay model<BR>
+      - Saastamoinen : Saastamoinen model</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center" width="206"><I><FONT size="-1">Tropospheric Mapping Function</FONT></I></TD>
+      <TD width="606"><FONT size="-1"> Set the tropospheric mapping function.<BR>
+      - COSZ : cos z mapping function<BR>
+      - NMF : Niell Mapping Function (NMF)<BR>
+      - GMF : Global Mapping Function (GMF)<BR>
+      - VMF1 : Vienna Mapping Function 1 (VMF1).
+      To use VMF1, VMF1 Grid data have to be installed
+      into the directory of Tropos/Meteo Parameters
+      specified by <A href="gpstools2_7.htm">Data Directory/Files Setting</A> dialog.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Tropospheric Stochastic Model</FONT></I></TD>
+      <TD><FONT size="-1">Set the stochastic model of tropospheric
+      parameter variation.<BR>
+      - Random-Walk : Random-Walk process model<BR>
+      - Gauss-Marcov : Gauss-Marcov process model</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Tropospheric Gradient Model</FONT></I></TD>
+      <TD><FONT size="-1">Set the tropospheric gradient model.<BR>
+      - (blank) : No tropospheric gradient model<BR>
+      - Linear : Linear tropospheric gradient model<BR>
+      - Quadratic : Quadratic tropospheric gradient
+      model</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Meas. Noise Elev. Angle Factor</FONT></I></TD>
+      <TD width="606"><FONT size="-1">Set the weighting factor of measurement noise
+      by elevation angle. If setting it 0, the
+      weighting factor is always 1. If setting
+      it 1, the weighting factor is 1/sin(El).
+      Refer <A href="#measnoisefact">Measurement Noise Factor</A>.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Meas. Noise Factor in Eclipse</FONT></I></TD>
+      <TD width="606"><FONT size="-1">Set the factor of measurement noise in eclipse
+      or post-eclipse maneuver period for Block
+      II/IIA and Block IIR/IIR-M.<BR>
+      If setting it 0, the observation data in
+      eclipse or post-eclipse maneuver period are
+      excluded.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Process Noise Factor in Eclipse</FONT></I></TD>
+      <TD width="606"><FONT size="-1">Set the factor of process noise of satellite
+      position/velocity in post-eclipse maneuver
+      period for Block II/IIA and Block IIR/IIR-M.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Max Post-Eclipse Maneuver</FONT></I></TD>
+      <TD width="606"><FONT size="-1">Set the maximum period (s) of post-eclipse
+      maneuver.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Std. Dev. Factor of Initial States</FONT></I></TD>
+      <TD width="606"><FONT size="-1">In case of estimation with multiple paths,
+      set the factor of the initial standard deviations
+      of estimated states. The initial standard
+      deviations of a path are set to last standard
+      deviations of previous path multiplied by
+      the factor. If set it 0, the standard deviations
+      of the states are reset to initial values
+      in each path.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Std. Dev. Factor of PreDet States</FONT></I></TD>
+      <TD><FONT size="-1">In case of providing the standard deviations
+      of the predetermined states, set the
+      factor
+      of the standard deviations. If set
+      it 0,
+      the errors are treated as 0.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Max Count of Filter Iteration</FONT></I></TD>
+      <TD width="606"><FONT size="-1">Set the maximum number of iteration of the
+      filter. Usually set it 1.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Min Count of Obs for Estimation</FONT></I></TD>
+      <TD><FONT size="-1">Set the minimum number of observation data
+      to estimate parameters. If the number of
+      observation data in an epoch is less than
+      the value, the any results of the parameter
+      estimation will be acquired.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Nutation Model</FONT></I></TD>
+      <TD><FONT size="-1">Set the nutation and precession model.<BR>
+      - IAU1976/1980 : IAU1976 nutation + IAU 1980
+      precession + deps/dspi<BR>
+      - IERS1996 : IERS1996 nutation/precession</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Filter</FONT></I></TD>
+      <TD><FONT size="-1">Set the type of filter.<BR>
+      - Standard Kalman : Standard Kalman filter</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Clock Correction by Phase-Bias</FONT></I></TD>
+      <TD width="606"><FONT size="-1">In case of estimating satellite or receiver
+      clock biases, the clock bias values are corrected
+      by using the average of the phase-bias estimations
+      for the period.</FONT><FONT size="-1"><BR>
+      ÅEOFF : No correction of satellite/receiver
+      clock by phase-bias.<BR>
+      ÅEON : </FONT><FONT size="-1"><FONT size="-1">Correction of satellite/receiver clock by
+      phase-bias.</FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Align Clock to Reference</FONT></I></TD>
+      <TD><FONT size="-1">Set whether the alignment of estimated clock
+      to reference clock is enabled or disabled.</FONT><BR>
+      <FONT size="-1">- OFF : No alignment to reference clock<BR>
+      - IGS Final : Align estimated clock to IGS
+      Final clock<BR>
+      - IGS Rapid : Align estimated clock to IGS
+      Rapid clock<BR>
+      - </FONT><FONT size="-1">IGS-CODE : Align estimated clock to IGS Final-CODE
+      clock</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Receiver Attitude Model</FONT></I></TD>
+      <TD><FONT size="-1">Set the attitude model of the receiver antenna.<BR>
+      - Fixed Station : Receiver antenna is fixed
+      to the earth<BR>
+      - LEO Satellite : Receive antenna is fixed
+      to satellite body. The Z-axis of the satellite
+      is toward to the each center and X-axis is
+      along the orbit path.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Measurement Corrections</FONT></I></TD>
+      <TD width="606"><FONT size="-1">Set whether the measurement corrections are
+      enabled or disabled.<BR>
+      - Satellite Antenna Offset : Satellite antenna
+      offset and variation<BR>
+      - Receiver Antenna Offset : Receiver antenna
+      offset and variation<BR>
+      - Relativistic Effects : Relativistic effects<BR>
+      - Phase Windup : Phase windup effects<BR>
+      - Phase Multipath : Phase multipath</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Station Displacement Corrections</FONT></I></TD>
+      <TD width="606"><FONT size="-1">Set whether the site displacement corrections
+      by earth tides are enabled or disabled.<BR>
+      - Solid Earth Tides : Displacement by solid
+      earth tide<BR>
+      - Ocean Loading : Displacement by ocean loading<BR>
+      - Pole Tides : Displacement by pole tide<BR>
+      - Eliminate Permanent Deform. : Eliminate
+      permanent deformation term</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">ERP Variation Correction</FONT></I></TD>
+      <TD width="606"><FONT size="-1">Set whether the correction for ERP subdaily
+      variation is enabled or disabled.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Meteorological Parameters</FONT></I></TD>
+      <TD><FONT size="-1">Set the meteorological parameters (pressure,
+      temperature, humidity) model.<BR>
+      - Standard Atmosphere : standard atmosphere<BR>
+      - GPT : Global Pressure and Temperature (GPT)
+      model<BR>
+      - JMA GSM Online : Input from JMA NWM (GSM)<BR>
+      - JMA MSM Online : Input from JMA NWM (MSM)</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Default MSL Pressure</FONT></I></TD>
+      <TD><FONT size="-1">Set the default mean sea level pressure (hPa)
+      for standard atmosphere.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Default Temp/Rel Humidity</FONT></I></TD>
+      <TD><FONT size="-1">Set the default mean sea level temperature
+      (C) and relative humidity (%) for standard
+      atmosphere.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">OK</FONT></I></TD>
+      <TD><FONT size="-1">Enable changes and close dialog.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Cancel</FONT></I></TD>
+      <TD><FONT size="-1">Abandon changes and close dialog.</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<BR>
+</CENTER>
+<HR>
+<P><U><A name="measnoisefact"></A></U><FONT size="+1"><U><A name="measnoisefact"></A><A name="measnoisefact"></A></U><A name="measnoisefact"></A></FONT><A name="measnoisefact"><B><U>Measurement Noise Factor</U></B></A></P>
+<P align="center"><IMG src="image/image102.jpg" border="0" width="586" height="383"><BR>
+<FONT size="-1">(Measurement Noise = 0.01m)</FONT></P>
+<HR>
+<TABLE width="100%" cellpadding="0">
+  <TBODY>
+    <TR>
+      <TD align="center"><FONT size="-2"><FONT size="-2">Copyright (C) 2004-2008, T.Takasu, All Rights
+      Reserved.</FONT></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+</BODY>
+</HTML>

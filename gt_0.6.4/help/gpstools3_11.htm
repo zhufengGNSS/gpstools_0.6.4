@@ -1,0 +1,311 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META name="GENERATOR" content="IBM HomePage Builder 2001 V5.0.3 for Windows">
+<TITLE>GpsTools : Plot Data</TITLE>
+<STYLE type="text/css">
+<!--
+BODY{
+  font-family : Arial,sans-serif;
+}
+-->
+</STYLE>
+</HEAD>
+<BODY bgcolor="#ffffff" text="#666666" link="#33cc66" vlink="#006666" alink="#99ff00">
+<TABLE width="100%" cellspacing="0">
+  <TBODY>
+    <TR>
+      <TD><FONT size="-1"><FONT size="-1"><A href="gpstools.htm">Overview</A> | <A href="gpstools0.htm">Specifications</A> | <A href="gpstools1.htm">Program Execution</A> | <A href="gpstools2.htm">Parameter Estimator</A> | Plot Data | <A href="gpstools4.htm">Utilities</A> | <A href="gpstools5.htm">Data Files</A> | <A href="gpstools6.htm">Libraries</A> </FONT></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<TABLE width="100%" cellpadding="0" height="60">
+  <TBODY>
+    <TR>
+      <TD><B><FONT size="+1">GPS Precise Analysis Software GpsTools: Plot
+      Data (12)</FONT></B></TD>
+      <TD valign="bottom" align="right"></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<HR>
+<TABLE>
+  <TBODY>
+    <TR>
+      <TD><FONT size="-1"><A href="gpstools3.htm">(1)</A> <A href="gpstools3_1.htm">(2)</A> <A href="gpstools3_2.htm">(3)</A> <A href="gpstools3_3.htm">(4)</A> <A href="gpstools3_4.htm">(5)</A> <A href="gpstools3_5.htm">(6)</A> <A href="gpstools3_6.htm">(7)</A> <A href="gpstools3_7.htm">(8)</A> <A href="gpstools3_8.htm">(9)</A> <A href="gpstools3_9.htm">(10)</A> <A href="gpstools3_10.htm">(11)</A> (12)</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P><U><B>Plot Satellite Track/Receiver Positoins</B></U></P><P align="center"><FONT size="-1"><IMG src="image/image56.jpg" border="0" width="608" height="447"><BR>
+(衛星直下点軌跡表示 Satellite Ground Track
+Plot)</FONT></P>
+<DIV align="center">
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="20">
+  <COL span="1" width="180">
+  <COL span="1" width="600">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0" colspan="2" width="191"><FONT size="-1">Item</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0" width="578"><FONT size="-1">Operation</FONT></TH>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">Menu</FONT></I></TD>
+      <TD><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">Data</FONT></I></TD>
+      <TD><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center" rowspan="7"><I><FONT size="-1">　</FONT></I></TD>
+      <TD align="center"><I><FONT size="-1">Time Span...</FONT></I></TD>
+      <TD><FONT size="-1"><A href="#timespan">時間範囲指定ダイアログ</A></FONT><FONT size="-1">を表示し、時間範囲を設定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Satellites...</FONT></I></TD>
+      <TD><FONT size="-1">衛星リスト編集画面を表示し衛星リストを編集します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Receivers...</FONT></I></TD>
+      <TD><FONT size="-1">受信機リスト編集画面を表示し受信機リストを編集します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">New Window</FONT></I></TD>
+      <TD><FONT size="-1">現在表示中のデータを再読込し、別ウインドウを開いて表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Export Plot...</FONT></I></TD>
+      <TD><FONT size="-1"><A href="#exportplots">画像出力ダイアログ</A>を表示し、一連の画面を画像ファイルに保存します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Map Area...</FONT></I></TD>
+      <TD><FONT size="-1"><A href="#maparea">地図表示条件ダイアログ</A>を表示し地図表示条件を設定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Options...</FONT></I></TD>
+      <TD><FONT size="-1"><A href="#options">表示オプションダイアログ</A>を表示し、表示オプションを変更します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">Plot</FONT></I></TD>
+      <TD><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD rowspan="12" align="center"><I><FONT size="-1">　</FONT></I></TD>
+      <TD align="center"><I><FONT size="-1">Satellite Ground Track</FONT></I></TD>
+      <TD><FONT size="-1">衛星直下点軌跡を地図上に表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Receiver Position</FONT></I></TD>
+      <TD><FONT size="-1">受信機位置を地図上に表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1"><FONT size="-1">Coverage Area</FONT></FONT></I></TD>
+      <TD><FONT size="-1">衛星覆域を地図上に表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Baseline Length</FONT></I></TD>
+      <TD><FONT size="-1">受信機間の基線長を地図上に表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Voronoi Region</FONT></I></TD>
+      <TD><FONT size="-1">Voronoi領域を地図上に表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Receiver Skyplot</FONT></I></TD>
+      <TD><FONT size="-1">衛星方向軌跡をスカイプロット表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Satellite Visibilities</FONT></I></TD>
+      <TD><FONT size="-1">衛星可視期間を表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Elevation Angle by Sats</FONT></I></TD>
+      <TD><FONT size="-1">受信機毎衛星仰角を表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Elevation Angle by Rcvs</FONT></I></TD>
+      <TD><FONT size="-1">衛星毎衛星仰角を表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Satellite Eclipse Periods</FONT></I></TD>
+      <TD><FONT size="-1">衛星食期間を表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Satellite-Sun Angle</FONT></I></TD>
+      <TD><FONT size="-1">衛星-太陽角をグラフ表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-2">DOP</FONT></I></TD>
+      <TD><FONT size="-1">DOPをグラフ表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center" colspan="2"><I><FONT size="-1">Satellite</FONT></I></TD>
+      <TD><FONT size="-1">表示する衛星を選択します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">Receiver</FONT></I></TD>
+      <TD><FONT size="-1">表示する受信機を選択します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">(グラフ表示画面)</FONT></I></TD>
+      <TD><FONT size="-1">グラフ下の時間軸近くでマウスの左ボタンをクリックすることによりカーソルが移動カーソルに変わり、左右にドラッグすることにより時間軸を移動することができます。<BR>
+      グラフ下の時間軸近くでマウスの右ボタンをクリックすることによりカーソルが拡大/縮小カーソル変わり、左右にドラッグすることにより時間軸を拡大/縮小することができます。<BR>
+      グラフ左の値軸近くでマウスの左ボタンをクリックすることによりカーソルが移動カーソルに変わり、上下にドラッグすることにより値軸を移動することができます。<BR>
+      グラフ左の値軸近くでマウスの右ボタンをクリックすることによりカーソルが拡大/縮小カーソル変わり、上下にドラッグすることにより値軸を拡大/縮小することができます。</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<BR>
+</DIV>
+<HR>
+<P><U><A name="timespan"></A></U><U><A name="timespan"><B>Time Span Dialog</B></A></U></P>
+<P align="center"><IMG src="image/image57.jpg" border="0" width="331" height="145"></P>
+<DIV align="center">
+<DIV align="center">
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="20">
+  <COL span="1" width="180">
+  <COL span="1" width="600">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0" colspan="2" width="191"><FONT size="-1">項目</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0" width="578"><FONT size="-1">操作</FONT></TH>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Start Time</FONT></TD>
+      <TD><FONT size="-1">開始日時を指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">End Time</FONT></TD>
+      <TD><FONT size="-1">終了日時を指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Time Interval</FONT></TD>
+      <TD><FONT size="-1">時間間隔(秒)を指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">OK</FONT></TD>
+      <TD><FONT size="-1">設定に従い表示画面を更新します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Cancel</FONT></TD>
+      <TD><FONT size="-1">設定変更を無効にして画面を閉じます。</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE><BR>
+</DIV>
+</DIV>
+<HR>
+<P><U><A name="maparea"></A></U><U><A name="maparea"><B>Map Area Dialog</B></A></U></P>
+<P align="center"><IMG src="image/image58.jpg" border="0" width="596" height="370"></P>
+<DIV align="center"></DIV>
+<HR>
+<P><U><A name="options"><B>Options Dialog</B></A></U></P>
+<P align="center"><IMG src="image/image59.jpg" border="0" width="326" height="287"></P>
+<DIV align="center">
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="20">
+  <COL span="1" width="180">
+  <COL span="1" width="600">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0" colspan="2" width="191"><FONT size="-1">Item</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0" width="578"><FONT size="-1">Operation</FONT></TH>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">Min Elevation Angle</FONT></I></TD>
+      <TD><FONT size="-1">最低仰角(度)を指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">Show Satellite Positoin in Map</FONT></I></TD>
+      <TD><FONT size="-1">衛星の軌跡だけでなく衛星位置も表示するか否か設定します。</FONT><BR>
+      ・<FONT size="-1">None : 衛星位置を表示しません。<BR>
+      ・Start Position : 開始時刻における衛星位置を表示します。<BR>
+      ・End Positin : 終了時刻における衛星位置を表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">Show Receiver Name</FONT></I></TD>
+      <TD><FONT size="-1">地図上に受信機名を表示するか否か設定します。<BR>
+      ・OFF : 受信機名を表示しません。<BR>
+      ・Code Name : 受信機IDを表示します。<BR>
+      ・Full Name : 受信機名を表示します。<BR>
+      ・Both Name : 受信機ID及び名前の両者を表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">Plot Line Style</FONT></I></TD>
+      <TD><FONT size="-1">グラフ表示スタイルを選択します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">Plot Line Width / Marker Size</FONT></I></TD>
+      <TD><FONT size="-1">グラフの線幅、マーカーサイズを指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">Receiver Position Color</FONT></I></TD>
+      <TD><FONT size="-1">地図上に表示する受信機位置の表示色を設定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">Receiver Name Font</FONT></I></TD>
+      <TD><FONT size="-1">地図上に受信機名を表示する際に使用するフォントを指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">Input Navigation Message</FONT></I></TD>
+      <TD><FONT size="-1">入力する航法メッセージの種類を設定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">Navigation Message Directory</FONT></I></TD>
+      <TD><FONT size="-1">入力する航法メッセージを格納したディレクトリパスを指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">OK</FONT></I></TD>
+      <TD><FONT size="-1">設定に従い表示画面を更新します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">Cancel</FONT></I></TD>
+      <TD><FONT size="-1">設定変更を無効にして画面を閉じます。</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE><BR>
+</DIV>
+<HR>
+<P><U><B>Receiver Positoin Plot</B></U></P>
+<P align="center"><IMG src="image/image60.jpg" border="0" width="608" height="447"><BR>
+</P>
+<P><U><B>Coverage Area Plot</B></U></P>
+<P align="center"><IMG src="image/image61.jpg" border="0" width="608" height="447"><BR>
+</P>
+<P><U><B>Baseline Length Plot</B></U></P>
+<P align="center"><IMG src="image/image62.jpg" border="0" width="608" height="447"><BR>
+</P>
+<P><U><B>Satellite Direction Path Skyplot</B></U></P>
+<P align="center"><IMG src="image/image63.jpg" border="0" width="608" height="447"><BR>
+</P>
+<P><U><B>Satellite Visibitilty Plot</B></U></P>
+<P align="center"><IMG src="image/image64.jpg" border="0" width="608" height="447"><BR>
+</P>
+<P><U><B>Satellite Elevation Angle Plot by Sats</B></U></P>
+<P align="center"><IMG src="image/image65.jpg" border="0" width="608" height="447"><BR>
+</P>
+<P><U><B>Satellite Elevation Angle Plot by Rcvs</B></U></P>
+<P align="center"><IMG src="image/image66.jpg" border="0" width="608" height="447"><BR>
+</P>
+<P><U><B>Satellite Eclipse Period Plot</B></U></P>
+<P align="center"><IMG src="image/image67.jpg" border="0" width="608" height="447"><BR>
+</P>
+<P><U><B>Satellite-Sun Angle Plot</B></U></P>
+<P align="center"><IMG src="image/image68.jpg" border="0" width="608" height="447"><BR>
+</P>
+<P><U><B>DOP Plot</B></U></P>
+<P align="center"><IMG src="image/image69.jpg" border="0" width="608" height="447"><BR>
+</P>
+<HR>
+<TABLE width="100%" cellpadding="0">
+  <TBODY>
+    <TR>
+      <TD align="center"><FONT size="-2"><FONT size="-2">Copyright (C) 2004-2008, T.Takasu, All Rights
+      Reserved.</FONT></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+</BODY>
+</HTML>

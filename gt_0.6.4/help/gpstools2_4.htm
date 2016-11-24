@@ -1,0 +1,339 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META name="GENERATOR" content="IBM HomePage Builder 2001 V5.0.3 for Windows">
+<TITLE>GpsTools : Parameter Estimator</TITLE>
+<STYLE type="text/css">
+<!--
+BODY{
+  font-family : Arial,sans-serif;
+}
+-->
+</STYLE>
+</HEAD>
+<BODY bgcolor="#ffffff" text="#666666" link="#33cc66" vlink="#006666" alink="#99ff00">
+<TABLE width="100%" cellspacing="0">
+  <TBODY>
+    <TR>
+      <TD><FONT size="-1"><FONT size="-1"><A href="gpstools.htm">Overview</A> | <A href="gpstools0.htm">Specifications</A> | <A href="gpstools1.htm">Program Execution</A> | Parameter Estimator | <A href="gpstools3.htm">Plot Data</A> | <A href="gpstools4.htm">Utilities</A> | <A href="gpstools5.htm">Data Files</A> | <A href="gpstools6.htm">Libraries</A> </FONT></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<TABLE width="100%" cellpadding="0" height="60">
+  <TBODY>
+    <TR>
+      <TD width="90%">
+      <P><B><FONT size="+1">GPS Precise Analysis Software GpsTools: </FONT><FONT size="+1">Parameter Estimator (5)</FONT></B></P>
+      </TD>
+      <TD valign="bottom" align="right"><FONT size="-1"><A href="../index.shtml"></A></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<HR>
+<TABLE>
+  <TBODY>
+    <TR>
+      <TD><FONT size="-1"><A href="gpstools2.htm">(1)</A> <A href="gpstools2_1.htm">(2)</A> <A href="gpstools2_2.htm">(3)</A> <A href="gpstools2_3.htm">(4)</A> (5) <A href="gpstools2_5.htm">(6)</A> <A href="gpstools2_6.htm">(7)</A> <A href="gpstools2_7.htm">(8)</A></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P align="left"><A name="measnoise"></A><A name="measnoise"><U><B>Measurement Noise Settings</B></U></A></P>
+<P align="center"><IMG src="image/image12.jpg" border="0" width="316" height="202"></P>
+<CENTER>
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="200">
+  <COL span="1" width="600">
+  <TBODY>
+    <TR>
+      <TD align="center" bgcolor="#f0f0f0"><FONT size="-1"><B>Item</B></FONT></TD>
+      <TD align="center" bgcolor="#f0f0f0"><FONT size="-1"><B>Operation</B></FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Measurement Noise</FONT></I></TD>
+      <TD><FONT size="-1">Set the measurement noise (m) of ionosphere-free
+      LC carrier phase at zenith for each receiver.<BR>
+      If setting the receiver ALL, the all parameters
+      are set to the same value<FONT size="-1">except for individual settings for receivers.
+      </FONT>.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">OK</FONT></I></TD>
+      <TD><FONT size="-1"><FONT size="-1"><FONT size="-1">Enable changes and close dialog.</FONT></FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Cancel</FONT></I></TD>
+      <TD><FONT size="-1"><FONT size="-1"><FONT size="-1">Abandon changes and close dialog.</FONT></FONT></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE><BR>
+</CENTER>
+<HR>
+<P align="left"><A name="apriorisigma"></A><A name="apriorisigma"><U><B>A Priori Standard Deviation Settings</B></U></A></P>
+<P align="center"><IMG src="image/image13.jpg" border="0" width="566" height="437"></P>
+<CENTER>
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="200">
+  <COL span="1" width="600">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">Item</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">Operation</FONT></TH>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Satellite</FONT></I></TD>
+      <TD><FONT size="-1">Set the satellite.<BR>
+      If setting it ALL, <FONT size="-1">the all parameters are set to the same value
+      except for individual settings for satellites
+      </FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Pos</FONT></I></TD>
+      <TD><FONT size="-1">Set the initial state standard deviation
+      of satellite position (m).</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Vel</FONT></I></TD>
+      <TD><FONT size="-1">Set the initial state standard deviation
+      of satellite velocity (m/s)</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Srp1,2,3,4-6</FONT></I></TD>
+      <TD><FONT size="-1">Set the initial state standard deviation
+      of the solar radiation pressure model parameters
+      1,2,3,4-6. The units depend upon the solar
+      radiation pressure model.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Clk</FONT></I></TD>
+      <TD><FONT size="-1">Set the initial state standard deviation
+      of the satellite clock bias (m).<BR>
+      If using White Noise process as the clock
+      model, the standard deviation of the satellite
+      clock bias is set as the value at every epoch.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">dClk</FONT></I></TD>
+      <TD><FONT size="-1">Set the initial state standard deviation
+      of the satellite clock drift (m/s).<BR>
+      Ignored unless the satellite clock model
+      is Gauss-Marcov process.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Receiver</FONT></I></TD>
+      <TD><FONT size="-1">Set the receiver.<BR>
+      <FONT size="-1">If setting it ALL, the all parameters are
+      set to the same value except for individual
+      settings for receivers </FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Clk</FONT></I></TD>
+      <TD><FONT size="-1">Set the initial state standard deviation
+      of the receiver clock bias (m).<BR>
+      <FONT size="-1">If using White Noise process as the clock
+      model, the standard deviation of the receiver
+      clock bias is set as the value at every epoch.</FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">dClk</FONT></I></TD>
+      <TD><FONT size="-1"><FONT size="-1">Set the initial state standard deviation
+      of the receiver clock drift (m/s).<BR>
+      Ignored unless the receiver clock model is
+      Gauss-Marcov process.</FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">ZTD</FONT></I></TD>
+      <TD><FONT size="-1">Set the initial state standard deviation
+      of the zenith total tropospheric delay (m).</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">dZTD</FONT></I></TD>
+      <TD><FONT size="-1">Set the initial state standard deviation
+      of the zenith total tropospheric delay drift
+      (m/h).<BR>
+      </FONT><FONT size="-1"><FONT size="-1">Ignored unless the tropospheric delay model
+      is Gauss-Marcov process.</FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Grad</FONT></I></TD>
+      <TD><FONT size="-1">Set the initial state standard deviation
+      of the tropospheric gradient parameters (1st
+      order and 2nd order terms) (m)</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">PosU,PosE,PosN</FONT></I></TD>
+      <TD><FONT size="-1">Set the initial state standard deviation
+      of the Up, East and North components of the
+      receiver position (m).</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">PBias</FONT></I></TD>
+      <TD><FONT size="-1">Set the initial state standard deviation
+      of the carrier-phase bias (m).</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Xp,Yp</FONT></I></TD>
+      <TD><FONT size="-1">Set the initial state standard deviation
+      of the Earth Rotation Parameters Xp, Yp (rad).</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Lod</FONT></I></TD>
+      <TD><FONT size="-1">Set the initial state standard deviation
+      of the Earth Rotation Parameters UT1-UTC
+      (s).</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Gco</FONT></I></TD>
+      <TD><FONT size="-1">Set the initial state standard deviation
+      of the Geocenter offset X/Y/Z (m) and Scale
+      (ppb).</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">OK</FONT></I></TD>
+      <TD><FONT size="-1"><FONT size="-1"><FONT size="-1"><FONT size="-1">Enable changes and close dialog.</FONT></FONT></FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Cancel</FONT></I></TD>
+      <TD><FONT size="-1"><FONT size="-1"><FONT size="-1"><FONT size="-1">Abandon changes and close dialog.</FONT></FONT></FONT></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE><BR>
+</CENTER>
+<HR>
+<P align="left"><A name="processnoise"></A><A name="processnoise"><U><B>Process Noise Setting</B></U></A></P>
+<P align="center"><A name="processnoise"></A><IMG src="image/image14.jpg" border="0" width="566" height="437"></P>
+<CENTER>
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="200">
+  <COL span="1" width="600">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">Item</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">Operation</FONT></TH>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Satellite</FONT></I></TD>
+      <TD><FONT size="-1"><FONT size="-1"><FONT size="-1">Set the satellite.<BR>
+      If setting it ALL, <FONT size="-1">the all parameters are set to the same value
+      except for individual settings for satellites
+      </FONT></FONT></FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Pos</FONT></I></TD>
+      <TD><FONT size="-1"><FONT size="-1">Set the process noise standard deviation
+      of satellite position (m).</FONT>(unit =1/sqrt(s), the same as follows)</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Vel</FONT></I></TD>
+      <TD><FONT size="-1"><FONT size="-1">Set the process noise standard deviation
+      of satellite velocity (m/s)</FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Srp1,2,3,4-6</FONT></I></TD>
+      <TD><FONT size="-1"><FONT size="-1">Set the process noise standard deviation
+      of the solar radiation pressure model parameters
+      1,2,3,4-6. The units depend upon the solar
+      radiation pressure model.</FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Clk</FONT></I></TD>
+      <TD><FONT size="-1"><FONT size="-1">Set the process noise standard deviation
+      of the satellite clock bias (m).</FONT><BR>
+      Ignored unless the satellite clock model
+      is White Noise process.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">dClk</FONT></I></TD>
+      <TD><FONT size="-1"><FONT size="-1">Set the initial state standard deviation
+      of the satellite clock drift (m/s).<BR>
+      Ignored unless the satellite clock model
+      is Gauss-Marcov process.</FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Receiver</FONT></I></TD>
+      <TD><FONT size="-1"><FONT size="-1">Set the receiver.<BR>
+      If setting it ALL, the all parameters are
+      set to the same value except for individual
+      settings for receivers </FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Clk</FONT></I></TD>
+      <TD><FONT size="-1"><FONT size="-1">Set the process noise standard deviation
+      of the receiver clock bias (m).</FONT><BR>
+      <FONT size="-1">Ignored unless the receiver clock model is
+      White Noise process.</FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">dClk</FONT></I></TD>
+      <TD><FONT size="-1">Set the process noise standard deviation
+      of the receiver clock drift (m/s).<BR>
+      Ignored unless the receiver clock model is
+      Gauss-Marcov process.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">ZTD</FONT></I></TD>
+      <TD><FONT size="-1"><FONT size="-1">Set the process noise standard deviation
+      of the zenith total tropospheric delay (m).</FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">dZTD</FONT></I></TD>
+      <TD><FONT size="-1"><FONT size="-1">Set the process noise standard deviation
+      of the zenith total tropospheric delay drift
+      (m/h).<BR>
+      </FONT><FONT size="-1"><FONT size="-1">Ignored unless the tropospheric delay model
+      is Gauss-Marcov process.</FONT></FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Grad</FONT></I></TD>
+      <TD><FONT size="-1"><FONT size="-1">Set the process noise standard deviation
+      of the tropospheric gradient parameters (1st
+      order and 2nd order terms) (m)</FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">PosU,PosE,PosN</FONT></I></TD>
+      <TD><FONT size="-1"><FONT size="-1">Set the process noise standard deviation
+      of the Up, East and North components of the
+      receiver position (m).</FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">PBias</FONT></I></TD>
+      <TD><FONT size="-1"><FONT size="-1">Set the process noise standard deviation
+      of the carrier-phase bias (m).</FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Xp,Yp</FONT></I></TD>
+      <TD><FONT size="-1"><FONT size="-1">Set the process noise standard deviation
+      of the Earth Rotation Parameters Xp, Yp (rad).</FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Lod</FONT></I></TD>
+      <TD><FONT size="-1"><FONT size="-1">Set the process noise standard deviation
+      of the Earth Rotation Parameters UT1-UTC
+      (s).</FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Gco</FONT></I></TD>
+      <TD><FONT size="-1"><FONT size="-1">Set the process noise standard deviation
+      of the Geocenter offset X/Y/Z (m) and Scale
+      (ppb).</FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">OK</FONT></I></TD>
+      <TD><FONT size="-1"><FONT size="-1"><FONT size="-1"><FONT size="-1">Enable changes and close dialog.</FONT></FONT></FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Cancel</FONT></I></TD>
+      <TD><FONT size="-1"><FONT size="-1"><FONT size="-1"><FONT size="-1">Abandon changes and close dialog.</FONT></FONT></FONT></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE><BR>
+</CENTER><HR>
+<TABLE width="100%" cellpadding="0">
+  <TBODY>
+    <TR>
+      <TD align="center"><FONT size="-2"><FONT size="-2">Copyright (C) 2004-2008, T.Takasu, All Rights
+      Reserved.</FONT></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+</BODY>
+</HTML>

@@ -1,0 +1,60 @@
+License for GpsTools (GT)
+
+Copyright (C) 2004-2009 Tomoji TAKASU and Shoji KASAI.
+All rights reserved.
+
+From ver.0.6.4, GT is distributed under GPLv3 License (http://gplv3.fsf.org).
+
+The source programs of the following functions are not included in the
+program package. These are distributed only as binary programs.
+
+- gt_0.6.4/mexsrc/geograv_e.c
+- gt_0.6.4/mexsrc/satorbit.c
+- gt_0.6.4/mexsrc/satorbit_e.c
+- gt_0.6.4/mexsrc/satorbit_s.c
+- gt_0.6.4/mexsrc/shadowfunc.c
+- gt_0.6.4/mexsrc/shadowfunc_e.c
+
+The following source programs are redistributed in the package. The liceses
+of these programs comply with the original ones. Please refer the following
+urls for details.
+
+- gt_0.6.4/mexsrc/ceppred.f:
+  http://www.usno.navy.mil/USNO/earth-orientation/software/aux/ceppred.f
+- gt_0.6.4/mexsrc/gmf.f:
+- gt_0.6.4/mexsrc/gpt.f:
+- gt_0.6.4/mexsrc/vmf1_ht.f:
+  http://www.hg.tuwien.ac.at/~ecmwf1
+
+The following binary programs are redistributed in the package. The liceses
+of these programs comply with the original ones. Please refer the following
+urls for details.
+
+- gt_0.6.4/private/teqc.exe:
+  http://facility.unavco.org/software/teqc/teqc.html
+- gt_0.6.4/private/crx2rnx.exe:
+- gt_0.6.4/private/rnx2crx.exe:
+  ftp://terras.gsi.go.jp/software/RNXCMP
+- gt_0.6.4/private/gzip.exe:
+  http://www.gzip.org
+- gt_0.6.4/private/wget.exe
+  http://www.gnu.org/software/wget
+
+Permission to use, copy, and distribute this software and its
+documentation for any purpose with or without fee is hereby granted,
+provided that the above copyright notice appear in all copies and
+that both that copyright notice and this permission notice appear
+in supporting documentation.
+
+This software is provided "AS IS" without express or implied warranty
+to the extent permitted by applicable law.
+
+Use of the program is permitted under the principle of "NO WARRANTY" and
+"NO RESPONSIBILITY". The authors shall not be liable for any event
+arising in any way out of the use of these resources.
+
+Redistribution in source and binary forms, with or without modification, 
+is also permitted provided that the above copyright notice, disclaimer
+and this condition are retained.
+
+ 

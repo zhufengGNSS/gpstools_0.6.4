@@ -1,0 +1,645 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META name="GENERATOR" content="IBM HomePage Builder 2001 V5.0.3 for Windows">
+<TITLE>GpsTools : Specifications</TITLE>
+<STYLE type="text/css">
+<!--
+BODY{
+  font-family : Arial,sans-serif;
+}
+-->
+</STYLE>
+</HEAD>
+<BODY bgcolor="#ffffff" text="#666666" link="#33cc66" vlink="#006666" alink="#99ff00">
+<TABLE width="100%" cellspacing="0">
+  <TBODY>
+    <TR>
+      <TD><FONT size="-1"><FONT size="-1"><A href="gpstools.htm">Overview</A> | Specifications | <A href="gpstools1.htm">Program Execution</A> | <A href="gpstools2.htm">Parameter Estimator</A> | <A href="gpstools3.htm">Plot Data</A> | <A href="gpstools4.htm">Utilities</A> | <A href="gpstools5.htm">Data Files</A> | <A href="gpstools6.htm">Libraries</A> </FONT></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<TABLE width="100%" cellpadding="0" height="60">
+  <TBODY>
+    <TR>
+      <TD valign="middle">
+      <P><FONT size="+1"><B>GPS Precise Analysis Software GpsTools: Specifications</B></FONT></P>
+      </TD>
+      <TD align="right" valign="bottom"></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<HR>
+<TABLE cellspacing="0">
+  <TBODY>
+    <TR>
+      <TD align="left"><A href="#systemreq"><FONT size="-1">System Requirements</FONT></A><FONT size="-1"> | </FONT><FONT size="-1"><A href="#obsedit">Obs Data Editor</A></FONT><FONT size="-1"> | </FONT><FONT size="-1"><A href="#gpsest">Parameter Estimator</A></FONT><FONT size="-1"> | </FONT><FONT size="-1"><A href="#utilities">Utilities</A></FONT><FONT size="-1"> | <FONT size="-1"><A href="#libraries">Libraries</A></FONT><FONT size="-1"> | </FONT></FONT><FONT size="-1"><A href="#supportformat">Supported Data Formats</A></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P><A name="systemreq"><U><B>System Requirements</B></U></A></P>
+<CENTER>
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="200">
+  <COL span="1" width="600">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">Item</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">Specification</FONT></TH>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Operating system</FONT></I></TD>
+      <TD><FONT size="-1">Windows XP, Windows Vista 32bit or 64bit</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Software environment</FONT></I></TD>
+      <TD><FONT size="-1"><A href="http://www.mathworks.com/products/matlab/">MATLAB</A> v.7.3 (R2006b) or higher version, 32bit
+      or 64bit</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Support software</FONT></I></TD>
+      <TD><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- Data compression/extraction</FONT></I></TD>
+      <TD><FONT size="-1"><A href="http://www.gzip.org/">gzip</A></FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- Compressed RINEX</FONT></I></TD>
+      <TD><FONT size="-1"><A href="http://sopac.ucsd.edu/dataArchive/hatanaka.html">crx2rnx, rnx2crx</A></FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- Ocean loading prediction</FONT></I></TD>
+      <TD><FONT size="-1"><A href="http://www.miz.nao.ac.jp/staffs/nao99/">GOTIC2</A> (Generate ocean loading coefficients)</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Required Memory</FONT></I></TD>
+      <TD><FONT size="-1">&gt;512MByte</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<BR>
+</CENTER><P><A name="obsedit"><U><B>Obs Data Editor</B></U></A></P>
+<CENTER>
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="200">
+  <COL span="1" width="600">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">Item</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">Specification</FONT></TH>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Input observation data</FONT></I></TD>
+      <TD><FONT size="-1">RINEX 2.10 (including high-rate RINEX)</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Pseudorange code</FONT></I></TD>
+      <TD><FONT size="-1">P1+P2 or C1+P2+P1-C1 bias correction</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">P1-C1 bias</FONT></I></TD>
+      <TD><FONT size="-1">Standard parameters for IGS analysis</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Detection of cycle-slips</FONT></I></TD>
+      <TD><FONT size="-1"><FONT size="-1">Variation rate of geometry-free LC (variation
+      of ionospheric delay)</FONT><BR>
+      Melbourne-Wubbena Wide-Lane LC: Moving Average、Moving
+      Standard Deviation</FONT><BR>
+      <FONT size="-1">Variation rate of Iono-free code and carrier-phase
+      LC<BR>
+      Variation rate of MP1, MP2 LC</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Repair of cycle-slips</FONT></I></TD>
+      <TD><FONT size="-1">Estimation of slip amount by difference of
+      Melbourne-Wubbena LC averages</FONT><BR>
+      <FONT size="-1">Estimation of slip amount by n-degree polynomial
+      fitting of geometry-free LC</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Rejection of outliers</FONT></I></TD>
+      <TD><FONT size="-1">Detect outlier by standard deviation test
+      of Melbourne-Wubbena LC</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Preprocessing of clock-jump</FONT></I></TD>
+      <TD><FONT size="-1">Code-phase incoherency correction by carrier
+      phase or code/time-tag adjustment</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Smoothing of code</FONT></I></TD>
+      <TD><FONT size="-1">L1, L2 carrier-smoothing of code observations</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Extraction of data</FONT></I></TD>
+      <TD><FONT size="-1">Data extraction at each sampling interval
+      and separate arcs</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Output format</FONT></I></TD>
+      <TD><FONT size="-1">MATLAB binary (mat-file)</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<BR>
+</CENTER>
+<P><A name="gpsest"><U><B>Parameter Estimator</B></U></A></P>
+<CENTER>
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="200">
+  <COL span="1" width="600">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">Item</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">Specification</FONT></TH>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Estimation scheme</FONT></I></TD>
+      <TD><FONT size="-1">Extended Kalman filter and smoother (EKF/S)</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Estimation pass</FONT></I></TD>
+      <TD><FONT size="-1">1-pass, 2-pass (forward-backward) or 3-pass
+      (forward-backward-forward)</FONT></TD>
+    </TR>
+    <TR>
+      <TD valign="middle" align="center"><I><FONT size="-1">Estimated parameters</FONT></I></TD>
+      <TD><FONT size="-1">Receiver position (ECEF)<BR>
+      Tropospheric zenith total delay (ZTD) and
+      horizontal gradients (north/east/quadratic)<BR>
+      Satellite and receiver clock (clock bias
+      and drift relative reference clock)<BR>
+      Satellite orbit (satellite mass-center position
+      and velocity)<BR>
+      Solar radiation pressure (SRP) model parameters<BR>
+      Earth rotation parameters (ERP : Xp, Yp,
+      UT1-UTC)<BR>
+      Geocenter Offset (dx, dy, dz, scale)</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Measurement models</FONT></I></TD>
+      <TD><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- Basic observable</FONT></I></TD>
+      <TD><FONT size="-1">Ionospheric-free LC of carrier-phases</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- Diffencing of observable</FONT></I></TD>
+      <TD><FONT size="-1">Zero-difference/PPP</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- Geometric range model</FONT></I></TD>
+      <TD><FONT size="-1">Satellite motion by earth 0-degree gravity
+      and light-time iteration</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- Satellite clock-bias</FONT></I></TD>
+      <TD><FONT size="-1">Estimated or fixed to input states</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- Receiver clock-bias</FONT></I></TD>
+      <TD><FONT size="-1">Estimated or fixed to input states</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- Satellite antenna phase center offset/variations</FONT></I></TD>
+      <TD><FONT size="-1">Block II/IIA : X=0.279, Y=0, Z=1.023 m, Block
+      IIR : X=Y=Z=0m</FONT><FONT size="-1"> or</FONT><FONT size="-2"></FONT><FONT size="-1"><BR>
+      input satellite antenna model (ANTEX)</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- Receiver antenna phase center offset/variations</FONT></I></TD>
+      <TD><FONT size="-1">Input receiver antenna model (IGS_01.PCV,
+      NGS or ANTEX)</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- Tropospheric delay</FONT></I></TD>
+      <TD><FONT size="-1"><FONT size="-1">A priori model: </FONT>Saastamoinen or no correction</FONT><BR>
+      <FONT size="-1">Mapping function: COSZ, NMF (Niell mapping
+      function), GMF (global mapping function)
+      or VMF1 (Vienna mapping function 1)</FONT><BR>
+      <FONT size="-1"><FONT size="-1">Total delay model:<BR>
+      </FONT>Mdry(EL)*Tropdry+Mwet(EL)(1+(Gnorth*cosAZ+Geast*sinAZ)</FONT><FONT size="-1">/tanEL)*</FONT><FONT size="-1">(ZTD-Tropdry)</FONT><FONT size="-1"><BR>
+      (Mdry/Mwet: hydrostatic/wet mapping function,
+      Tropdry: A priori hydrostatic model, Gnorth/Geast:
+      Horizontal gradient N/E, AZ/EL: azimuth/elevation
+      angle), estimation of quadratic coefficients</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- Ionospheric delay　</FONT></I></TD>
+      <TD><FONT size="-1">1st-order term: eliminated by ionospheric-free
+      LC<BR>
+      higher order terms: none</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- Site-Displacement</FONT></I></TD>
+      <TD><FONT size="-1"><FONT size="-1">Solid earth tide: </FONT><A href="http://www.iers.org/iers/products/conv/">IERS Conventions</A> 1996 Ch.7<BR>
+      - Step1 : in-phase degree2 and 3, out-of-phase,
+      latitude dependence<BR>
+      - Step2 : contribution from the diurnal band
+      : K1 only<BR>
+      </FONT><FONT size="-1">Ocean loading</FONT>: <FONT size="-1">IERS Conventions 1996 Ch.7 <BR>
+      - 11 constituents (M2,S2,N2,K2,K1,O1,P1,Q1,Mf,Mm,Ssa)<BR>
+      - input loading amplitude/phase coefficients
+      (BLQ format)<BR>
+      <FONT size="-1">Pole tide: </FONT><FONT size="-1">IERS Conventions 1996 Ch.7<BR>
+      </FONT><FONT size="-1">Permanent deformation: can be eliminated</FONT><FONT size="-1"><BR>
+      </FONT><FONT size="-1">Atmospheric loading: none</FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- Relativistic effects</FONT></I></TD>
+      <TD><FONT size="-1">Satellite clock variation and Shapiro time
+      delay</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- Phase windup effect</FONT></I></TD>
+      <TD><FONT size="-1">Wu (1996) model</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- Multipath</FONT></I></TD>
+      <TD><FONT size="-1">Correction with carrier-phase multipath profile<BR>
+      Correction with modified sidereal-filter</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- Measurement errors</FONT></I></TD>
+      <TD><FONT size="-1">Standard deviation at zenith: user defined<BR>
+      Elevation dependency: sqrt(1+f(1/sin(EL)^2-1))</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- Carrier-phase ambiguity</FONT></I></TD>
+      <TD><FONT size="-1">Guess estimation: Ionospheric-free LC carrier-phase
+      - pseudorange<BR>
+      Estimation model: Float ionospheric-free
+      LC carrier-phase ambiguity residual<BR>
+      Integer ambiguity resolution: none</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Satellite motion model</FONT></I></TD>
+      <TD><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- Geopotential </FONT></I></TD>
+      <TD><FONT size="-1">JGM-3, up to 12-degree/order</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- Solar/Planetary Potentials</FONT></I></TD>
+      <TD><FONT size="-1">Moon and sun (point of mass)</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- Planetary ephemeris</FONT></I></TD>
+      <TD><FONT size="-1"><A href="http://ssd.jpl.nasa.gov/?ephemerides#planets">JPL DE/LE405</A></FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- Eclipse model</FONT></I></TD>
+      <TD><FONT size="-1">Cylindric or Penumbra/umbra (earth and moon)</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- Solar radiation pressure (SRP) model</FONT></I></TD>
+      <TD><FONT size="-1">Simple model (Cannonball model)+scale<BR>
+      ROCK4/42 (T20,T30)+Scale, Ybias<BR>
+      <A href="http://ipnpr.jpl.nasa.gov/progress_report/42-159/159I.pdf">GSPM.04b</A>+scale, Ybias, along-track, cross-track acceleration<BR>
+      <A href="http://igscb.jpl.nasa.gov/mail/igsmail/1998/msg00069.html">CODE RPR</A>+D0, Y0, B0, Z0, X10, X30</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- Earth Tides</FONT></I></TD>
+      <TD><FONT size="-1">Solid Earth Tide:<BR>
+      IERS Conventions 1996 Ch.6, frequency
+      independent項2,3次、frequency
+      dependent項K1 only<BR>
+      Ocean loading: IERS Conventions 1996 Ch.6
+      8 constituents, up to 3rd order (CSR2.0)<BR>
+      Pole tide: IERS Conventions 1996 Ch.6 delta-C21,
+      delta-S21</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- Relativistic effects</FONT></I></TD>
+      <TD><FONT size="-1">IERS Conventions 1996 Ch.11</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- Earth albedo</FONT></I></TD>
+      <TD><FONT size="-1"><FONT size="-1">None</FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- Air drag</FONT></I></TD>
+      <TD><FONT size="-1">None</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- delta-V</FONT></I></TD>
+      <TD><FONT size="-1">Input user-defined acceleration and duration</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- Numerical integration</FONT></I></TD>
+      <TD><FONT size="-1">Fixed step 4th-order Runge-Kutta or variable
+      step/order Adams-Bashforth-Moulton</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">State transition model</FONT></I></TD>
+      <TD><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- Satellite/Receiver clock</FONT></I></TD>
+      <TD><FONT size="-1">Fixed, white-noise or 1st-order Gauss-Marcov</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- Tropospheric parameters</FONT></I></TD>
+      <TD><FONT size="-1">Fixed, random-walk or 1st-order </FONT><FONT size="-1">Gauss-Marcov</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- Earth rotation parameters</FONT></I></TD>
+      <TD><FONT size="-1">Fixed or random-walk</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- Geocenter offsets</FONT></I></TD>
+      <TD><FONT size="-1">Zero-fixed or random-walk</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- Receiver position</FONT></I></TD>
+      <TD><FONT size="-1">Fixed, random-walk (static), or white-noise
+      (kinematic)</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- Carrier-phase ambiguity</FONT></I></TD>
+      <TD><FONT size="-1">Fixed in an arc, re-initialized at cycle-slip,
+      estimated as float value</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Reference frame </FONT></I></TD>
+      <TD></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- ECEF</FONT></I></TD>
+      <TD><FONT size="-1"><A href="http://www.iers.org/iers/products/itrf/">ITRF</A></FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- ECI</FONT></I></TD>
+      <TD><FONT size="-1"><A href="http://www.iers.org/iers/products/icrf/">ICRF</A> (J2000.0)</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- Precession/Nutation</FONT></I></TD>
+      <TD><FONT size="-1">IAU1976 precession, IAU1980 nutation＋dpsi/deps
+      or </FONT><FONT size="-1">IERS1996 nutation</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- ERP variation</FONT></I></TD>
+      <TD><FONT size="-1">Subdaily-variation correction (Ray model)</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- Earth rotation parameters</FONT></I></TD>
+      <TD><FONT size="-1">Fixed to IERS Bulletin A, B, C04 or IGS ERP
+      or estimated</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- Geocenter offsets</FONT></I></TD>
+      <TD><FONT size="-1">Zero-fixed of estimated</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">A priori/Fixed states</FONT></I></TD>
+      <TD><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- Satellite position/velocity</FONT></I></TD>
+      <TD><FONT size="-1">Broadcast ephemeris or precise ephemeris
+      (SP3)＋interpolation</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- Satellite clock</FONT></I></TD>
+      <TD><FONT size="-1">Broadcast SV clock parameters or precise
+      clock (SP3, RINEX CLK)+interpolation</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- Receiver clock</FONT></I></TD>
+      <TD><FONT size="-1">Estimated by point positioning or precise
+      clock (RINEX CLK)</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- Meteorological parameters</FONT></I></TD>
+      <TD><FONT size="-1">Standard atmosphere, GPT (Global pressure
+      and temperature) or JMA NWM</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- Receiver position</FONT></I></TD>
+      <TD><FONT size="-1"><A href="http://itrf.ensg.ign.fr/ITRF_solutions/">ITRF97</A>, <A href="http://itrf.ensg.ign.fr/ITRF_solutions/">ITRF2000/2005</A>, <A href="http://igscb.jpl.nasa.gov/mail/igsmail/2001/msg00450.html">IGS00</A>, <A href="http://igscb.jpl.nasa.gov/mail/igsmail/2003/msg00418.html">IGb00</A>, <A href="http://igscb.jpl.nasa.gov/mail/igsmail/2006/msg00170.html">IGS05</A>, IGS SINEX, <A href="http://terras.gsi.go.jp/ja/index.html">GSI F1/F2</A> or user-defined</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- Earth rotation parameters</FONT></I></TD>
+      <TD><FONT size="-1"><A href="http://igscb.jpl.nasa.gov/mail/igsmail/1998/msg00170.html">IGS ERP</A>, <A href="http://www.iers.org/iers/products/eop/monthly.html">IERS Bulletin B</A></FONT><FONT size="-1">, <A href="http://www.iers.org/MainDisp.csl?pid=36-9">IERS EOP C04</A></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<BR>
+</CENTER>
+<P><A name="utilities"><U><B>Utilities</B></U></A></P>
+<CENTER>
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="200">
+  <COL span="1" width="600">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">Item</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">Specification</FONT></TH>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">File manager</FONT></I></TD>
+      <TD><FONT size="-1">List and filtered view, file manipulation
+      (copy, move, rename, delete, uncompact, compact),
+      Text file viewer, Matlab binary file viewer,
+      image viewer</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Plot results</FONT></I></TD>
+      <TD><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- Plot observation data</FONT></I></TD>
+      <TD><FONT size="-1">Plot raw/edited observation data, plot data
+      availability, plot linear combination of
+      observation data, plot cycle-slips, show
+      RINEX text, execute TEQC</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- Plot satellite orbit</FONT></I></TD>
+      <TD><FONT size="-1">Plot satellite position error (3D,Radial/Along-Track/Cross-Track,XYZ),
+      plot position error by satellites/dates,
+      plot SRP parameters, plot ERP, Plot Geocenter
+      offset, output text, output summary.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- Plot satellite/receiver clock</FONT></I></TD>
+      <TD><FONT size="-1">Plot satellite/receiver clock bias, plot
+      satellite/receiver clock error, plot satellite/receiver
+      clock stability, output text file, output
+      summary.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- Plot tropospheric parameters</FONT></I></TD>
+      <TD><FONT size="-1">Plot ZTD, plot ZTD error, plot map, output
+      text file, output summary.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- Plot GPV data</FONT></I></TD>
+      <TD><FONT size="-1">Plot JMA NWM (MSM、RSM, GSM), read geoid
+      model, plot map, plot contour, plot contour
+      filled, plot mesh, plot surface, plot vector,
+      plot streamline</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- Plot ionospheric parameters</FONT></I></TD>
+      <TD><FONT size="-1">Plot IONEX file, plot VTEC map, plot contour.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- Plot LEO satellite orbit</FONT></I></TD>
+      <TD><FONT size="-1">Plot GRACE/CHAMP orbit file, Plot orbit errors</FONT><FONT size="-1"> (3D, Radial/Along-Track/Cross-Track, XYZ)</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- Plot residuals</FONT></I></TD>
+      <TD><FONT size="-1">Plot residuals, plot residuals E/N/U components,
+      plot residuals AZ/El, plot residuals Heading/Nadir,
+      plot residuals in skyplot, plot residuals
+      in 3D skyplot, output statistics, output
+      antenna phase center parameter.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- Plot multipath profile</FONT></I></TD>
+      <TD><FONT size="-1">Plot multipath profile in skyplot, plot multipath
+      profile in AZ/EL graph</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- Plot satellite track and receiver positions</FONT></I></TD>
+      <TD><FONT size="-1">Plot satellite ground track, plot receiver
+      positions in map, plot satellite coverages,
+      plot baseline and baseline length, plot Voronoi
+      region, plot satellite view in skyplot, plot
+      satellite AZ/EL graph, plot satellite eclipse
+      period, plot satellite-sun angle, plot DOP.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Data/product downlorder</FONT></I></TD>
+      <TD><FONT size="-1">Download data/products by FTP/HTTP, extend
+      keywords in download address, uncompress
+      files, download via proxy server.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Generate products</FONT></I></TD>
+      <TD><FONT size="-1">Generate satellite ephemeris (SP3), generate
+      satellite/receiver clock (RINEX CLK), generate
+      receiver position (SINEX)</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Generate ocean loading coefficients </FONT></I></TD>
+      <TD><FONT size="-1">Front-end of GOTIC2 (ocean tide prediction),
+      output BLQ format coefficients.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Estimate multipath profile</FONT></I></TD>
+      <TD><FONT size="-1">Estimate multipath profile by stacking of
+      post-fit residuals.</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<BR>
+</CENTER>
+<P><A name="libraries"><U><B>Libraries</B></U><BR>
+</A></P>
+<CENTER>
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="200">
+  <COL span="1" width="600">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">Item</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">Specification</FONT></TH>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Common libraries</FONT></I></TD>
+      <TD><FONT size="-1">MATLAB interface, user callable routines</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Supported model</FONT></I></TD>
+      <TD><FONT size="-1">Refer observation data editor and parameter
+      estimator specs.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Supported data format</FONT></I></TD>
+      <TD><FONT size="-1">Internal binary (clean observation data,
+      estimation results, estimation residuals,
+      processing parameters), text/CSV format,
+      RINEX OBS/NAV, SP3/SP3c, RINEX CLK, SINEX
+      TROP, SINEX, GSI F1/F2, IONEX, IERS Bulletin
+      B, IERS C04, IGS ERP, BLQ, IGS_01.PCV, ANTEX
+      etc</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Binary codes</FONT></I></TD>
+      <TD><FONT size="-1">C-MEX library with MATLAB MEX-interface</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<BR>
+</CENTER>
+<P><U><A name="supportformat"><B>Supported Data Formats<BR>
+</B></A></U></P>
+<CENTER>
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="200">
+  <COL span="1" width="600">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">Item</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">Specification</FONT></TH>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Observation data</FONT></I></TD>
+      <TD><FONT size="-1"><A href="http://igscb.jpl.nasa.gov/igscb/data/format/rinex210.txt">RINEX 2.10 OBS</A> (Daily, 3H, 1H, High-Rate:15min)</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Navigation messages</FONT></I></TD>
+      <TD><FONT size="-1"><A href="http://igscb.jpl.nasa.gov/igscb/data/format/rinex210.txt">RINEX 2.10 NAV</A></FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Satellite precise ephemeris</FONT></I></TD>
+      <TD><FONT size="-1"><A href="http://igscb.jpl.nasa.gov/igscb/data/format/sp3_docu.txt">NGS SP3</A>、<A href="http://igscb.jpl.nasa.gov/igscb/data/format/sp3c.txt">SP3-c</A></FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Satellite/Receiver clock</FONT></I></TD>
+      <TD><FONT size="-1"><A href="http://igscb.jpl.nasa.gov/igscb/data/format/rinex_clock.txt">RINEX CLK</A></FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Tropospheric parameters</FONT></I></TD>
+      <TD><FONT size="-1"><A href="http://igscb.jpl.nasa.gov/igscb/data/format/sinex_tropo.txt">SINEX TROP</A></FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Station positions</FONT></I></TD>
+      <TD><FONT size="-1"><A href="http://tau.fesg.tu-muenchen.de/~iers/web/sinex/format.php">SINEX</A>、<A href="http://terras.gsi.go.jp/ja/index.html">GSI F1/F2</A></FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Ionospheric parameters</FONT></I></TD>
+      <TD><FONT size="-1"><A href="http://igscb.jpl.nasa.gov/igscb/data/format/ionex1.pdf">IONEX</A></FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Earth rotation parameters</FONT></I></TD>
+      <TD><FONT size="-1"><A href="http://www.iers.org/iers/products/eop/monthly.html">IERS Bulletin B</A>、<A href="http://igscb.jpl.nasa.gov/mail/igsmail/1998/msg00170.html">IGS ERP</A></FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Ocean loading coefficients</FONT></I></TD>
+      <TD><FONT size="-1">BLQ</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Antenna phase center</FONT></I></TD>
+      <TD><FONT size="-1"><A href="http://igscb.jpl.nasa.gov/igscb/station/general/igs_01.pcv">IGS_01.PCV</A>, <A href="http://www.ngs.noaa.gov/ANTCAL/">NGS PCV</A>, <A href="ftp://igscb.jpl.nasa.gov/igscb/station/general/antex13.txt">ANTEX</A></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE><BR>
+</CENTER>
+<HR>
+<TABLE width="100%" cellpadding="0">
+  <TBODY>
+    <TR>
+      <TD align="center"><FONT size="-2">Copyright (C) 2004-2008, T.Takasu, All Rights
+      Reserved.</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+</BODY>
+</HTML>

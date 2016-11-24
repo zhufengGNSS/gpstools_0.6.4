@@ -1,0 +1,44 @@
+RNXCMP SOFTWARE
+Copyright (c) 2007 Geographical Survey Institute  All rights reserved.
+
+This is the license document of the RNXCMP software (Technical 
+Reports of the Geographical Survey Institute H1-No.6 "The RNXCMP
+software for compression/restoration of RINEX observation files").
+The RNXCMP software consists of the source codes, the executable binaries,
+the scripts and batch files of the frontend tools, and the related documents.
+Do not install, use, modify, or redistribute the software until you 
+have read and accepted all of the license terms. Installation, use, 
+modification, or redistribution, of this software implies acceptance 
+of all terms and conditions of this license.
+
+1. Modification or alteration
+  The source codes and related documents of the RNXCMP software may not
+  be changed without the consent of Geographical Survey Institute.
+  Users may, however, compile the source codes, or customize the 
+  frontend tools without the consent of Geographical Survey Institute.
+
+2. Redistribution
+  Redistributions of the RNXCMP software, in whole or in part, are made
+  AS IS accompanied with this license document at no charge beyond the 
+  reasonable cost of materials and delivery. The documents of the
+  Compact RINEX format "crinex1.0.txt" and "crinex3.0.txt" are
+  the exceptions regarding the attachment of this license document,
+  and may be redistributed separately.
+  Where redistribution of the software, in whole or in part,
+  is as part of a larger package or combined work, this restriction
+  applies only to the cost of materials and delivery of the RNXCMP
+  software, not to any other costs associated with the larger package
+  or combined work.
+
+3. Limited Warranty
+  Geographical Survey Institute does not warrant or guarantee any 
+  representations regarding the use, or the results of use, of the 
+  RNXCMP software, in any (original, customized or compiled) form.
+  In no event shall Geographical Survey Institute be liable for 
+  any direct, indirect, incidental, or consequential damages.
+
+4. Copyright
+  Geographical Survey Institute (1 Kitasato, Tsukuba, Ibaraki, 
+  305-0811 Japan) holds the copyright on the RNXCMP software, which is 
+  protected by the Copyright Law of Japan and related International laws. 
+

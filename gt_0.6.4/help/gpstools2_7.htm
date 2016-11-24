@@ -1,0 +1,265 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META name="GENERATOR" content="IBM HomePage Builder 2001 V5.0.3 for Windows">
+<TITLE>GpsTools : Parameter Estimator</TITLE>
+<STYLE type="text/css">
+<!--
+BODY{
+  font-family : Arial,sans-serif;
+}
+-->
+</STYLE>
+</HEAD>
+<BODY bgcolor="#ffffff" text="#666666" link="#33cc66" vlink="#006666" alink="#99ff00"><TABLE width="100%" cellspacing="0"><TBODY><TR><TD><FONT size="-1"><A href="gpstools.htm">Overview</A> | <A href="gpstools0.htm">Specifications</A> | <A href="gpstools1.htm">Program Execution</A> | Parameter Estimator | <A href="gpstools3.htm">Plot Data</A> | <A href="gpstools4.htm">Utilities</A> | <A href="gpstools5.htm">Data Files</A> | <A href="gpstools6.htm">Libraries</A> </FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<TABLE width="100%" cellpadding="0" height="60">
+  <TBODY>
+    <TR>
+      <TD width="90%">
+      <P><B><FONT size="+1">GPS Precise Analysis Software GpsTools: Parameter
+      Estimator (8)</FONT></B></P>
+      </TD>
+      <TD valign="bottom" align="right"><FONT size="-1"><A href="../index.shtml"></A></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<HR>
+<TABLE>
+  <TBODY>
+    <TR>
+      <TD><FONT size="-1"><A href="gpstools2.htm">(1)</A> <A href="gpstools2_1.htm">(2)</A> <A href="gpstools2_2.htm">(3)</A> <A href="gpstools2_3.htm">(4)</A> <A href="gpstools2_4.htm">(5)</A> <A href="gpstools2_5.htm">(6)</A> <A href="gpstools2_6.htm">(7)</A> (8)</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P align="left"><U><A name="dirsetting"><B>Data Directories/Files Setting</B></A></U></P>
+<P align="center"><IMG src="image/image17.jpg" border="0" width="496" height="397"></P>
+<CENTER>
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="200">
+  <COL span="1" width="600">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">Item</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">Operation</FONT></TH>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Raw Observation Data</FONT></I></TD>
+      <TD><FONT size="-1">Set the directory path of RINEX observation
+      data.<BR>
+      Directory fill in the directory path or push
+      [...] button and select a directory in the
+      directory selection dialog.<BR>
+      Keywords in the directory path are replaced
+      according to <A href="#keyword">Keyword Replacement in Directory Path</A>.<BR>
+      If the directory path is empty, Output Directory
+      in <A href="gpstools2.htm#gpsest">Obs Editor/Parameter Estimator</A> is used for the directory path. (This is
+      the same for the following directory settings)</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Navigation Message</FONT></I></TD>
+      <TD><FONT size="-1">Set the directory path of RINEX navigation
+      messages.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Satellite Ephemerides</FONT></I></TD>
+      <TD><FONT size="-1">Set the directory path of satellite ephemerides,
+      in case that the satellite orbits are fixed
+      to predetermined values.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Satellite/Receiver Clocks</FONT></I></TD>
+      <TD><FONT size="-1">Set the directory path of satellite and/or
+      receiver clock data, in case that the satellite
+      clocks and/or receiver clocks are fixed to
+      predetermined values.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Receiver Position</FONT></I><I>s</I></TD>
+      <TD><FONT size="-1">Set the directory path of receiver (antenna)
+      positions, in case that the receiver positions
+      are fixed to predetermined values.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Earth Rotation Parameters</FONT></I></TD>
+      <TD><FONT size="-1">Set the directory path of ERP (Earth Rotation
+      Parameters), in case that ERP is fixed to
+      predetermined value.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Tropos/Meteo Parameters</FONT></I></TD>
+      <TD><FONT size="-1">Set the directory path of tropospheric or
+      meteorological parameters data, in case that
+      tropospheric or meteorological parameters
+      are fixed to predetermined values.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Input Estimated Sat Params.</FONT></I></TD>
+      <TD><FONT size="-1">Set the directory path of estimated satellite
+      parameters, in case that satellite parameters
+      are fixed to estimated values.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Input Estimated Rcv Params.</FONT></I></TD>
+      <TD><FONT size="-1">Set the directory path of estimated receiver
+      parameters, in case that receiver parameters
+      are fixed to estimated values.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Satellite Antenna PCV</FONT></I></TD>
+      <TD><FONT size="-1">Set the file path of satellite antenna PCV
+      (phase center variation). Specify ANTEX format
+      PCV file or satellite antenna PCV file (m-file)
+      output by Plot Residuals/Statistics window.<BR>
+      Directly fill in the file path or push [...]
+      button and select a file in the file selection
+      dialog. By pushing [.] button, you can see
+      the contents of the file by text editor.</FONT><FONT size="-1"><BR>
+      If the file is empty, the default values
+      are used for satellite PCV.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Receiver Antenna PCV</FONT></I></TD>
+      <TD><FONT size="-1">Set the file path of receiver antenna PCV.
+      Specify NGS (IGS_01.pcv) format or ANTEX
+      format PCV file.<BR>
+      If the file is empty, receiver antenna PCV
+      corrections is not applied.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Receiver Position</FONT></I></TD>
+      <TD><FONT size="-1">Set the file path of receiver (antenna) position
+      (m-file), in case that the receiver positions
+      are specified as receiver position file.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Ocean Loading Parameter</FONT></I></TD>
+      <TD><FONT size="-1">Set the file path of the ocean loading coefficients
+      (BLQ format).<BR>
+      If the file path is empty, ocean loading
+      correction is not applied.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Excluded Sats/Rcvs</FONT></I></TD>
+      <TD><FONT size="-1">Set the file path of the excluded satellites
+      and receivers.<BR>
+      If the file path is empty, any satellite
+      or receiver are not excluded.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Phase Multipath Profile</FONT></I></TD>
+      <TD><FONT size="-1">Set the file path of carrier-phase multipath
+      profile. Specify the file output by <A href="gpstools4.htm#genmp">Generate Multipath Profile</A>.<BR>
+      If the file path is empty,carrier-phase multipath
+      correction is not applied.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">?</FONT></I></TD>
+      <TD><FONT size="-1">Show information about <A href="#keyword">Keyword replacement</A> in directory of file paths</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">OK</FONT></I></TD>
+      <TD><FONT size="-1"><FONT size="-1">Enable changes and close dialog.</FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Cancel</FONT></I></TD>
+      <TD><FONT size="-1">Abandon changes and close dialog.</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE><BR>
+</CENTER>
+<DIV align="center">
+<HR>
+<P align="left"><A name="keyword"></A><FONT size="+1"><U><A name="keyword"></A><A name="keyword"></A></U><A name="keyword"></A></FONT><U><A name="keyword"><B>Keyword Replacement in Directory or File
+Paths</B></A></U></P>
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="150">
+  <COL span="1" width="300">
+  <COL span="1" width="150">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">Keyword</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">Replaced string</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">range</FONT></TH>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">%P</FONT></I></TD>
+      <TD align="center"><FONT size="-1">install directory path</FONT></TD>
+      <TD align="center"><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">%S</FONT></I></TD>
+      <TD align="center"><FONT size="-1">station code (UPPER case)</FONT></TD>
+      <TD align="center"><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">%s</FONT></I></TD>
+      <TD align="center"><FONT size="-1">station code (lower case)</FONT></TD>
+      <TD align="center"><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">%G</FONT></I></TD>
+      <TD align="center"><FONT size="-1">station code (tail 4 chars)</FONT></TD>
+      <TD align="center"><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">%Y</FONT></I></TD>
+      <TD align="center"><FONT size="-1">year (4 digits)</FONT></TD>
+      <TD align="center"><FONT size="-1">1970-9999</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">%y</FONT></I></TD>
+      <TD align="center"><FONT size="-1">year (2 digits)</FONT></TD>
+      <TD align="center"><FONT size="-1">00-99</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">%m</FONT></I></TD>
+      <TD align="center"><FONT size="-1">month</FONT></TD>
+      <TD align="center"><FONT size="-1">01-12</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">%d</FONT></I></TD>
+      <TD align="center"><FONT size="-1">day</FONT></TD>
+      <TD align="center"><FONT size="-1">01-31</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">%n</FONT></I></TD>
+      <TD align="center"><FONT size="-1">day of year</FONT></TD>
+      <TD align="center"><FONT size="-1">001-366</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">%W</FONT></I></TD>
+      <TD align="center"><FONT size="-1">gpsweek no.</FONT></TD>
+      <TD align="center"><FONT size="-1">0000-9999</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">%D</FONT></I></TD>
+      <TD align="center"><FONT size="-1">day of gpsweek</FONT></TD>
+      <TD align="center"><FONT size="-1">0,1,2,3,4,5,6</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">%M</FONT></I></TD>
+      <TD align="center"><FONT size="-1">iers bulletin month</FONT></TD>
+      <TD align="center"><FONT size="-1">1,2,3,...</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">%O</FONT></I></TD>
+      <TD align="center"><FONT size="-1">Output directory path</FONT></TD>
+      <TD align="center"><FONT size="-1">　</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE><BR>
+</DIV>
+<HR>
+<TABLE width="100%" cellpadding="0">
+  <TBODY>
+    <TR>
+      <TD align="center"><FONT size="-2"><FONT size="-2">Copyright (C) 2004-2006, T.Takasu, All Rights
+      Reserved.</FONT></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+</BODY>
+</HTML>

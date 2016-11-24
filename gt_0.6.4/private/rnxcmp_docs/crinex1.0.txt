@@ -1,0 +1,541 @@
+******************************************************************************
+*                        Compact RINEX Format                                *
+*                             Version 1.0                                    *
+*                                                                            *
+*                              1998/01/03                                    *
+*                                                                            *
+*                            Yuki Hatanaka,                                  *
+*                    Geographical Survey Institute                           *
+*              Kitasato-1, Tsukuba, Ibaraki, 305-0811 Japan                  *
+*                                                                            *
+*   2000/11/20 Correction of errors.                                         *
+*              Clarify the format of the first columns of epoch lines        *
+*   2004/07/12 Clarify the omittion of "CLOCK OFFSET" line                   *
+*   2007/05/07 Indication of the format version number 1.0 in the title      *
+*                                                                            *
+******************************************************************************
+
+1. Introduction
+
+The Compact RINEX format is a compression format for GPS observation data which 
+is compatible with the RINEX version 2 observation file format. Since this 
+format is ASCII type, effective reduction of file size is achieved by combining 
+with standard file compression tools such as UNIX compression. The main part
+of the format description given in this document consists of two parts: the 
+rule of compression scheme and specification of the format. The structure of 
+the format is analogus to RINEX Version 2 observation file format. It is 
+assumed that the readers are familiar with RINEX 2 format (Gurtner et al., 
+1989, 1990).
+
+
+2. Compression rules
+2.1 Basic Idea
+
+Two basic ideas are used to reduce the size of RINEX files:
+(1) Looking into RINEX II observation file format, we notice that some of the 
+information is redundant. For example, the date of epochs, number of 
+satellites, Loss of Lock Indicator (LLI), and signal strength are almost 
+invariant from epoch to epoch. We can reduce the redundant information if we 
+record only the variation of those information.
+(2) The time series of the data such as phase and pseudorange have strong 
+correlation between adjacent epochs. We can reduce the digit of the data by 
+using this property. By taking a multiple differences between adjacent epochs, 
+the digit of the data can be reduced. Similar algorithm is used for the 
+compression of seismogram data (Takano, 1990). By repeating the difference 
+operation several times, we can reduce the digit more. Table I shows the average
+number of digit of the differential data for each data type. (Signs and decimal 
+points are not counted in this table). Empirically, the average number of digit 
+is minimized when we take 3rd order difference (Table 1)
+
+Table 1	An example of the average number of digits of the differential data 
+        (sampling interval : 30s)
+
+     order of 
+     difference   L1    L2    C1    P1    P2    D1    D2
+     ------------------------------------------------------
+          0      10.7  10.6  11.0  11.0  11.0   6.7   6.6
+          1       8.0   7.9   7.5   7.5   7.5   4.5   4.4
+          2       5.9   5.9   5.1   5.1   5.1   2.8   2.7
+          3       4.3   4.2   3.6   3.6   3.6   2.9   2.8
+          4       4.3   4.2   3.7   3.6   3.6   3.2   3.1
+
+
+2.2 The Detail of the Differential Operations
+
+To be more specific, the method of the differential operation taken in the 
+Compact RINEX format is as follows:
+
+(1) Rules of differential operation for character data
+For the first epoch of the data arc, the characters are put without change. 
+From the next epoch, comparing each characters of the data between adjacent 
+epochs, only the character changed from previous epoch is recorded. The 
+unchanged characters are replaced with spaces. In the case a non-space character
+changes to a space, '&' is recorded. (It is assumed that the character '&' is 
+not used in the data section of the RINEX file.) This rule is applied for the 
+LLI, signal strength and epoch line except for receiver clock offset field.
+
+(2) Rules of differential operation for numerical data
+The detail of the differential algorithm is explained in Appendix I. This 
+algorithm is applied for the data arcs of receiver clock offset and those of 
+each data type of each satellites. When the data arc is initialized, a mark and
+the order of difference for the data arc are recorded (see the next section).
+For generarity, the order of the difference to take can be different for 
+different data arcs, for example, for different data types.
+
+(3) Rules of initialization of data arc
+The term "data arc" is appear in the above explanation. Here, this term means 
+a continuous epoch sequence of the data. When there is no record for a data type
+at an epoch, the data before and after the epoch are regarded as belonging to 
+different data arcs. "To initialize" a data arc at some epoch means that the 
+differential operation of the data arc is started at the epoch. If an data 
+sequence is divided into two data arcs at some epoch, then the second arc will 
+be "initialized" at that epoch. The data arcs are defined for each of following 
+items:
+  - epoch line except for clock offset
+  - clock offset
+  - numerical record, LLI, and signal strength  for each data type of each 
+    satellite
+
+The initialization of the arcs is marked in the file in the way specified in 
+the next section. It should be noted that the data arcs for a LLI and a Signal
+strength are initialized together with the corresponding numerical record. To 
+be more specific, the mark for the arc initialization is common for them for 
+each data type of each satellite.
+
+The data arcs are initialized 
+  (a) at the first appearance of the data in the file (mandatory), 
+  (b) after the epoch at which the original data field is blank (mandatory), 
+  (c) when event flag (>1) is set (mandatory),
+  (d) at the epoch just after the event lines(mandatory), and 
+  (e) at arbitrary epoch (optional).
+The feature (e) works well when there are big jump in the data sequence caused 
+by a large cycle slip or reset of clock, in which case the size of differential 
+data becomes big. The other possible use of the feature (e) may be to initialize 
+the data arc of entire data periodically (for example, every 100 epoch). By 
+doing this, the data after the initialization can be used even if the data is 
+corrupted in the middle (with some asumptions. See section 6.) This makes the 
+format more robust, but should not be abused since the compression performance 
+will be worse. 
+
+
+3. Description of Compact RINEX format
+3.1 Specification of the format
+
+In the RINEX format, 3 decimals are used for phase, pseudorange and Doppler data 
+and 9 decimals for receiver clock offset. To convert to Compact RINEX format, 
+decimal points of those data are eliminated before taking difference (by 
+multiplied with 1000 or 1000000000). The numerical data should be dealt as 
+integer values to avoid round off error of differential (and recovering) 
+calculation.
+
+The specification of the lines of Compact RINEX format is shown in the table 2 
+and 3.
+
+ +------------------------------------------------------------------------------+
+ |                                   TABLE 2                                    |
+ |        COMPACT RINEX FILE - HEADER SECTION DESCRIPTION                       |
+ +--------------------+------------------------------------------+--------------+
+ |    HEADER LABEL    |               DESCRIPTION                |    FORMAT    |
+ |  (Columns 61-80)   |                                          |              |
+ +--------------------+------------------------------------------+--------------+
+ |CRINEX VERS   / TYPE| - Format version (1.0)                   |    A20,      |
+ |                    | - File type (COMPACT RINEX FORMAT)       |    A20,      |
+ |                    |                                          |    20X       |
+ +--------------------+------------------------------------------+--------------+
+ |CRINEX PROG / DATE  | - Name of program creating current file  |      A40,    |
+ |                    | - Date of file creation (dd-mmm-yy hh:mm)|      A20     |
+ +--------------------+------------------------------------------+--------------+
+ |(the same as RINEX) | - Header lines of original RINEX file    |      A80     |
+ +--------------------+------------------------------------------+--------------+
+
+ +------------------------------------------------------------------------------+
+ |                                   TABLE 3                                    |
+ |               OBSERVATION DATA FILE - DATA RECORD DESCRIPTION                |
+ +-------------+-------------------------------------------------+--------------+
+ | OBS. RECORD | DESCRIPTION                                     |   FORMAT     |
+ +-------------+-------------------------------------------------+--------------+
+ | EPOCH/SAT   | - Epoch :                                       |  1X,I2,4I3,  |
+ |     or      |     year (2 digits), month,day,hour,min,sec     |    F11.7,    |
+ | EVENT FLAG  | - Epoch flag                                    |     I3,      |
+ |             | - Number of satellites in current epoch         |     I3,      |
+ |             | - List of PRNs (sat.numbers) in current epoch   |  n(A1,I2),   |
+ |             |                                                 | n: number of |
+ |             |  Only the characters different from previous    | satellites   |
+ |             |  epoch is recorded.                             | (see NOTE 1) |
+ +-------------+-------------------------------------------------+--------------+
+ | CLOCK OFFSET| - differential receiver clock offset            |     (?)      |
+ | (see NOTE 3)|                                                 | (see NOTE 2) |
+ +-------------+-------------------------------------------------+--------------+
+ |OBSERVATIONS | - differential data of each data types          |   m(?,X),    |
+ |             |                                                 | (see NOTE 2) |
+ |             |                                                 |              |
+ |             | - differential characters of LLI and Signal     |  m(A1,A1))   |
+ |             |   strength for all data types.                  | m: number of |
+ |             |   The data arc is initialized together with     | data types   |
+ |             |   the corresponding numerical record.           |              |
+ +-------------+-------------------------------------------------+--------------+
+NOTE :
+(1) The initialization of the data arc of EPOCH/SAT line is marked by replacing 
+    the first column (1X) with "&". This is turned on whenever EVENT FLAG >1.
+(2) The format (?) is (I) for differential data. The initialization of the data 
+    arc is marked  by putting (I1,"&") just before (I), where the first field
+    (I1) represents the order of differentiation for the data arc. In this case, 
+    (?) is (I1,"&",I). Nothing is put for (?) if the data field in the original 
+    RINEX file is a blank.
+(3) The "CLOCK OFFSET" record follows the "EPOCH/SAT or EVENT FLAGEVENT FLAG"
+    record if and only if Epoch flag is 0 or 1, and it is omitted if Epoch
+    flag >1.
+
+3.2 Remarks on the format specification
+
+- The satellite list is not folded even if the number of the satellite is more 
+  than 12. 
+- Lines may be longer than 80 characters.
+- The length of the format 'I' for differential numerical data is variable and 
+  must not contain a space. The sign "-" is put for negative numerical values, 
+  but don't put "+" for positive value.
+- In the observation data lines, a "single" spaces is used as a record separator
+  for the data types. A space at the first column is interpreted so that a data 
+  field with zero length is hidden just before the space (corresponding data 
+  field in RINEX file is blank). If two spaces are juxtaposed, a data field of 
+  zero length is hidden in between. The number of the single spaces for record 
+  separator is exactly the same as the number of the data types specified in the 
+  header record (or in a event data). the other spaces (if any) in the line are 
+  interpreted as indication of unchanged characters of LLI or signal strength. 
+  This means that the number of the data types is very important information 
+  to retrieve the original RINEX file. Miscount of data types results in
+  erroneous interpretation of the LLI and signal strength records.
+- Throughout the file, trailing blank in each line should be eliminated (not 
+  mandatory but highly recommended). The trailing spaces which is eliminated
+  can be supplied as needed when we retrieve the original RINEX file.
+- The format allows the arbitrary order of the differences (<10) for generality.
+- When the event flag (>1) is set, the event information lines (such as change
+  of data type) are followed without any change. In this case, all of the data
+  is initialized in the next epoch as already mentioned in 2.2.
+
+An example of Compact RINEX file and it's original RINEX II file are shown in 
+Appendix II and III, respectively.
+
+
+4. Compression Rate of the Format 
+
+By combining the reduction of RINEX file by applying Compact RINEX format and 
+use of UNIX "compress" command, the size of the file can be reduced to about 
+1/8 of the original RINEX file. This size is even much smaller then binary 
+format provided by receiver manufactures. Table 4 shows an example.
+
+           Table 4 Comparison of compression performance (1)
+
+                file : tskb3000.95o
+                                      SIZE(Mb) RATE(%)
+                ----------------------------------------
+                (1) CONAN BINARY       0.387     20.9
+                (2) RINEX              1.848    100.0
+                (3) (2) + "compress"   0.597     32.3
+                (4) Compact RINEX      0.546     29.5
+                (5) (4) + "compress"   0.215     11.6
+
+We can see that the Compact RINEX format realizes smaller file size than UNIX 
+"compress" command even without using binary coding. Moreover, the size of the 
+compressed Compact RINEX is about 53 % of CONAN binary file (but without 
+navigation message).
+
+The performance of the  when being applied to data in IGS archive for 
+100 days is shown in Table 5. The total size of the compressed Compact RINEX 
+files is about 40 % of the size for the case only the UNIX "compress" command 
+is applied.
+
+           Table 5 Comparison of compression performance (2)
+
+         Resource of the data    : RINEX observation files in IGS archive 
+         Period of data tested   : DOY 001-100, 1997.
+         Number of files tested  : 11205
+                                      SIZE(Gb) RATE(%)
+                ----------------------------------------
+                (1) RINEX              18.26    100.0
+                (2) (1) + "compress"    6.14     33.6
+                (3) Compact RINEX       6.11     33.5
+                (4) (3) + "compress"    2.47     13.5
+
+
+5. File name convention
+
+For Compact RINEX file, we recommend using the similar naming convention with 
+RINEX file but using character "D" for file type:
+
+    ssssdddf.yyD      ssss:    4-character station name designator
+                       ddd:    day of the year of first record
+                         f:    file sequence number within day
+                               0: file contains all the existing
+                               data of the current day
+                        yy:    year
+
+For the case the  UNIX "compress" or compatible compression is applied to 
+Compact RINEX file (which might be always the case), the following convention 
+is proposed:
+
+         RINEX obs   -->    CRINEX    --> z-compressed CRINEX
+
+       ????????.??o  --> ????????.??d -->    ????????.??d.Z   (UNIX)
+       ????????.??O  --> ????????.??D -->    ????????.??E     (DOS)
+       %%%%%%%%.%%O  --> %%%%%%%%.%%D -->    %%%%%%%%.%%D_Z   (VMS)
+
+
+6. Other Remarks
+
+The following information in the original RINEX files will be lost by 
+transforming into Compact RINEX format;
+  (1) spaces at the end of each line
+  (2) distinction of format for numerical data: for example "-0.123" and "-.123".
+Although the recovered RINEX file can be different from original one for them, 
+the changes don't affect to the numerical values at all.
+
+Since a differential scheme is used, the part of the data after the data 
+corruption can not be used until the data arcs are initialized and without 
+assuming that the number of data types are not changed during the corruption.
+
+As explained in the NOTE 1 of TABLE 2, "&" at the first column of EPOCH/EVENT
+lines means initialization of the data arc, not the change of the character
+to a space. This is only the exception of the rule (1) in 2.2. This way 
+of arc initialization assumes that the first column of an EPOCH/EVENT line in 
+the original RINEX file is always a space, and does not work for abnormal
+files in which this asumption is not valid.
+
+For the differential operation, we need to search the corresponding satellite
+in previous epoch. For this reason, the uniquness of satellite in a epoch
+must be kept in the original RINEX file. The compression program should 
+check the duplication in the satellite list.
+
+
+References
+
+Gurtner, W., G.Mader, D.MacArthur (1989), A Common Exchange Format for GPS DATA,
+     GPS Bulletin, Vol.2, No.3, 1-11.
+Gurtner, W., G.Mader (1990), Receiver Independent Exchange Format Version 2, GPS 
+     Bulletin, Vol.3, No.3, 1-8.
+Hatanaka, Y. (1996), Compact RINEX Format and Tools (beta-test version), 
+     proceeding of 1996 Analysis Center Workshop of IGS, March 19-21, 1996, 
+     121-129. 
+Hatanaka, Y. (1996), A RINEX Compression Format and Tools, Proceedings of ION 
+     GPS-96, September 17-20, 1996, 177-183.
+Takano, K. (1990), Data Compression Method for Seismic Waves, Program and 
+     Abstracts, The Seismoligical Soceiety of Japan, 1990 No.1, C32-04 (in 
+     Japanese).
+
+
+Appendix I  Algorithm for taking the n-th order differences
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Let's consider an arc of the GPS data containing a RINEX II file  (for example, 
+the P1 pseudorange data of the satellite PRN01). 
+
+	Y[0;i], i=1,2,3,...,n
+
+Where Y[j;i] is time sequence of j-th difference of the data, and i is the epoch
+number.  The magnitude of the range data is the order of tens of thousands of km
+in most cases, but the size of the differences between adjacent epochs is much
+smaller because of correlation between epochs:
+
+	Y[1;i] = Y[0;i] - Y[0;i-1],	i=2,3,4,...,n
+
+The digits can be reduced more if we take difference more times:
+
+	Y[2;i] = Y[1;i] - Y[1;i-1],	i=3,4,5,...,n,
+	Y[3;i] = Y[2;i] - Y[2;i-1],	i=4,5,6,...,n.
+
+Empirically, the minimum digits can be achieved when we take 3rd-order-
+difference for GPS data. We can define the new sequence of the differential 
+data as follows:
+
+	Y[0;1], Y[1;2], Y[2;3],
+	Y[3;i], i=4,5,6, ..., n.
+
+The resulting data sequence preserve whole information in the original time 
+series so that we can recover the original data arc Y0[i] from them by following
+calculation:
+
+	Y[2;i] = Y[2;i-1] + Y[3;i],  i = 4,5,6, ... ,n,
+	Y[1;i] = Y[1;i-1] + Y[2;i],  i = 3,4,5, ... ,n,
+	Y[0;i] = Y[0;i-1] + Y[1;i],  i = 2,3,4, ... ,n.
+
+In general, the order of difference to take can be arbitrary, so the algorithm
+to take m-th order differences are as follows;
+
+	Y[j;i] = Y[j-1;i] - Y[j-1;i-1],   i=j+1 ,...,n; j=1, ..., m.
+
+We can save the following data sequence which preserve whole information in the
+original time series.
+
+	Y[i-1;i], i=1, ..., m,
+	Y[m;i]  , i=m+1, ..., n.
+
+The original data arc Y0[i] is retrieved from them by following algorithm;
+
+	Y[j-1;i] = Y[j;i] + Y[j-1;i-1],   i=j+1 ,...,n; j=m, ..., 1.
+
+These algorithms don't need the data of future epoch to compress or retrieve
+ the original data. Therefore it's possible to apply it in real time.
+
+The m-th order difference Ym is equivalent to the (m-1)-th order polynomial 
+prediction error:
+        Y[m;i] = Y[0;i] - Ypred[0;i;m]
+where Ypred[0;i;m] is predicted values Y[0;i] by using (m-1)-th order polynomial
+obtained by data of m epochs before the i-th epoch.
+
+
+Appendix II  Example of Compact Rinex file
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1.0                 COMPACT RINEX FORMAT                    CRINEX VERS   / TYPE
+RRR2CRX ver.999                         03-Jan-98 08:01     CRINEX PROG / DATE
+     2              OBSERVATION DATA    G (GPS)             RINEX VERSION / TYPE
+XXRINEXO V9.9.9     GSI, Japan          21-JUL-95 10:31     PGM / RUN BY / DATE
+XXSITE                                                      MARKER NAME
+X1234A123                                                   MARKER NUMBER
+SOMEONE             SOME INSTITUTE                          OBSERVER / AGENCY
+12345               XX                  ZZZ                 REC # / TYPE / VERS
+67890               YY                                      ANT # / TYPE
+ -3957200.7490  3310201.6082  3737713.1805                  APPROX POSITION XYZ
+        0.0000        0.0000        0.0000                  ANTENNA: DELTA H/E/N
+     1     1                                                WAVELENGTH FACT L1/2
+     5    P1    L1    L2    P2    C1                        # / TYPES OF OBSERV
+    30                                                      INTERVAL
+  1995     7    20     0     0    0.000000                  TIME OF FIRST OBS
+                                                            END OF HEADER
+&95  7 20  0  0  0.0000000  0  3 15 28 19
+3&-123456789
+ 3&-2569116678 3&-2001907988 3&21551259077 3&21551255388    9454
+3&21821846874 3&-15394267398 3&-11995534883 3&21821848958     9 9
+ 3&-14968442708 3&-11663720035 3&21747457891 3&21747454768    9454
+                3              4          22
+104
+ -86558802 -67448392 -16471180 -16471508
+10901204 57286060 44638459 10901231 
+ -7590239 -5914480 -1444590 -1444595
+ 3&-6013338670 3&-4685722740 3&23221950099 3&23221944422    9424
+              1 &                      22 19
+97
+ 379979  71444 72118
+23557 123666 96368 23477 
+ 82073382 63953245 15614899 15617844    6
+ 571022 444959 108357 108900
+                3
+-3
+ 2103 3&-2203363253 1549 204     45
+-323 -607 -472 -11 
+ 226407 176410 50622 43391    9
+ -13811 -10770 -932 -2881
+              2 &              3       19 &&
+
+ 2118 -66555211 529 1769
+218 -928 -736 -154 
+ -2919 -2280 -3047 -541
+                3              4       22 19
+3&-123456789
+ 2457 301295 -510 -1149
+-411 -307 -225 -214 
+ 3&-5683702589 3&-4428863630 3&23284675837 3&23284671931    9424
+ -15936 -12410 -508 -2885
+&95  7 20  0  3  0.0000000  4  2
+          *** CHANGE IN DATA TYPES ***                      COMMENT
+     2    L1    C1                                          # / TYPES OF OBSERV
+&95  7 20  0  3  0.0000000  0  5 15 28 22G27 19
+
+3&-3082727156 3&21453518559  9
+3&-15048709571   9
+3&-5600758357 3&23300456250  9
+3&-7830081745 3&23047779159  8
+3&-15005624729 3&21740379122  9
+                3                     G 7& 2
+
+-84246951 -16031766
+58018157 
+-62610154 -11914938
+83138097 15820226  8
+-4267767 -812169
+              4 &
+
+392287 74802
+119732 
+520409 99661
+190478 36037
+571937 109073
+                3              4   G 7& 2 19 &&
+
+2009 221
+-17109 -4497
+11818 3586
+8731 1316
+
+
+Appendix III Original RINEX file of the Compact Rinex file in Appendix II
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+     2              OBSERVATION DATA    G (GPS)             RINEX VERSION / TYPE
+XXRINEXO V9.9.9     GSI, Japan          21-JUL-95 10:31     PGM / RUN BY / DATE 
+XXSITE                                                      MARKER NAME         
+X1234A123                                                   MARKER NUMBER       
+SOMEONE             SOME INSTITUTE                          OBSERVER / AGENCY   
+12345               XX                  ZZZ                 REC # / TYPE / VERS 
+67890               YY                                      ANT # / TYPE        
+ -3957200.7490  3310201.6082  3737713.1805                  APPROX POSITION XYZ 
+        0.0000        0.0000        0.0000                  ANTENNA: DELTA H/E/N
+     1     1                                                WAVELENGTH FACT L1/2
+     5    P1    L1    L2    P2    C1                        # / TYPES OF OBSERV 
+    30                                                      INTERVAL            
+  1995     7    20     0     0    0.000000                  TIME OF FIRST OBS   
+                                                            END OF HEADER       
+ 95  7 20  0  0  0.0000000  0  3 15 28 19                            -.123456789
+                  -2569116.678 9  -2001907.98845  21551259.0774   21551255.388  
+  21821846.874   -15394267.398 9 -11995534.883 9  21821848.958                  
+                 -14968442.708 9 -11663720.03545  21747457.8914   21747454.768  
+ 95  7 20  0  0 30.0000000  0  4 15 28 19 22                         -.123456685
+                  -2655675.480 9  -2069356.38045  21534787.8974   21534783.880  
+  21832748.078   -15336981.338 9 -11950896.424 9  21832750.189                  
+                 -14976032.947 9 -11669634.51545  21746013.3014   21746010.173  
+                  -6013338.670 9  -4685722.74042  23221950.0994   23221944.422  
+ 95  7 20  0  1  0.0000000  0  4 15 28 22 19                         -.123456484
+                  -2741854.303 9                  21518388.1614   21518384.490  
+  21843672.839   -15279571.612 9 -11906161.597 9  21843674.897                  
+                  -5931265.288 6  -4621769.49542  23237564.9984   23237562.266  
+                 -14983052.164 9 -11675104.03645  21744677.0684   21744674.478  
+ 95  7 20  0  1 30.0000000  0  4 15 28 22 19                         -.123456189
+                  -2827651.044 9  -2203363.25345  21502061.4184   21502057.422  
+  21854620.834   -15222038.827 9 -11861330.874 9  21854623.071                  
+                  -5848965.499 9  -4557639.84042  23253230.5194   23253223.501  
+                 -14989514.170 9 -11680139.36845  21743448.2604   21743444.802  
+ 95  7 20  0  2  0.0000000  0  3 15 28 19
+                  -2913063.585 9  -2269918.46445  21485808.1974   21485804.445  
+  21865592.281   -15164383.911 9 -11816404.991 9  21865594.557               
+                 -14995421.884 9 -11684742.79145  21742323.8304   21742320.604  
+ 95  7 20  0  2 30.0000000  0  4 15 28 22 19                         -.123456789
+                  -2998089.469 9  -2336172.38045  21469627.9884   21469624.410  
+  21876586.769   -15106607.171 9 -11771384.173 9  21876589.141                  
+                  -5683702.589 9  -4428863.63042  23284675.8374   23284671.931  
+                 -15000791.242 9 -11688926.71545  21741303.2704   21741298.999  
+ 95  7 20  0  3  0.0000000  4  2
+          *** CHANGE IN DATA TYPES ***                      COMMENT
+     2    L1    C1                                          # / TYPES OF OBSERV 
+ 95  7 20  0  3  0.0000000  0  5 15 28 22G27 19
+  -3082727.156 9  21453518.559  
+ -15048709.571 9                
+  -5600758.357 9  23300456.250  
+  -7830081.745 8  23047779.159  
+ -15005624.729 9  21740379.122  
+ 95  7 20  0  3 30.0000000  0  5 15 28G27 22 19
+  -3166974.107 9  21437486.793  
+ -14990691.414 9                
+  -7892691.899 8  23035864.221  
+  -5517620.260 8  23316276.476  
+ -15009892.496 9  21739566.953  
+ 95  7 20  0  4  0.0000000  0  5 15 28G27 22 19
+  -3250828.771 9  21421529.829  
+ -14932553.525 9                
+  -7954781.644 8  23024048.944  
+  -5434291.685 8  23332132.739  
+ -15013588.326 9  21738863.857  
+ 95  7 20  0  4 30.0000000  0  4 15G27 22 19
+  -3334289.139 9  21405647.888  
+  -8016368.089 8  23012328.831  
+  -5350760.814 8  23348028.625  
+ -15016703.488 9  21738271.150  
+

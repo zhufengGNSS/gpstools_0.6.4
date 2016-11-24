@@ -1,0 +1,51 @@
+Change history of the RNXCMP software
+
+2007-06-21
+  - Version 4.0.3 released by fixing a bug.
+  - It was found that crx2rnx.c version 4.0.0-4.0.2 contains 
+    a serious bug which may output incorrect or corrupted data 
+    due to lack of a procedure to prevent overflow of lower digits
+    of data (or its difference) in middle of the recovering operation.
+    The overflow does not happen at the begining of data arcs, but
+    probability of it increases as many epochs are processed for 
+    a data arc without initialization. Therefore, The higher the 
+    sampling rate is, the easier the overflow happens.
+  - Rnx2crx.c is free from the above bug, but the version of it was 
+    also updated to become the same as crx2rnx.c.
+
+2007-06-10
+  Following changes were made on the front-end tools
+  (suggested by Mike Craymer of Natural Resources Canada)
+  - "compress" command appears in the tool CRZ2RNX was an
+    error and corrected to "uncompress".
+  - modified to accept upper case in the extention of file names.
+
+2007-06-08
+  - Version 4.0.2 released.
+  - Incompatibility between arguments and format strings of sscanf 
+    or sprintf was fixed. This bug was contained in rnx2crx.c 
+    and crx2rnx.c of version 4.0.0 and 4.0.1, and may disturb
+    output files if the programs are compiled with 16-bit compilers.
+  - A string "ver." was eliminated from the display of the program
+    version in the help messages.
+
+2007-06-06
+  - Version 4.0.1 released.
+  - Supports for VMS and SUN OS 4.1.x was terminated.
+  - In the previous versions, the default output file was created
+    in the "current" directory whatever directory the input file
+    was in. From this version, the output file was created in the
+    same directory as the input file that was specified in the
+    command argument.
+  - The above two modifications made it possible to eliminate 
+    system-dependency of the source codes. The adjustment of
+    the source codes before compilation to switch OS environment
+    (UNIX/DOS) became unnecessary.
+
+2007-02-05
+  - Version 4.0.0 created. (It is a test version.)
+  - Capability of conversion from RINEX version 3.00 to Compact
+    RINEX format version 3.0 (RNX2CRX), and vice versa (CRX2RNX),
+    was implemented. Conversion between RINEX version 2.xx
+    and Compact RINEX format version 1.0 is also possible as before.
+

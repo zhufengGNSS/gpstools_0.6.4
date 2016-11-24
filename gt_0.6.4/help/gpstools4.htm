@@ -1,0 +1,753 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META name="GENERATOR" content="IBM HomePage Builder 2001 V5.0.3 for Windows">
+<TITLE>GpsTools : Utilities</TITLE>
+<STYLE type="text/css">
+<!--
+BODY{
+  font-family : Arial,sans-serif;
+}
+-->
+</STYLE>
+</HEAD>
+<BODY bgcolor="#ffffff" text="#666666" link="#33cc66" vlink="#006666" alink="#99ff00"><TABLE width="100%" cellspacing="0"><TBODY><TR><TD><FONT size="-1"><A href="gpstools.htm">Overview</A> | <A href="gpstools0.htm">Specifications</A> | <A href="gpstools1.htm">Program Execution</A> | <A href="gpstools2.htm">Parameter Estimator</A> | <A href="gpstools3.htm">Plot Data</A> | Utilities | <A href="gpstools5.htm">Data Files</A> | <A href="gpstools6.htm">Libraries</A> </FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<TABLE width="100%" cellpadding="0" height="60">
+  <TBODY>
+    <TR>
+      <TD>
+      <P><FONT size="+1"><B>GPS Precise Analysis Software GpsTools: Utilities</B></FONT></P>
+      </TD>
+      <TD valign="bottom" align="right"></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<HR>
+<TABLE cellspacing="0">
+  <TBODY>
+    <TR>
+      <TD><FONT size="-1"><A href="#gpsfiles">File Manager</A> | <A href="#gpsdown">Data/Products Downloader</A> | <A href="#genprod">Generate Products</A> | <A href="#genpwv">Generate PWV</A> | <A href="#genload">Ocean Loading</A> | <A href="#genmp">Multipath Profile</A></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P><U><A name="gpsfiles"></A></U><U><A name="gpsfiles"><B>File Manager</B></A></U></P>
+<P align="center"><FONT size="-1"><IMG src="image/image103.jpg" border="0" width="614" height="458"></FONT></P>
+<CENTER>
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="200">
+  <COL span="1" width="600">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">Item</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">Operation</FONT></TH>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">\ (backslash)</FONT></I></TD>
+      <TD><FONT size="-1">Show the drive selection menu and select
+      drive.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">&lt;</FONT></I></TD>
+      <TD><FONT size="-1">Move up the directory tree.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">&gt;</FONT></I></TD>
+      <TD><FONT size="-1">Move down the directory tree.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Directory</FONT></I></TD>
+      <TD><FONT size="-1">Show the directory input dialog and go to
+      specified directory.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">(Directory List)</FONT></I></TD>
+      <TD><FONT size="-1">Show the list of directories.<BR>
+      To change the current directory, select the
+      directory in the list. By double-clicking
+      the directory in the list, you can go to
+      the child directory. You also go to the parent
+      directory by double-clicking &quot;..&quot;.<BR>
+      </FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">F</FONT></I></TD>
+      <TD><FONT size="-1">Show the filter dialog and set filter condition.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Name, Ext, Size, Date/Time</FONT></I></TD>
+      <TD><FONT size="-1">Sort the file list by name, by extension,
+      by size or by data/time. Switch the direction
+      of list by another click.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">(File List)</FONT></I></TD>
+      <TD><FONT size="-1">Show the file list in the current directory.<BR>
+      By double-clicking &lt;directory&gt; in the
+      file list, you can change the current directory.
+      By selecting files and clicking right button,
+      you can select file manipulation menu for
+      copy, move, rename, delete etc.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">File Menu</FONT></I></TD>
+      <TD><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- New Directory... </FONT></I></TD>
+      <TD><FONT size="-1">Show a new directory dialog and create new
+      directory in the current directory.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- Delete</FONT></I></TD>
+      <TD><FONT size="-1">Delete selected files and/or directories.
+      To delete a directory, the directory has
+      to be empty.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- Uncompact </FONT></I></TD>
+      <TD><FONT size="-1">Uncompress selected files. Supported compressions
+      are as follows.<BR>
+      ・UNIX compress (*.Z)<BR>
+      ・gzip (*.gz)<BR>
+      ・Hatanaka-compression of RINEX observation
+      data</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- Compact</FONT></I></TD>
+      <TD><FONT size="-1">Compress selected files. If the selected
+      file is RINEX observation data, the file
+      is compressed by Hatanaka-compression and
+      compressed by UNIX compress (.Z) or gzip
+      (.gz). The compressed files can be uncompressed
+      by Uncompact menu.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- Close</FONT></I></TD>
+      <TD><FONT size="-1">Close file manager.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Edit</FONT></I></TD>
+      <TD><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- Copy... </FONT></I></TD>
+      <TD><FONT size="-1">Copy selected files to the directory specified
+      in the directory selection dialog.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- Move... </FONT></I></TD>
+      <TD><FONT size="-1"><FONT size="-1">Move selected files to the directory specified
+      in the directory selection dialog.</FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- Rename...</FONT></I></TD>
+      <TD><FONT size="-1">Rename selected file.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- Select All</FONT></I></TD>
+      <TD><FONT size="-1">Select all files in the file list.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Filter</FONT></I></TD>
+      <TD></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- Filter...</FONT></I></TD>
+      <TD><FONT size="-1">Show the filter dialog and set filter settings.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- All (*.*) , ...</FONT></I></TD>
+      <TD><FONT size="-1">Set the filter pattern.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">View</FONT></I></TD>
+      <TD><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- Update</FONT></I></TD>
+      <TD><FONT size="-1">Update the file list to the current condition.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- </FONT></I><I><FONT size="-1">View...</FONT></I></TD>
+      <TD><FONT size="-1">View the content of the selected files. Supported
+      file types are as follows.<BR>
+      - Text file<BR>
+      - Image file<BR>
+      - MATLAB mat-file (*.mat)<BR>
+      - HTML file (*.html, *.htm)<BR>
+      If the text file compressed, the file is
+      automatically uncompressed and shown in text
+      viewer.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Tools Menu</FONT></I></TD>
+      <TD><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- </FONT></I><I><FONT size="-1">Download... </FONT></I></TD>
+      <TD><FONT size="-1">Execute <A href="#gpsdown">Data/Products Downloader</A>.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">- Options</FONT></I></TD>
+      <TD><FONT size="-1">Set the file manager options.</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<BR>
+</CENTER>
+<HR>
+<P><U><A name="gpsdown"></A></U><U><A name="gpsdown"><B>Data/Products Downloader</B></A></U></P>
+<P align="center"><IMG src="image/image104.jpg" border="0" width="616" height="437"></P>
+<CENTER>
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="200">
+  <COL span="1" width="600">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">Item</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">Operation</FONT></TH>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Data/Products (Source)</FONT></I></TD>
+      <TD><FONT size="-1">Select the category and types of download
+      data/products. You can select multiple data/product
+      types.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Address</FONT></I></TD>
+      <TD><FONT size="-1">Show the URL address of downloaded data/products.
+      The protocols of ftp:// and http:// are supported.
+      Keywords in the URL address are replaced
+      according to <A href="#keyword">keyword replacement in download address</A>.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Start Date/Time</FONT></I></TD>
+      <TD><FONT size="-1">Set the download data/product start date
+      and time (hours and minutes).</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">End Date/Time </FONT></I></TD>
+      <TD><FONT size="-1">Set the download data/product end date and
+      time (hours and minutes).</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Sequence No </FONT></I></TD>
+      <TD><FONT size="-1">Set the start and end of sequence numbers
+      if the address contains keyword %N.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Login User</FONT></I></TD>
+      <TD><FONT size="-1">Set the login user name of the ftp server.
+      For an anonymous ftp server, set it &quot;anonymous&quot;.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Password </FONT></I></TD>
+      <TD><FONT size="-1">Set the login password of the ftp server.
+      For an anonymous ftp server, set it user
+      e-mail address.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Local Directory</FONT></I></TD>
+      <TD><FONT size="-1">Set the local directory path in which downloaded
+      files will be saved.<BR>
+      Input the directory path directly or push
+      &quot;...&quot; button and select a directory
+      in directory selection dialog.<BR>
+      <FONT size="-1">If the directory path contains any keyword,
+      the keywords are replaced according to <A href="gpstools2_7.htm#keyword">keyword replacement in directory or file
+      settings</A>. If the specified directory does not exist,
+      the directory is created.</FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Unzip/Uncompact Files</FONT></I></TD>
+      <TD><FONT size="-1">If it is checked and the download file is
+      compressed, the file is uncompressed after
+      completing the download.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Skip Existing Files</FONT></I></TD>
+      <TD><FONT size="-1">If it is checked and the download file is
+      already exit in the local directory, the
+      download is skipped.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Abort on Download Error</FONT></I></TD>
+      <TD><FONT size="-1">If it is checked and the download is failed,
+      the remains of the download are aborted.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Proxy</FONT></I></TD>
+      <TD><FONT size="-1">If it is checked, data/products are downloaded
+      via the proxy server. Specify the proxy server
+      address as the form of [&lt;proxy-user&gt;:&lt;proxy-password&gt;@]&lt;proxy-address&gt;:&lt;port&gt;
+      like guestuser:guestpassword@proxy.mycompany.com:8080.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Stations...</FONT></I></TD>
+      <TD><FONT size="-1">If the URL address contains keyword of %S,
+      %s or %G, show the station (receiver) list.
+      To edit the station list, push &quot;Stations...&quot;
+      button.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Files...</FONT></I></TD>
+      <TD><FONT size="-1">Execute <A href="#gpsfiles">File Manager</A>.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Stations...</FONT></I></TD>
+      <TD><FONT size="-1">Show the station selection dialog and edit
+      the station list.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Log...</FONT></I></TD>
+      <TD><FONT size="-1">Show the download logs.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Download/Abort</FONT></I></TD>
+      <TD><FONT size="-1">Start download.<BR>
+      When continuing the download, push
+      the button
+      to abort the download.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Close</FONT></I></TD>
+      <TD><FONT size="-1">Exit the Downloader and close the window.</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE><BR>
+</CENTER>
+<HR>
+<P><U><A name="keyword"><B>Keyword Replacements in Download Address</B></A></U></P>
+<CENTER>
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="150">
+  <COL span="1" width="300">
+  <COL span="1" width="150">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0" width="120"><FONT size="-1">Keyword</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0" width="240"><FONT size="-1">Replaced strings</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0" width="160"><FONT size="-1">Range</FONT></TH>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">%P</FONT></I></TD>
+      <TD><FONT size="-1">install path</FONT></TD>
+      <TD><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">%S</FONT></I></TD>
+      <TD><FONT size="-1">station code (UPPER case)</FONT></TD>
+      <TD align="left"><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">%s</FONT></I></TD>
+      <TD><FONT size="-1">station code (lower case)</FONT></TD>
+      <TD align="left"><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">%G</FONT></I></TD>
+      <TD><FONT size="-1">station code (tail 4 chars)</FONT></TD>
+      <TD align="left"><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">%Y</FONT></I></TD>
+      <TD><FONT size="-1">year (4 digits)</FONT></TD>
+      <TD align="left"><FONT size="-1">1970-9999</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">%y</FONT></I></TD>
+      <TD><FONT size="-1">year (2 digits)</FONT></TD>
+      <TD align="left"><FONT size="-1">00-99</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">%m</FONT></I></TD>
+      <TD><FONT size="-1">month</FONT></TD>
+      <TD align="left"><FONT size="-1">01-12</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">%d</FONT></I></TD>
+      <TD><FONT size="-1">day</FONT></TD>
+      <TD align="left"><FONT size="-1">01-31</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">%n</FONT></I></TD>
+      <TD><FONT size="-1">day of year</FONT></TD>
+      <TD align="left"><FONT size="-1">001-366</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">%h</FONT></I></TD>
+      <TD><FONT size="-1">1H hour</FONT></TD>
+      <TD align="left"><FONT size="-1">00,01,02,...,23</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">%ha</FONT></I></TD>
+      <TD><FONT size="-1">3H hour</FONT></TD>
+      <TD align="left"><FONT size="-1">00,03,06,...,21</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">%hb</FONT></I></TD>
+      <TD><FONT size="-1">6H hour</FONT></TD>
+      <TD align="left"><FONT size="-1">00,06,12,18</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">%hc</FONT></I></TD>
+      <TD><FONT size="-1">12H hour</FONT></TD>
+      <TD align="left"><FONT size="-1">00,12</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">%H</FONT></I></TD>
+      <TD><FONT size="-1">hour code</FONT></TD>
+      <TD align="left"><FONT size="-1">a,b,c,d,...,x</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">%t</FONT></I></TD>
+      <TD><FONT size="-1">15m minute</FONT></TD>
+      <TD align="left"><FONT size="-1">00,15,30,45</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">%g</FONT></I></TD>
+      <TD><FONT size="-1">3H hour</FONT></TD>
+      <TD align="left"><FONT size="-1">02,05,08,...,23</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">%f</FONT></I></TD>
+      <TD><FONT size="-1">1-8</FONT></TD>
+      <TD align="left"><FONT size="-1">1,2,3,...8</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">%W</FONT></I></TD>
+      <TD><FONT size="-1">gpsweek no.</FONT></TD>
+      <TD align="left"><FONT size="-1">0000-9999</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">%D</FONT></I></TD>
+      <TD><FONT size="-1">day of gpsweek</FONT></TD>
+      <TD align="left"><FONT size="-1">0,1,2,3,4,5,6</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">%M</FONT></I></TD>
+      <TD><FONT size="-1">iers bulletin month</FONT></TD>
+      <TD align="left"><FONT size="-1">1,2,3,...</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">%N</FONT></I></TD>
+      <TD><FONT size="-1">sequence no.</FONT></TD>
+      <TD align="left"><FONT size="-1">0000-99999999</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">%RO</FONT></I></TD>
+      <TD><FONT size="-1">rinex obs (%s%n0.%yo)</FONT></TD>
+      <TD align="left"><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">%RD</FONT></I></TD>
+      <TD><FONT size="-1">rinex cobs (%s%n0.%yd)</FONT></TD>
+      <TD align="left"><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">%RN</FONT></I></TD>
+      <TD><FONT size="-1">rinex nav(GPS) (%s%n0.%yn)</FONT></TD>
+      <TD align="left"><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">%RG</FONT></I></TD>
+      <TD><FONT size="-1">rinex nav(GLONASS) (%s%n0.%yg)</FONT></TD>
+      <TD align="left"><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">%RM</FONT></I></TD>
+      <TD><FONT size="-1">rinex met (%s%n0.%ym)</FONT></TD>
+      <TD align="left"><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">%RS</FONT></I></TD>
+      <TD><FONT size="-1">rinex sum (%s%n0.%ys)</FONT></TD>
+      <TD align="left"><FONT size="-1">　</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<BR>
+</CENTER>
+<HR>
+<P><U><A name="genprod"></A></U><U><A name="genprod"><B>Generate Products</B></A></U></P>
+<P align="center"><IMG src="image/image120.jpg" border="0" width="330" height="370"></P>
+<CENTER>
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="200">
+  <COL span="1" width="600">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">Item</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">Operation</FONT></TH>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Start Date/Time</FONT></I></TD>
+      <TD><FONT size="-1">Set the start date and time of generated
+      product.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">End Date/Time </FONT></I></TD>
+      <TD><FONT size="-1">Set the end date and time of generated product.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Time Interval</FONT></I></TD>
+      <TD><FONT size="-1">Set the interval of generated product (sec).</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Processing Unit Time</FONT></I></TD>
+      <TD><FONT size="-1">Set the processing unit time (hr) of input
+      estimation results.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Product Type</FONT></I></TD>
+      <TD><FONT size="-1">Set the type of generated product.<BR>
+      ・Sat Ephemeris (SP3) : Satellite ephemeris
+      (orbit and clock)<BR>
+      ・Sat Clock (RINEX CLK) : Satellite clock<BR>
+      ・Rcv Clock (RINEX CLK) : Receiver clock<BR>
+      ・Rcv Position (SINEX) : Receiver position</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Product Source</FONT></I></TD>
+      <TD><FONT size="-1">Set the source type of input estimation results.<BR>
+      ・Est (Smoothed) : smoothed estimation result<BR>
+      ・Est (Forward) : forward estimation results<BR>
+      ・Est (Backward) : backward estimation results</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Generation Option</FONT></I></TD>
+      <TD><FONT size="-1">Set product generation options<BR>
+      ・(blank) : no option<BR>
+      ・Include Velocity (SP3) : include satellite
+      velocity in SP3 file</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Satellites/Receivers</FONT></I></TD>
+      <TD><FONT size="-1">Set the satellite or receiver list of the
+      product.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Input Estimation Data Directory</FONT></I></TD>
+      <TD><FONT size="-1">Set the input directory path of estimation
+      results.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Output Products Directory</FONT></I></TD>
+      <TD><FONT size="-1">Set the output directory path of generated
+      product.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Generate</FONT></I></TD>
+      <TD><FONT size="-1">Execute product generation.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Close</FONT></I></TD>
+      <TD><FONT size="-1">Close the window.</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<BR>
+</CENTER>
+<HR>
+<P><U><A name="genpwv"><B>Generate PWV</B></A></U></P>
+<P align="center"><IMG src="image/image121.jpg" border="0" width="330" height="328"></P>
+<CENTER>
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="200">
+  <COL span="1" width="600">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">Item</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">Operation</FONT></TH>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Start Date/Time</FONT></I></TD>
+      <TD><FONT size="-1">Set the start date and time of generated
+      PWV.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">End Date/Time </FONT></I></TD>
+      <TD><FONT size="-1">Set the end date and time of generated PWV.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Time Interval</FONT></I></TD>
+      <TD><FONT size="-1">Set the interval of generated PWV (sec).</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Processing Unit Time</FONT></I></TD>
+      <TD><FONT size="-1">Set the processing unit time (hr) of input
+      estimation results.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Receivers</FONT></I></TD>
+      <TD><FONT size="-1">Set the receiver list of generated PWV.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Input Estimation Data Directory</FONT></I></TD>
+      <TD><FONT size="-1">Set the input directory path of estimation
+      results.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Input Meteorological Data Directory</FONT></I></TD>
+      <TD><FONT size="-1">Set the input directory path of NWM (numerical
+      weather model) data.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Output Products Directory</FONT></I></TD>
+      <TD><FONT size="-1">Set the output directory path of generated
+      PWV.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Generate</FONT></I></TD>
+      <TD><FONT size="-1">Execute PWV generation.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Close</FONT></I></TD>
+      <TD><FONT size="-1">Close the window.</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE><BR>
+</CENTER>
+<HR>
+<P><U><A name="genload"></A></U><U><A name="genload"><B>Generate Ocean Loading Parameters</B></A></U></P>
+<P align="center"><IMG src="image/image122.jpg" border="0" width="316" height="402"></P>
+<CENTER>
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="200">
+  <COL span="1" width="600">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">Item</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">Operation</FONT></TH>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Receivers</FONT></I></TD>
+      <TD><FONT size="-1">Set the receiver list to generate the ocean
+      loading parameters.<BR>
+      Push [...] button and select receivers in
+      receiver list editor.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Receiver Position</FONT></I></TD>
+      <TD><FONT size="-1">Set the type of receiver position.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Day of Position</FONT></I></TD>
+      <TD><FONT size="-1">Set the day of the receiver position.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Processing Unit Time </FONT></I></TD>
+      <TD><FONT size="-1">Set the processing unit time of receiver
+      position if using estimated receiver position.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">GOTIC2 Directory</FONT></I></TD>
+      <TD><FONT size="-1">Set the install directory path of GOTIC2,
+      which is ocean loading prediction program.<BR>
+      Specify the directory path including GOTIC2.exe
+      file.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Receiver Position Directory</FONT></I></TD>
+      <TD><FONT size="-1">Set the directory path of receiver positions.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1"><FONT size="-1">Output Ocean Loading Parameter File</FONT></FONT></I></TD>
+      <TD><FONT size="-1">Set the output file path of the ocean loading
+      parameters.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Generate</FONT></I></TD>
+      <TD><FONT size="-1">Generate the ocean loading parameters according
+      to the settings.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Close</FONT></I></TD>
+      <TD><FONT size="-1">Close the window.</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE><BR>
+</CENTER>
+<HR>
+<P><U><A name="genmp"><B>Generate Multipath Profile</B></A></U></P>
+<P align="center"><IMG src="image/image123.jpg" border="0" width="330" height="384"></P>
+<CENTER>
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="200">
+  <COL span="1" width="600">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">Item</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">Operation</FONT></TH>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Start Date/Time</FONT></I></TD>
+      <TD><FONT size="-1">Set the start date and time of input residuals
+      data.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">End Date/Time </FONT></I></TD>
+      <TD><FONT size="-1"><FONT size="-1">Set the end date and time of input residuals
+      data.</FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Time Interval</FONT></I></TD>
+      <TD><FONT size="-1"><FONT size="-1">Set the time interval of input residuals
+      data.</FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Processing Unit Time</FONT></I></TD>
+      <TD><FONT size="-1">Set the processing unit time of input residuals
+      data.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Estimation Direction</FONT></I></TD>
+      <TD><FONT size="-1">Set the processing direction (Forward/Backward)
+      of input residuals data.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Stations</FONT></I></TD>
+      <TD><FONT size="-1">Set the receiver list for generated multipath
+      profiles.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Estimation Data Directory</FONT></I></TD>
+      <TD><FONT size="-1">Set the directory path of input residuals
+      data.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Navigation Messages Directory</FONT></I></TD>
+      <TD><FONT size="-1">Set the directory path of navigation message
+      files.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Output Multipath Profile Directory</FONT></I></TD>
+      <TD><FONT size="-1">Set the directory path of output multipath
+      profiles.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Generate</FONT></I></TD>
+      <TD><FONT size="-1">Generate the multipath profile according
+      to the settings.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Close</FONT></I></TD>
+      <TD><FONT size="-1">Close the window.</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE><BR>
+</CENTER>
+<HR>
+<TABLE width="100%" cellpadding="0">
+  <TBODY>
+    <TR>
+      <TD align="center"><FONT size="-2"><FONT size="-2">Copyright (C) 2004-2008, T.Takasu, All Rights
+      Reserved.</FONT></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+</BODY>
+</HTML>

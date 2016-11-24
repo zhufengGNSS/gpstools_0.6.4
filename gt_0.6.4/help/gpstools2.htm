@@ -1,0 +1,704 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META name="GENERATOR" content="IBM HomePage Builder 2001 V5.0.3 for Windows">
+<TITLE>GpsTools : Parameter Estimator</TITLE>
+<STYLE type="text/css">
+<!--
+BODY{
+  font-family : Arial,sans-serif;
+}
+-->
+</STYLE>
+</HEAD>
+<BODY bgcolor="#ffffff" text="#666666" link="#33cc66" vlink="#006666" alink="#99ff00">
+<TABLE width="100%" cellspacing="0">
+  <TBODY>
+    <TR>
+      <TD><FONT size="-1"><A href="gpstools.htm">Overview</A> | <A href="gpstools0.htm">Specifications</A> | <A href="gpstools1.htm">Program Execution</A> | Parameter Estimator | <A href="gpstools3.htm">Plot Data</A> | <A href="gpstools4.htm">Utilities</A> | <A href="gpstools5.htm">Data Files</A> | <A href="gpstools6.htm">Libraries</A> </FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<TABLE width="100%" cellpadding="0" height="60">
+  <TBODY>
+    <TR>
+      <TD width="90%">
+      <P><B><FONT size="+1">GPS Precise Analysis Software GpsTools: Parameter
+      Estimator</FONT></B><B><FONT size="+1"></FONT> (1)</B></P>
+      </TD>
+      <TD valign="bottom" align="right"></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<HR>
+<TABLE>
+  <TBODY>
+    <TR>
+      <TD><FONT size="-1">(1) <A href="gpstools2_1.htm">(2)</A> <A href="gpstools2_2.htm">(3)</A> <A href="gpstools2_3.htm">(4)</A> <A href="gpstools2_4.htm">(5)</A> <A href="gpstools2_5.htm">(6)</A> <A href="gpstools2_6.htm">(7)</A> <A href="gpstools2_7.htm">(8)</A></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P><A name="gpsest"><U><B>Obs Data Editor/Parameter Estimator</B></U></A></P>
+<P align="center"><FONT size="-1"><IMG src="image/image7.jpg" border="0" width="616" height="437"></FONT></P>
+<DIV align="center">
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="20">
+  <COL span="1" width="180">
+  <COL span="1" width="600">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0" colspan="2" width="191"><FONT size="-1">Item</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0" width="578"><FONT size="-1">Operation</FONT></TH>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">Satellites</FONT></I></TD>
+      <TD><FONT size="-1">The satellite list for estimation is shown
+      here.<BR>
+      </FONT><FONT size="-1">To modify the list, push button &quot;Satellites...&quot;
+      and edit it in <A href="#editsatlist">Satellite List Editor</A> dialog.</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">Receivers</FONT></I></TD>
+      <TD><FONT size="-1">The receiver (station) list for estimation
+      is shown here.<BR>
+      </FONT><FONT size="-1">To modify the list, push button &quot;Receivers...&quot;
+      and edit it in <A href="#editrcvlist">Receiver List Editor</A> dialog.</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">Estimation Start Time</FONT></I></TD>
+      <TD><FONT size="-1">Set estimation start time (year/month/day
+      hour:minute:sec) in GPS Time.</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">Estimation End Time</FONT></I></TD>
+      <TD><FONT size="-1">Set estimation end time (year/month/day hour:minute:sec)
+      in GPS Time.</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">Estimation Interval</FONT></I></TD>
+      <TD><FONT size="-1">Set estimation interval (sec). The interval
+      has to be in the range from 0.01 to 86400
+      sec.<BR>
+      The interval also has to be multiples of
+      sampling interval of the observation data.</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">Est Unit/Overlap Time</FONT></I></TD>
+      <TD><FONT size="-1">Set estimation unit time (hr) and the estimation
+      overlap time (hr).<BR>
+      The estimation unit time is used to separate
+      sessions. Each session is executed in order
+      and results of each session are separately
+      saved. For example, in case that the estimation
+      start/end time is 2004/1/1 2:30-9:30, the
+      estimation interval is 60 sec and the estimation
+      unit time is 3 hr, the estimation period
+      is separated into sessions of 2:30-2:59,
+      3:00-5:59, 6:00-8:59 and 9:00-9:30. If you
+      intend continuous and not separated session,
+      set it long enough. <BR>
+      The overlap time is length of additional
+      estimation period before and after a session.
+      In usual, set it 0. Refer <FONT size="-1"><A href="#proctime">Definition of Processing Unit Time and Overlap
+      Time</A> for details.</FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">Exec Obs Data Editor</FONT></I></TD>
+      <TD><FONT size="-1"><FONT size="-1">Set execution condition of Observation Data
+      Editor.<BR>
+      - ON : execute observation data editor and
+      generate clean observation data. The parameters
+      for the observation data editor can be settled
+      by <A href="gpstools2_2.htm#obsedit">Observation Data Editor Setting</A> dialog.<BR>
+      <FONT size="-1"><FONT size="-1">- OFF : not execute observation data editor.
+      If you intend to use clean observation data
+      which already exist by executing the editor
+      previously, set it OFF.</FONT></FONT></FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">Exec Parameter Estimator</FONT></I></TD>
+      <TD><FONT size="-1">Set execution passes of Parameter Estimator.<BR>
+      - OFF : no execution of Parameter Estimator.<BR>
+      - 1pass(F) : 1-pass (forward pass)<BR>
+      - 2pass(FB) : 2-passes (forward and backward
+      passes)<BR>
+      </FONT><FONT size="-1">- 3pass(FBF) : 3-passes (forward, backward
+      and forward passes)</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">Estimation Strategy</FONT></I></TD>
+      <TD><FONT size="-1">Set estimation strategy for Parameter Estimator.<BR>
+      - ZD/PPP : zero-differenced measurement or
+      PPP (precise point positioning)<BR>
+      - DD : double-differenced measurement (current
+      version does not support DD)</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">Est/Fixed Parameters</FONT></I></TD>
+      <TD><FONT size="-1">Set estimated or fixed parameters for Parameter
+      Estimator.<BR>
+      Push the button and set conditions by <A href="gpstools2_1.htm">Estimated/Fixed Parameters Setting</A> dialog.</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">Baselines</FONT></I></TD>
+      <TD><FONT size="-1">Set baselines for Parameter Estimator in
+      case of DD as the estimation strategy.<BR>
+      Push the button and set conditions by Baseline
+      Setting dialog.</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">Satellite Clock Model</FONT></I></TD>
+      <TD><FONT size="-1">Set the model of satellite clock variation
+      in case of estimating satellite clock.<BR>
+      <FONT size="-1">- White-Noise : white-noise process<BR>
+      </FONT>- Gauss-Marcov : Gauss-Marcov process</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">Receiver Clock Model</FONT></I></TD>
+      <TD><FONT size="-1">Set the model of receiver clock variation
+      in case of estimating receiver clock.<BR>
+      - White-Noise : white-noise process<BR>
+      <FONT size="-1">- Gauss-Marcov : Gauss-Marcov process</FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">Receiver Position Model</FONT></I></TD>
+      <TD><FONT size="-1">Set the model of receiver position variation
+      in case of estimating receiver position.<BR>
+      - Static : static or random-walk process<BR>
+      - Kinematic : kinematic or white-noise process</FONT><BR>
+      <FONT size="-1">In case of estimating the position of stationary
+      receiver, set it Static and set the process
+      noise of receiver position 0. <BR>
+      </FONT><FONT size="-1">In case of estimating the position of low-dynamics
+      receiver, set it Static and set the process
+      noise of receiver appropriate value (&gt;0).</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">Clock Reference</FONT></I></TD>
+      <TD><FONT size="-1">Set the reference clock receiver in case
+      of estimating satellite clock.<BR>
+      The estimated clock is relative value to
+      the specified receiver clock.<BR>
+      If setting it blank, no reference clock is
+      used.</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">Raw Observation Data</FONT></I></TD>
+      <TD><FONT size="-1">Set the data file and file name type of input
+      raw observation data. The raw observation
+      data have to have the following file name
+      in [...].<BR>
+      - RINEX : RINEX OBS [<I>rrrrddd0.yyo</I>]<BR>
+      - RINEX (3H) : RINEX OBS (3H) [<I>rrrrdddh.yyo</I>]<BR>
+      - RINEX (1H) : RINEX OBS (1H) [<I>rrrrdddx.yyo</I>]<BR>
+      - RINEX (15min) : RINEX OBS (15min) [<I>rrrrdddxmm.yyo</I>]</FONT><BR>
+      <FONT size="-1">(<I>rrrr </I>: receiver/station id (4 characters), <I>ddd</I> : day of year, <I>yy</I> : year (2 digits), <I>h</I> : 1,2,.. (=0:00,3:00,...), <I>x</I> : a,b,c,... (=0:00,1:00,2:00,...), <I>mm</I> : minutes)<BR>
+      If the input file does not comply the name
+      above, rename the input file.<FONT size="-1"><BR>
+      </FONT>The raw observation data file can be compressed
+      by Hatanaka-Compression, compress or gzip.
+      If the file is compressed, the file extension
+      has to be comply to the compression. (e.g.,
+      : <I>*.yyo.Z</I>, <I>*.yyo.gz</I>, <I>*.yyd</I>, <I>*.yyd.Z</I>, <I>*.yyd.gz</I>)</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">Navigation Message</FONT></I></TD>
+      <TD><FONT size="-1">Set the data file and file name type of input
+      navigation messages. The navigation messages
+      have to have the following file name in [...]<BR>
+      - Combined : IGS Combined RINEX NAV (daily)
+      [<I>brdcddd0.yyn</I>]<BR>
+      - RINEX : RINEX NAV (daily) [<I>rrrrddd0.yyn</I>]<BR>
+      - RINEX (3hr) : RINEX NAV (3H) [<I>rrrrdddh.yyn</I>]<BR>
+      - RINEX (1hr) : RINEX NAV (1H) [<I>rrrrdddx.yyn</I>]<BR>
+      - RINEX (15min) : RINEX NAV (15min) [<I>rrrrdddxmm.yyn</I>]</FONT><FONT size="-1"><BR>
+      <FONT size="-1">If the input file does not comply the name
+      above, rename the input file.</FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">Obs Data Editor Settings</FONT></I></TD>
+      <TD><FONT size="-1">Set the condition for Observation Data Editor.<BR>
+      </FONT><FONT size="-1">Push the button and set the condition by
+      <A href="gpstools2_2.htm#obsedit">Observation Data Editor Setting</A> dialog.</FONT></TD>
+    </TR>
+     <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">Estimation/Meas. Model</FONT></I></TD>
+      <TD><FONT size="-1">Set the estimation and measurement models
+      for Parameter Estimator.<BR>
+      Push the button and set the condition by
+      <A href="gpstools2_3.htm#estmeasmodel">Estimation/Measurement Model Setting</A> dialog.</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">Measurement Noises</FONT></I></TD>
+      <TD><FONT size="-1">Set the standard deviation of carrier-phase
+      measurement noise.<BR>
+      Push the button and set the condition by
+      <A href="gpstools2_4.htm#measnoise">Measurement Noise Setting</A> dialog.</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">A Priori Std. Deviation</FONT></I></TD>
+      <TD><FONT size="-1">Set the standard deviation of initial states
+      to be estimated.<BR>
+      Push the button and set the condition by
+      <A href="#apriorisigma">A Priori Standard Deviation Setting</A> dialog.</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">Process Noises</FONT></I></TD>
+      <TD><FONT size="-1">Set the standard deviation of process noise
+      of estimated states.<BR>
+      <FONT size="-1">Push the button and set the condition by
+      </FONT><A href="#processnoise">Process Noise Setting</A> dialog.</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">Satellite Orbit Model</FONT></I></TD>
+      <TD><FONT size="-1">Set the satellite orbit models in case of
+      estimating satellite orbit.<BR>
+      <FONT size="-1">Push the button and set the condition by
+      </FONT><A href="#orbitmodel">Satellite Orbit Model Setting</A> dialog.</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">Quality Control Settlings</FONT></I></TD>
+      <TD><FONT size="-1">Set the quality control conditions.<BR>
+      <FONT size="-1">Push the button and set the condition by
+      </FONT><A href="#qualityctr">Quality Control Setting</A> dialog.</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">Data Directories/Files</FONT></I></TD>
+      <TD><FONT size="-1">Set the data directories and files.<BR>
+      <FONT size="-1">Push the button and set the condition by
+      </FONT><A href="gpstools2_7.htm#dirsetting">Data Directories/Files Setting</A> dialog.</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">Clean Observation Data Directory</FONT></I></TD>
+      <TD><FONT size="-1">Set the output directory path of clean observation
+      data by Observation Data Editor.<BR>
+      The keywords in the directory path are replaced
+      according to <A href="gpstools2_7.htm#keyword">Keyword Replacement in Directory Path</A>.<FONT size="-1"> If not exist, the directory is generated.
+      In case of blank, the directory as same as
+      Output Directory is used.</FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">Output Directory</FONT></I></TD>
+      <TD><FONT size="-1">Set the output directory path of estimation
+      results by Parameter Estimator.<BR>
+      </FONT><FONT size="-1"><FONT size="-1">The keywords in the directory path are replaced
+      according to <A href="gpstools2_7.htm#keyword">Keyword Replacement in Directory Path</A>. If not exist, the directory is generated.
+      </FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">File</FONT></I></TD>
+      <TD><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center" rowspan="5"><I><FONT size="-1">　</FONT></I></TD>
+      <TD align="center"><I><FONT size="-1">Files...</FONT></I></TD>
+      <TD><FONT size="-1">Show <A href="gpstools4.htm#gpsfiles">File Manager</A> window.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Download...</FONT></I></TD>
+      <TD><FONT size="-1">Show <A href="gpstools4.htm#gpsdown">Data/Products Downloader</A> window.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Execute Batch...</FONT></I></TD>
+      <TD><FONT size="-1">Show <A href="#execbatch">Execute Batch</A> dialog.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Load Setting...</FONT></I></TD>
+      <TD><FONT size="-1">Load the processing parameters from a file.<BR>
+      Specify a file path to be loaded by the file
+      selection dialog when the menu executed.<BR>
+      </FONT><FONT size="-1">The processing parameters can be loaded from
+      a file saved by the menu Save Setting or
+      saved by Parameter Estimator as the processing
+      history in the history directory (<I>&lt;install path&gt;\history\prm_*.mat&gt;</I>) .</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1"><FONT size="-1">Save Setting...</FONT></FONT></I></TD>
+      <TD><FONT size="-1">Save the processing parameters to a file.<BR>
+      Specify a file path to be saved by the file
+      selection dialog when the menu executed.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center" colspan="2"><I><FONT size="-1">Log</FONT></I></TD>
+      <TD><FONT size="-1">Show processing logs by Observation Data
+      Editor and Parameter Estimator.</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">Plot</FONT></I></TD>
+      <TD><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD rowspan="8" align="center"><I><FONT size="-1">　</FONT></I></TD>
+      <TD align="center"><I><FONT size="-1">Observation Data</FONT></I></TD>
+      <TD><FONT size="-1">Show observation data and clean observation
+      data by <A href="gpstools3_1.htm">Plot Observation Data</A> window.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Satellite Orbit...</FONT></I></TD>
+      <TD><FONT size="-1">Show estimation results of satellite orbit
+      by <A href="gpstools3_2.htm">Plot Satellite Orbit</A> window.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Satellite Clock...</FONT></I></TD>
+      <TD><FONT size="-1">Show estimation results of satellite clock
+      by <A href="gpstools3_4.htm">Plot Satellite/Receiver Clock</A> window.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Receiver Position...</FONT></I></TD>
+      <TD><FONT size="-1">Show estimation results of receiver positions
+      by <A href="gpstools3_3.htm">Plot Receiver Position</A> window.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Receiver Clock...</FONT></I></TD>
+      <TD><FONT size="-1">Show estimation results of receiver clock
+      by <A href="gpstools3_4.htm">Plot Satellite/Receiver Clock</A> window.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Tropospheric Parameters...</FONT></I></TD>
+      <TD><FONT size="-1">Show estimation results of tropospheric parameters
+      by <A href="gpstools3_5.htm">Plot Tropospheric Parameters</A> window.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Residuals/Statistics...</FONT></I></TD>
+      <TD><FONT size="-1">Show residuals by <A href="gpstools3_9.htm">Plot Residuals/Statistics</A> window.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Satellite Track/Station Pos...</FONT></I></TD>
+      <TD><FONT size="-1">Show <A href="gpstools3_11.htm">Plot Satellite Track/Receiver Positions</A> window.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center" colspan="2"><I><FONT size="-1">Execute/Abort</FONT></I></TD>
+      <TD><FONT size="-1">Execute Observation Data Editor and/or Parameter
+      Estimator. To abort the execution, push Abort
+      button.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center" colspan="2"><I><FONT size="-1">Close</FONT></I></TD>
+      <TD><FONT size="-1">Close the window.</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE><BR>
+</DIV>
+<HR>
+<P><FONT size="+1"><A name="proctime"><FONT size="+2"><U></U></FONT></A></FONT><A name="proctime"><U><B>Definition of Processing Unit Time and Overlap
+Time</B></U></A></P>
+<P align="center"><IMG src="image/image39.jpg" border="0" width="623" height="334"><FONT size="-1"><A name="proctime"></A></FONT><BR>
+</P>
+<HR>
+<P><U><A name="editsatlist"></A></U><FONT size="+1"><U><A name="editsatlist"></A><A name="editsatlist"></A></U><A name="editsatlist"></A></FONT><A name="editsatlist"><U><B>Satellite List Editor</B></U></A></P>
+<P align="center"><IMG src="image/image18.jpg" border="0" width="551" height="437"></P>
+<CENTER>
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="200">
+  <COL span="1" width="600">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">Item</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">Operation</FONT></TH>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Selected Satellites</FONT></I></TD>
+      <TD><FONT size="-1">Show the selected satellites list.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">(Selectable Satellites)</FONT></I></TD>
+      <TD><FONT size="-1">Show the selectable satellites list.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">&lt;&lt;</FONT></I></TD>
+      <TD><FONT size="-1">Add the selected satellites in selectable
+      satellites list to selected satellites list.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">&gt;&gt;</FONT></I></TD>
+      <TD><FONT size="-1">Delete the selected satellites from selected
+      satellites list.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Clear</FONT></I></TD>
+      <TD><FONT size="-1">Clear the selected satellites list.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Edit...</FONT></I></TD>
+      <TD><FONT size="-1">Show the satellite definition file with text
+      editor.<BR>
+      To modify the selectable satellites list,
+      edit the contents of the satellite definition
+      file (<I>&lt;install path&gt;\data\prm_gpssats.txt</I>) by text editor.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Load...</FONT></I></TD>
+      <TD><FONT size="-1">Load the satellites list form the specified
+      file.<BR>
+      Specify the file path by the file selection
+      dialog shown when the button pushed.<BR>
+      The file has to contain a satellite name
+      in a line or has to be processing parameter
+      file (prm_*.mat).</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Save...</FONT></I></TD>
+      <TD><FONT size="-1">Save the satellite list to a text file.<BR>
+      Specify the saved file path by the file selection
+      dialog shown when the button pushed.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">List...</FONT></I></TD>
+      <TD><FONT size="-1"><FONT size="-1">Show <A href="#addlists">Add/Set Satellite/Receiver List</A> dialog to register or call the satellite
+      list.</FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Input...</FONT></I></TD>
+      <TD><FONT size="-1"><FONT size="-1">Input a satellite name manually. Fill the
+      satellite name in the input dialog for satellite
+      names.<BR>
+      If you want to add a satellite which does
+      not included in the selectable satellite
+      list.</FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">OK</FONT></I></TD>
+      <TD><FONT size="-1">Enable changes and close dialog.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Cancel</FONT></I></TD>
+      <TD><FONT size="-1">Abandon changes and close dialog.</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<BR>
+</CENTER>
+<HR>
+<P><A name="editrcvlist"></A><A name="editrcvlist"><U><B>Receiver List Editor</B></U></A></P>
+<P align="center"><FONT size="-1"><IMG src="image/image19.jpg" border="0" width="551" height="437"><BR>
+(Receiver List Editor - List View)</FONT></P>
+<P align="center"><IMG src="image/image101.jpg" border="0" width="551" height="437"><BR>
+<FONT size="-1">(<FONT size="-1">Receiver List Editor - Map View</FONT>)</FONT></P>
+<CENTER>
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="200">
+  <COL span="1" width="600">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">Item</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">Operation</FONT></TH>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Selected Receivers</FONT></I></TD>
+      <TD><FONT size="-1">Show the receiver list.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">(Selectable Receivers Group)</FONT></I></TD>
+      <TD><FONT size="-1">Show the selectable receiver list group.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">(Selectable Receivers)</FONT></I></TD>
+      <TD><FONT size="-1">Show the selectable receiver list in the
+      selected receiver group.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">&lt;&lt;</FONT></I></TD>
+      <TD><FONT size="-1">Add the selected receivers in the selectable
+      receiver list to receiver list.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">&gt;&gt;</FONT></I></TD>
+      <TD><FONT size="-1">Delete the selected receivers in the receiver
+      list.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Clear</FONT></I></TD>
+      <TD><FONT size="-1">Clear the receiver list.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Edit...</FONT></I></TD>
+      <TD><FONT size="-1">Show the receiver definition file by the
+      text editor.<BR>
+      To modify the selectable receiver list shown
+      right side, edit the receiver definition
+      file (<I>&lt;install path&gt;\data\prm_gpsrcvs.txt</I>) by the text editor.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Load...</FONT></I></TD>
+      <TD><FONT size="-1">Load the receiver list from a file.<BR>
+      Specify the input file path by the file selection
+      dialog shown when the button pushed.<BR>
+      The file should be a text file which contains
+      receiver names or a processing parameter
+      file (<I>prm_*.mat</I>).</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Save...</FONT></I></TD>
+      <TD><FONT size="-1">Save the receiver list to a text file.<BR>
+      Specify the output file path by the file
+      selection dialog shown when the button pushed.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">List...</FONT></I></TD>
+      <TD><FONT size="-1">Show <A href="#addlists">Add/Set Satellite/Receiver List</A> dialog to register or call the receiver
+      list.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Input...</FONT></I></TD>
+      <TD><FONT size="-1"><FONT size="-1"><FONT size="-1">Input a receiver name manually. Fill the
+      receiver name in the input dialog for receiver
+      name.<BR>
+      If you want to add a receiver which does
+      not included in the selectable receiver list.</FONT></FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">MapView/ListView...</FONT></I></TD>
+      <TD><FONT size="-1">Switch the view mode between map view and
+      list view.<BR>
+      In case of map view, selected receiver positions
+      are indicated as red points in the map.</FONT><FONT size="-1"><BR>
+      - By dragging with right button pushed on
+      the map, you can select receivers inside
+      the rectangle.<BR>
+      - By dragging with left button pushed on
+      the map, you can add receivers inside the
+      rectangle.<BR>
+      - By double-clicking on the map, you can
+      move the center of map to the point.<BR>
+      - By drag the scroll bar, you can change
+      the scale of the map.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">OK</FONT></I></TD>
+      <TD><FONT size="-1">Enable changes and close dialog.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Cancel</FONT></I></TD>
+      <TD><FONT size="-1"><FONT size="-1">Abandon changes and close dialog.</FONT></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE><BR>
+</CENTER>
+<HR>
+<P><A name="addlists"></A><A name="addlists"><U><B>Add/Set Satellite/Receiver List</B></U></A></P>
+<P align="center"><IMG src="image/image20.jpg" border="0" width="301" height="323"></P>
+<CENTER>
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="200">
+  <COL span="1" width="600">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">Item</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">Operation</FONT></TH>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Satellite/Receiver List</FONT></I></TD>
+      <TD><FONT size="-1">Show the registered satellite or receiver
+      list. By selecting the list and pushing OK
+      button or double-clicking it, you can input
+      the satellite or receiver list.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">(Newlist Input)</FONT></I></TD>
+      <TD><FONT size="-1">Input the newly registered list name of satellite
+      or receiver list.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Add/Set</FONT></I></TD>
+      <TD><FONT size="-1">Register the list name in <I>Newlist Input</I>. If there is no list name in the existing
+      list, the list name is added. If there is
+      already registered as the same list name,
+      the contents are replaced.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Delete</FONT></I></TD>
+      <TD><FONT size="-1">Delete selected list name from the list.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">OK</FONT></I></TD>
+      <TD><FONT size="-1">Enable changes and close the dialog.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Cancel</FONT></I></TD>
+      <TD><FONT size="-1">Abandon changes and close the dialog.</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<BR>
+</CENTER>
+<HR>
+<DIV align="left"><U><A name="execbatch"></A></U><FONT size="+1"><U><A name="execbatch"></A><A name="execbatch"></A></U><A name="execbatch"></A></FONT><A name="execbatch"><U><B>Execute Batch</B></U></A></DIV>
+<P align="center"><IMG src="image/image21.jpg" border="0" width="411" height="275"></P>
+<CENTER>
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="200">
+  <COL span="1" width="600">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">Item</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">Operation</FONT></TH>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Estimation Start Time/End Time (GPST)</FONT></I></TD>
+      <TD><FONT size="-1">To modify the estimation period of processing
+      parameters, check and specify the estimation
+      start and end time. If not checked, the period
+      in each processing parameters is used. </FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Receivers</FONT></I></TD>
+      <TD><FONT size="-1">To modify the receiver list of processing
+      parameters, check and specify the receiver
+      list. If not checked, the receiver list in
+      each processing parameters is used.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Output Directory</FONT></I></TD>
+      <TD><FONT size="-1">To modify the output directory of processing
+      parameters, check and specify the output
+      directory. If not checked the output directory
+      in each processing parameters is used.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Processing Parameters</FONT></I></TD>
+      <TD><FONT size="-1">Show the list of processing parameters. Input
+      the processing parameter list using button
+      Add... or button Delete.<BR>
+      The processing parameters are sequentially
+      used for batch estimation. The on-going processing
+      parameter is shown inverted.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Add...</FONT></I></TD>
+      <TD><FONT size="-1">Add a processing parameter to the processing
+      parameter list. Specify the file path of
+      the processing parameter <FONT size="-1">(prm_*.mat) </FONT>using file selection dialog.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Delete</FONT></I></TD>
+      <TD><FONT size="-1">Delete selected parameters from processing
+      parameter list.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Log</FONT></I></TD>
+      <TD><FONT size="-1">Show logs of the batch estimation.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Execute/Abort</FONT></I></TD>
+      <TD><FONT size="-1">Execute the batch estimation by using specified
+      processing parameter list.<BR>
+      Push Abort button to abort the execution.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Close</FONT></I></TD>
+      <TD><FONT size="-1">Close the window.</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE><BR>
+</CENTER>
+<HR>
+<TABLE width="100%" cellpadding="0">
+  <TBODY>
+    <TR>
+      <TD align="center"><FONT size="-2"><FONT size="-2">Copyright (C) 2004-2008, T.Takasu, All Rights
+      Reserved.</FONT></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+</BODY>
+</HTML>

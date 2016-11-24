@@ -1,0 +1,15 @@
+%-------------------------------------------------------------------------------
+% [system] : GpsTools
+% [module] : receiver antenna alias definitions
+% [format] : - 1 line = 1 record
+%            - % ...  = comments
+%            - fields separated by comma(,)
+% [note]   :
+% [version]: $Revision: 12 $ $Date: 2008-11-25 10:02:15 +0900 (火, 25 11 2008) $
+% [history]: 05/09/19  0.1  new
+%-------------------------------------------------------------------------------
+
+% antenna alias        antenna name
+
+4000ST/SSE L1/L2,      TRM14532.00
+_TOPCR-4,              AOAD/M_T

@@ -1,0 +1,374 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META name="GENERATOR" content="IBM HomePage Builder 2001 V5.0.3 for Windows">
+<TITLE>GpsTools : Plot Data</TITLE>
+<STYLE type="text/css">
+<!--
+BODY{
+  font-family : Arial,sans-serif;
+}
+-->
+</STYLE>
+</HEAD>
+<BODY bgcolor="#ffffff" text="#666666" link="#33cc66" vlink="#006666" alink="#99ff00">
+<TABLE width="100%" cellspacing="0">
+  <TBODY>
+    <TR>
+      <TD><FONT size="-1"><A href="gpstools.htm">Overview</A> | <A href="gpstools0.htm">Specifications</A> | <A href="gpstools1.htm">Program Execution</A> | <A href="gpstools2.htm">Parameter Estimator</A> | Plot Data | <A href="gpstools4.htm">Utilities</A> | <A href="gpstools5.htm">Data Files</A> | <A href="gpstools6.htm">Libraries</A> </FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<TABLE width="100%" cellpadding="0" height="60">
+  <TBODY>
+    <TR>
+      <TD><B><FONT size="+1">GPS Precise Analysis Software GpsTools: Plot
+      Data (2)</FONT></B></TD>
+      <TD valign="bottom" align="right"><FONT size="-1"><A href="../index.shtml"></A></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<HR>
+<TABLE>
+  <TBODY>
+    <TR>
+      <TD><FONT size="-1"><A href="gpstools3.htm">(1)</A> (2) <A href="gpstools3_2.htm">(3)</A> <A href="gpstools3_3.htm">(4)</A> <A href="gpstools3_4.htm">(5)</A> <A href="gpstools3_5.htm">(6)</A> <A href="gpstools3_6.htm">(7)</A> <A href="gpstools3_7.htm">(8)</A> <A href="gpstools3_8.htm">(9)</A> <A href="gpstools3_9.htm">(10)</A> <A href="gpstools3_10.htm">(11)</A> <A href="gpstools3_11.htm">(12)</A></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P><U><A name="plotobs"></A></U><U><A name="plotobs"><B>Plot Observation Data</B></A></U></P>
+<P align="center"><IMG src="image/image23.jpg" border="0" width="608" height="447"><BR>
+<FONT size="-1">(Plot Observation data availability)</FONT></P>
+<DIV align="center">
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="20">
+  <COL span="1" width="180">
+  <COL span="1" width="600">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0" colspan="2" width="191"><FONT size="-1">Item</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0" width="578"><FONT size="-1">Operation</FONT></TH>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">Menu</FONT></I></TD>
+      <TD><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">Data</FONT></I></TD>
+      <TD><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center" rowspan="6"><I><FONT size="-1">　</FONT></I></TD>
+      <TD align="center"><I><FONT size="-1">Read...</FONT></I></TD>
+      <TD><FONT size="-1"><A href="#readdata">データ読み込み</A>画面を表示し、データを読み込みます。</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">New Window</FONT></I></TD>
+      <TD><FONT size="-1">現在表示中のデータを再読込し、別ウインドウを開いて表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Export Plot...</FONT></I></TD>
+      <TD><FONT size="-1"><A href="#exportplots">画像出力</A>画面を表示し、一連の画面を画像ファイルに保存します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Raw Obs Data...</FONT></I></TD>
+      <TD><FONT size="-1">RINEX観測データの内容をテキストビューアで表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1"><FONT size="-1">TEQC...</FONT></FONT></I></TD>
+      <TD><FONT size="-1">TEQCを起動しRINEX観測データの内容をチェックしその結果を表示します。TEQC起動時のコマンドラインオプションは表示オプション画面で設定してください。</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Options...</FONT></I></TD>
+      <TD><FONT size="-1"><A href="#options">表示オプション</A>画面を表示し、表示オプションを変更します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">Plot</FONT></I></TD>
+      <TD><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD rowspan="15" align="center"><I><FONT size="-1">　</FONT></I></TD>
+      <TD align="center"><I><FONT size="-1">Data Availability</FONT></I></TD>
+      <TD><FONT size="-1">観測データ有効期間を表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Reset Time Range</FONT></I></TD>
+      <TD><FONT size="-1">表示時間軸を初期値にリセットします。</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">L1, L2, P1, P2</FONT></I></TD>
+      <TD><FONT size="-1">観測データL1, L2, P1, P2をグラフ表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">L1-P1, L2-P2</FONT></I></TD>
+      <TD><FONT size="-1">観測データL1-P1, L2-P2線形結合の値をグラフ表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">L1-TD, L2-TD</FONT></I></TD>
+      <TD><FONT size="-1">観測データL1, L2のエポック間3重差の値をグラフ表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">LC, LG, LG-D</FONT></I></TD>
+      <TD><FONT size="-1">観測データLC(搬送波位相電離層フリー), LG(搬送波位相幾何学フリー)線形結合,
+      LGエポック間1重差の値をグラフ表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">PC, PG</FONT></I></TD>
+      <TD><FONT size="-1">観測データPC(疑似距離電離層フリー), PG(疑似距離幾何学フリー)線形結合の値をグラフ表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">S1,S2, SC, SG</FONT></I></TD>
+      <TD><FONT size="-1">キャリアスムージング疑似距離L1, L2, LC, LGの値をグラフ表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">WL, NL, MW</FONT></I></TD>
+      <TD><FONT size="-1">観測データWL(搬送波位相Wide Lane)、NL(搬送波位相Narrow
+      Lane), MW(Melborne Wubbena WL)線形結合の値をグラフ表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">WL-TD, NL-TD, LG+PG</FONT></I></TD>
+      <TD><FONT size="-1">観測データWL, NLエポック間3重差、LG+PG線形結合の値をグラフ表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">MP1, MP2, MP1+MP2, MP1-MP2</FONT></I></TD>
+      <TD><FONT size="-1">観測データMP1, MP2線形結合及びMP1+MP2, MP1-MP2線形結合の値をグラフ表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Time Tag Offset</FONT></I></TD>
+      <TD><FONT size="-1">受信時刻タグの正秒(整数秒)からのオフセットをグラフ表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Clock Bias</FONT></I></TD>
+      <TD><FONT size="-1">単独測位で求めたクロックバイアス推定値の値をグラフ表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">STEC, VTEC</FONT></I></TD>
+      <TD><FONT size="-1">2周波疑似距離測定値から求めたSTEC, VTEC推定値をグラフ表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Azimuth, Elevation</FONT></I></TD>
+      <TD><FONT size="-1">衛星の方位、仰角の値をグラフ表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center" colspan="2"><I><FONT size="-1">Satellite</FONT></I></TD>
+      <TD><FONT size="-1">表示する衛星を選択します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center" colspan="2"><I><FONT size="-1">Receiver</FONT></I></TD>
+      <TD><FONT size="-1">表示する受信機を選択します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">b/c/o (Swith observation data)</FONT></I></TD>
+      <TD><FONT size="-1">ボタンを押す毎に表示する観測データを切り替えます。<BR>
+      ・編集済み観測データ→生観測データ→両観測データ→...</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">s/_ (Switch cycle-slip on/off)</FONT></I></TD>
+      <TD><FONT size="-1">ボタンを押す毎にサイクルスリップ表示のON/OFFを切り替えます。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">&lt; &gt; (Switch satellite)</FONT></I></TD>
+      <TD><FONT size="-1">ボタンを押す毎に表示する衛星を切り替えます。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">&lt;&gt; (Switch receiver)</FONT></I></TD>
+      <TD><FONT size="-1">ボタンを押す毎に表示する受信機を切り替えます。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">(Graph window)</FONT></I></TD>
+      <TD><FONT size="-1">観測データ有効期間表示時にグラフ上をダブルクリックすることにより指定衛星の観測データ表示に切り替わります。観測データ表示時にグラフ上をダブルクリックすることにより観測データ有効期間表示に切り替わります。<BR>
+      グラフ下の時間軸近くでマウスの左ボタンをクリックすることによりカーソルが移動カーソルに変わり、左右にドラッグすることにより時間軸を移動することができます。<BR>
+      グラフ下の時間軸近くでマウスの右ボタンをクリックすることによりカーソルが拡大/縮小カーソル変わり、左右にドラッグすることにより時間軸を拡大/縮小することができます。<BR>
+      グラフ左の値軸近くでマウスの左ボタンをクリックすることによりカーソルが移動カーソルに変わり、上下にドラッグすることにより値軸を移動することができます。<BR>
+      グラフ左の値軸近くでマウスの右ボタンをクリックすることによりカーソルが拡大/縮小カーソル変わり、上下にドラッグすることにより値軸を拡大/縮小することができます。</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<BR>
+</DIV>
+<HR>
+<P><U><A name="readdata"></A></U><U><A name="readdata"><B>Read Data Dialog</B></A></U></P>
+<P align="center"><IMG src="image/image24.jpg" border="0" width="320" height="356"></P>
+<DIV align="center">
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="20">
+  <COL span="1" width="180">
+  <COL span="1" width="600">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0" colspan="2" width="191"><FONT size="-1">Item</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0" width="578"><FONT size="-1">Operation</FONT></TH>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">Start Time (GPST)</FONT></I></TD>
+      <TD><FONT size="-1">読み込む観測データの開始日時を指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">End Time (GPST)</FONT></I></TD>
+      <TD><FONT size="-1">読み込む観測データの終了日時を指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">Observation Unit Time</FONT></I></TD>
+      <TD><FONT size="-1">読み込む編集済み観測データの処理時間単位(hr)を指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center" colspan="2"><I><FONT size="-1">Satellite</FONT></I></TD>
+      <TD><FONT size="-1">衛星を選択します。[...]ボタンを押して表示される衛星選択画面で衛星を選択してください。</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center" colspan="2"><I><FONT size="-1">Receiver</FONT></I></TD>
+      <TD><FONT size="-1">受信機を選択します。</FONT><FONT size="-2"></FONT><FONT size="-1">[...]ボタンを押して表示される受信機選択画面で受信機を選択してください。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">Raw Observation Data</FONT></I></TD>
+      <TD><FONT size="-1">読み込む生観測データの形式及びファイル分割単位を指定します。観測データファイルの名前は以下の[...]で示す形式でつけられている必要があります。<BR>
+      ・RINEX : RINEX OBS [rrrrddd0.yyo]<BR>
+      ・RINEX (3H) : RINEX OBS (3H) [rrrrdddh.yyo]<BR>
+      ・RINEX (1H) : RINEX OBS (1H) [rrrrdddx.yyo]<BR>
+      ・RINEX (15min) : RINEX OBS (15min) [rrrrdddxmm.yyo]</FONT><BR>
+      <FONT size="-1">(rrrr : 受信機/観測局ID(4桁), ddd : day of
+      year, yy : 年(2桁), h : 1,2,.. (=0:00,3:00,...),
+      x : a,b,c,... (=0:00,1:00,2:00,...), mm :
+      分)</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">Navigation Messages</FONT></I></TD>
+      <TD><FONT size="-1"><FONT size="-1">読み込む航法メッセージ及びファイル分割単位を指定します。航法メッセージファイルの名前は以下の[...]で示す形式でつけられている必要があります。<BR>
+      ・Combined : IGS併合RINEX NAV (daily) [brdcddd0.yyn]<BR>
+      ・RINEX : RINEX NAV (daily) [rrrrddd0.yyn]<BR>
+      ・RINEX (3hr) : RINEX NAV (3H) [rrrrdddh.yyn]<BR>
+      ・RINEX (1hr) : RINEX NAV (1H) [rrrrdddx.yyn]<BR>
+      ・RINEX (15min) : RINEX NAV (15min) [rrrrdddxmm.yyn]</FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">Observation Data Directory</FONT></I></TD>
+      <TD><FONT size="-1"><FONT size="-1">読み込む生観測データのディレクトリパスを指定します。ディレクトリパス中にキーワードが含まれている場合、<A href="gpstools2_7.htm#keyword">ディレクトリパス中のキーワード置換</A>に従い置換されます。</FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1"><FONT size="-1">Clean Observation Data Directory</FONT></FONT></I></TD>
+      <TD><FONT size="-1"><FONT size="-1">読み込む編集済み観測データのディレクトリパスを指定します。ディレクトリパス中にキーワードが含まれている場合、<A href="gpstools2_7.htm#keyword">ディレクトリパス中のキーワード置換</A>に従い置換されます。</FONT></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE><BR>
+</DIV>
+<HR>
+<P><U><A name="exportplots"></A></U><U><A name="exportplots"><B>Export Plots Dialog</B></A></U></P>
+<P align="center"><IMG src="image/image105.jpg" border="0" width="280" height="165"></P>
+<DIV align="center">
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="20">
+  <COL span="1" width="180">
+  <COL span="1" width="600">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0" colspan="2" width="191"><FONT size="-1">項目</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0" width="578"><FONT size="-1">操作</FONT></TH>
+    </TR>
+    <TR>
+      <TD align="center" colspan="2"><I><FONT size="-1">File Name</FONT></I></TD>
+      <TD><FONT size="-1">出力する画像ファイルの名前を入力します。一連の画像を出力する場合は名前の後ろに01,
+      02, 03, ...と連番が付加されます。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">File Format</FONT></I></TD>
+      <TD><FONT size="-1">出力する画像ファイル形式を選択します。</FONT><BR>
+      <FONT size="-1">・EPS : EPSファイル<BR>
+      ・JPEG : JPEGファイル<BR>
+      ・TIFF : TIFFファイル<BR>
+      ・META FILE : Windows Metaファイル<BR>
+      </FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">Directory</FONT></I></TD>
+      <TD><FONT size="-1">出力する画像を格納するディレクトリを指定します。</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+</DIV>
+<P><U><A name="options"></A></U></P>
+<HR>
+<P><U><A name="options"></A></U><U><A name="options"><B>Options Dialog</B></A></U></P>
+<P align="center"><IMG src="image/image27.jpg" border="0" width="326" height="340"></P>
+<DIV align="center">
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="20">
+  <COL span="1" width="180">
+  <COL span="1" width="600">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0" colspan="2" width="191"><FONT size="-1">Item</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0" width="578"><FONT size="-1">Operation</FONT></TH>
+    </TR>
+    <TR>
+      <TD align="center" colspan="2"><I><FONT size="-1">Plot Obs Data</FONT></I></TD>
+      <TD><FONT size="-1">表示する観測データを選択します。</FONT><FONT size="-2"></FONT><FONT size="-1"><BR>
+      ・Both Obs Data : 生観測データ及び編集済み観測データ<BR>
+      ・Clean Obs Data : 編集済み観測データ<BR>
+      ・Raw Obs Data : 生観測データ</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">Eliminate Phase Bias</FONT></I></TD>
+      <TD><FONT size="-1">搬送波位相観測値及び搬送波位相観測値を使用した線形結合を表示する場合バイアスを除去するか否か指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">Show Number of Visible Sats</FONT></I></TD>
+      <TD><FONT size="-1">観測データ有効期間表示において可視衛星数を表示するか否か指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">Show Antenna/Receiver Type</FONT></I></TD>
+      <TD><FONT size="-1">観測データ有効期間表示においてアンテナ/受信機種別を表示するか否か指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">Plot Style</FONT></I></TD>
+      <TD><FONT size="-1">グラフ表示スタイルを選択します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">Plot Color of Raw Obs Data</FONT></I></TD>
+      <TD><FONT size="-1">生観測データの表示色を選択します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">Plot Color of Clean Obs Data</FONT></I></TD>
+      <TD><FONT size="-1">編集済み観測データの表示色を選択します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">Plot Color of Cycle-Slip</FONT></I></TD>
+      <TD><FONT size="-1">サイクルスリップの表示色を選択します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">Max Arc Gap</FONT></I></TD>
+      <TD><FONT size="-1">アーク分割に使う最大ギャップ長(秒)を指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">Value Range</FONT></I></TD>
+      <TD><FONT size="-1">デフォルトのグラフ値レンジ(上下限値)を指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2" align="center"><I><FONT size="-1">TEQC Options</FONT></I></TD>
+      <TD><FONT size="-1">TEQCを起動する際のオプションパラメータを指定します。</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE><BR>
+</DIV>
+<HR>
+<P><U><B>Raw Obsevation Data View</B></U></P>
+<P align="center"><IMG src="image/image25.jpg" border="0" width="608" height="427"><BR>
+<BR>
+</P>
+<P><U><B>TEQC Report View</B></U></P>
+<P align="center"><IMG src="image/image26.jpg" border="0" width="608" height="447"><BR>
+<BR>
+</P>
+<P><U><B>Observation Data Plots</B></U></P>
+<P align="center"><IMG src="image/image28.jpg" border="0" width="608" height="447"></P>
+<P align="center"><IMG src="image/image29.jpg" border="0" width="608" height="447"></P>
+<HR>
+<TABLE width="100%" cellpadding="0">
+  <TBODY>
+    <TR>
+      <TD align="center"><FONT size="-2"><FONT size="-2">Copyright (C) 2004-2008, T.Takasu, All Rights
+      Reserved.</FONT></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+</BODY>
+</HTML>

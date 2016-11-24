@@ -1,0 +1,216 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META name="GENERATOR" content="IBM HomePage Builder 2001 V5.0.3 for Windows">
+<TITLE>GpsTools : Parameter Estimator</TITLE>
+<STYLE type="text/css">
+<!--
+BODY{
+  font-family : Arial,sans-serif;
+}
+-->
+</STYLE>
+</HEAD>
+<BODY bgcolor="#ffffff" text="#666666" link="#33cc66" vlink="#006666" alink="#99ff00">
+<TABLE width="100%" cellspacing="0">
+  <TBODY>
+    <TR>
+      <TD><FONT size="-1"><A href="gpstools.htm">Overview</A> | <A href="gpstools0.htm">Specifications</A> | <A href="gpstools1.htm">Program Execution</A> | Parameter Estimator | <A href="gpstools3.htm">Plot Data</A> | <A href="gpstools4.htm">Utilities</A> | <A href="gpstools5.htm">Data Files</A> | <A href="gpstools6.htm">Libraries</A> </FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<TABLE width="100%" cellpadding="0" height="60">
+  <TBODY>
+    <TR>
+      <TD width="90%">
+      <P><B><FONT size="+1">GPS Precise Analysis Software GpsTools: </FONT><FONT size="+1">Parameter Estimator (7)</FONT></B></P>
+      </TD>
+      <TD valign="bottom" align="right"><FONT size="-1"><A href="../index.shtml"></A></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<HR>
+<TABLE>
+  <TBODY>
+    <TR>
+      <TD><FONT size="-1"><A href="gpstools2.htm">(1)</A> <A href="gpstools2_1.htm">(2)</A> <A href="gpstools2_2.htm">(3)</A> <A href="gpstools2_3.htm">(4)</A> <A href="gpstools2_4.htm">(5)</A> <A href="gpstools2_5.htm">(6)</A> (7) <A href="gpstools2_7.htm">(8)</A></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P align="left"><A name="qualityctr"></A><A name="qualityctr"><U><B>Quality Control Setting</B></U></A></P>
+<P align="center"><IMG src="image/image16.jpg" border="0" width="313" height="427"></P>
+<CENTER>
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="200">
+  <COL span="1" width="600">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">Item</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">Operation</FONT></TH>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Re-Estimate without Excluded </FONT></I></TD>
+      <TD><FONT size="-1">Set whether rollback and re-estimation are
+      done or not after excluding abnormal satellites
+      and receivers.<BR>
+      If setting it OFF, no rollback or re-estimation
+      are done.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Outlier Thres. of Prefit Res.</FONT></I></TD>
+      <TD><FONT size="-1">Reject the measurement data as outliers if
+      the pre-fit residuals of the observation
+      minus model (O-C) is over the value (sigmas).<BR>
+      If setting it 0, the outlier rejection is
+      not applied.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Outlier Thres. of Prefit Res</FONT></I></TD>
+      <TD><FONT size="-1">Reject the measurement data as outliers if
+      the post-fit residuals of the observation
+      minus model (O-C) is over the value (sigmas)
+      and the re-estimation process runs.<BR>
+      <FONT size="-1">If setting it 0, the outlier rejection is
+      not applied.</FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Arc Max Outlier Rate</FONT></I></TD>
+      <TD><FONT size="-1">Set the maximum outlier rate of an arc. If
+      the rate of outlier in an arc is over the
+      value, the measurement data are rejected
+      as in the abnormal arc.<BR>
+      <FONT size="-1"><FONT size="-1">If setting it 0, the outlier rejection of
+      the arc is not applied.</FONT></FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Arc Max Postfit Residual</FONT></I></TD>
+      <TD><FONT size="-1">Set the maximum post-fit residuals RMS (m)
+      in an arc. If the pos-fit residuals RMS is
+      over the value, the measurement data are
+      rejected as in the abnormal arc.<BR>
+      <FONT size="-1"><FONT size="-1">If setting it 0, the outlier rejection of
+      the arc is not applied.</FONT></FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Satellite Max Outlier Rate</FONT></I></TD>
+      <TD><FONT size="-1">Set the maximum rate of outliers for satellites.
+      If the outlier rate exceeds the value for
+      a satellite, the measurement data of the
+      satellite are excluded as invalid.<BR>
+      If setting it 0, the satellite exclusion
+      is not applied.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Satellite Max Postfit Residual</FONT></I></TD>
+      <TD><FONT size="-1">Set the maximum RMS value of the postfit
+      residuals for satellites (m). If the RMS
+      value of the postfit residuals exceeds the
+      value for a satellite, the measurement data
+      of the satellite are excluded as invalid.<BR>
+      <FONT size="-1">If setting it 0, the satellite exclusion
+      is not applied.</FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Receiver Max Outlier Rate</FONT></I></TD>
+      <TD><FONT size="-1"><FONT size="-1">Set the maximum rate of outliers for receivers.
+      If the outlier rate exceeds the value for
+      a receiver, the measurement data of the receiver
+      are excluded as invalid.<BR>
+      If setting it 0, the receiver exclusion is
+      not applied.</FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Receiver Max Postfit Residual</FONT></I></TD>
+      <TD><FONT size="-1"><FONT size="-1">Set the maximum RMS value of the postfit
+      residuals for receivers (m). If the RMS value
+      of the postfit residuals exceeds the value
+      for a receiver, the measurement data of the
+      receiver are excluded as invalid.<BR>
+      If setting it 0, the receiver exclusion is
+      not applied.</FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Sat. Max Outage of Valid Obs</FONT></I></TD>
+      <TD><FONT size="-1">Set the maximum outage time of valid observation
+      data for satellites. If the outage time exceeds
+      the value for a satellite, the measurement
+      data of the satellite are excluded as invalid<BR>
+      <FONT size="-1"><FONT size="-1">If setting it 0, the satellite exclusion
+      is not applied.</FONT></FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Rcv. Max Outage of Valid Obs</FONT></I></TD>
+      <TD><FONT size="-1"><FONT size="-1">Set the maximum outage time of valid observation
+      data for receivers. If the outage time exceeds
+      the value for a receiver, the measurement
+      data of the receiver are excluded as invalid<BR>
+      <FONT size="-1">If setting it 0, the receiver exclusion is
+      not applied.</FONT></FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Satellite Clock Max Std Dev</FONT></I></TD>
+      <TD><FONT size="-1">Set the maximum standard deviation of satellite
+      clock biases. If an estimated value of the
+      satellite clock bias exceeds the value, the
+      estimated result is excluded as invalid.<BR>
+      <FONT size="-1"><FONT size="-1"><FONT size="-1">If setting it 0, the estimated result exclusion
+      is not applied.</FONT></FONT></FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Receiver Clock Max Std Dev</FONT></I></TD>
+      <TD><FONT size="-1"><FONT size="-1">Set the maximum standard deviation of receiver
+      clock biases. If an estimated value of the
+      receiver clock bias exceeds the value, the
+      estimated result is excluded as invalid.<BR>
+      <FONT size="-1"><FONT size="-1">If setting it 0, the estimated result exclusion
+      is not applied.</FONT></FONT></FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Receiver Position Max Std Dev</FONT></I></TD>
+      <TD><FONT size="-1"><FONT size="-1">Set the maximum standard deviation of receiver
+      positions. If an estimated value of the receiver
+      position exceeds the value, the estimated
+      result is excluded as invalid.<BR>
+      <FONT size="-1"><FONT size="-1">If setting it 0, the estimated result exclusion
+      is not applied.</FONT></FONT></FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><FONT size="-1"><I>Output Statistics/Residuals</I></FONT></TD>
+      <TD><FONT size="-1">Set whether residuals information is output
+      to file or not.</FONT><FONT size="-1"><BR>
+      If setting it ON, the residuals are output
+      to residuals file. In case of setting it
+      ON, additional memories are required for
+      the estimation process.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Debug Error Stop/Output Debug Info</FONT></I></TD>
+      <TD><FONT size="-1">Set whether the estimation process stops
+      and transfers to debug mode if an error occurs
+      or not. This is also for setting whether
+      the debug information file is output or not.
+      <FONT size="-1">Usually set it OFF to avoid performance degradation.
+      </FONT>Set it ON to confirm or get the detailed
+      error information.</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">OK</FONT></I></TD>
+      <TD><FONT size="-1"><FONT size="-1"><FONT size="-1">Enable changes and close dialog.</FONT></FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><I><FONT size="-1">Cancel</FONT></I></TD>
+      <TD><FONT size="-1"><FONT size="-1">Abandon changes and close dialog.</FONT></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE><BR>
+</CENTER><HR>
+<TABLE width="100%" cellpadding="0">
+  <TBODY>
+    <TR>
+      <TD align="center"><FONT size="-2"><FONT size="-2">Copyright (C) 2004-2008, T.Takasu, All Rights
+      Reserved.</FONT></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+</BODY>
+</HTML>
