@@ -1,0 +1,219 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META name="GENERATOR" content="IBM HomePage Builder 2001 V5.0.3 for Windows">
+<TITLE>GpsTools : パラメータ推定</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff" text="#666666" link="#33cc66" vlink="#006666" alink="#99ff00">
+<TABLE width="100%" cellspacing="0">
+  <TBODY>
+    <TR>
+      <TD><FONT size="-1"><A href="gpstools.htm">概要</A> | </FONT><FONT size="-1"><A href="gpstools0.htm">仕様</A> | <A href="gpstools1.htm">プログラム実行</A> | </FONT><FONT size="-1">パラメータ推定 | </FONT><FONT size="-1"><A href="gpstools3.htm">データ表示</A> | </FONT><FONT size="-1"><A href="gpstools4.htm">ユーティリティ</A> | </FONT><FONT size="-1"><A href="gpstools5.htm">データファイル</A> | <A href="gpstools6.htm">ライブラリ</A></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<TABLE width="100%" cellpadding="0" height="60">
+  <TBODY>
+    <TR>
+      <TD width="90%">
+      <P><FONT size="+1">GPS精密解析ソフトウェア GpsTools </FONT><FONT size="+1">: 観測データ編集/パラメータ推定 (8)</FONT><BR>
+      <FONT size="-1">GPS Precise Analysis Software GpsTools</FONT> : <FONT size="-1">Obs Data Editor/Parameter Estimator</FONT><FONT size="-1"> </FONT></P>
+      </TD>
+      <TD valign="bottom" align="right"><FONT size="-1"><A href="../index.shtml"></A></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<HR>
+<TABLE>
+  <TBODY>
+    <TR>
+      <TD><FONT size="-1"><A href="gpstools2.htm">(1)</A> <A href="gpstools2_1.htm">(2)</A> <A href="gpstools2_2.htm">(3)</A> <A href="gpstools2_3.htm">(4)</A> <A href="gpstools2_4.htm">(5)</A> <A href="gpstools2_5.htm">(6)</A> <A href="gpstools2_6.htm">(7)</A> (8)</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P align="left"><U><A name="dirsetting">データディレクトリ/ファイル設定<FONT size="-1"> Data Directory/File Settings</FONT></A></U></P>
+<P align="center"><IMG src="image/image17.jpg" border="0" width="486" height="385"></P>
+<CENTER>
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="200">
+  <COL span="1" width="600">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">項目</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">操作</FONT></TH>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Raw Observation Data</FONT></TD>
+      <TD><FONT size="-1">RINEX観測データディレクトリを指定します。<BR>
+      直接入力するか[...]ボタンを押して表示されるディレクトリ選択ダイアログでディレクトリパスを選択してください。<BR>
+      ディレクトリパス中のキーワードは<A href="#keyword">ディレクトリパス中のキーワードの置換</A>に従って置換されます。<BR>
+      空白が指定された場合には<A href="gpstools2.htm#gpsest">観測データ編集/パラメータ推定設定/実行画面</A>のOutput Directoryに設定されたディレクトリパスが使用されます。(以下ディレクトリパスに関しては同様)</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Navigation Message</FONT></TD>
+      <TD><FONT size="-1">航法メッセージデータディレクトリを指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Satellite Ephemerides</FONT></TD>
+      <TD><FONT size="-1">衛星軌道を既知の値に固定する場合に入力する衛星軌道暦データディレクトリを指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Satellite/Receiver Clocks</FONT></TD>
+      <TD><FONT size="-1">衛星時計または受信機時計を既知の値に固定する場合に入力する衛星・受信機時計データのディレクトリを指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Receiver Position</FONT>s</TD>
+      <TD><FONT size="-1">観測局位置を既知の値に固定する場合に入力する観測局位置データディレクトリを指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Earth Rotation Parameters</FONT></TD>
+      <TD><FONT size="-1">地球回転パラメータを既知の値に固定する場合に入力する地球回転パラメータデータディレクトリを指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Tropos/Meteo Parameters</FONT></TD>
+      <TD><FONT size="-1">対流圏パラメータ及び気象データを既知の値に固定する場合に入力する対流圏パラメータ/気象データディレクトリを指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Input Estimated Sat Params.</FONT></TD>
+      <TD><FONT size="-1">衛星パラメータを推定値に固定する場合に入力する衛星パラメータ推定値の</FONT><FONT size="-2"></FONT><FONT size="-1">ディレクトリを指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Input Estimated Rcv Params.</FONT></TD>
+      <TD><FONT size="-1">受信機パラメータを推定値に固定する場合に入力する受信機パラメータ推定値のディレクトリを指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Satellite Antenna PCV</FONT></TD>
+      <TD><FONT size="-1">衛星アンテナPCVパラメータファイルを指定します。<BR>
+      <FONT size="-1">ANTEX形式ファイルまたは</FONT>残差・統計情報表示で出力した衛星アンテナPCVパラメータ(m-file)を指定して下さい。<BR>
+      直接入力するか[...]ボタンを押して表示されるファイル選択ダイアログでファイルを選択してください。[.]ボタンを押すとファイルの内容をテキストエディタで表示することができます。</FONT><FONT size="-1"><BR>
+      空白が指定された場合、デフォルトの衛星アンテナPCVパラメータが使用されます。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Receiver Antenna PCV</FONT></TD>
+      <TD><FONT size="-1">受信アンテナPCVパラメータファイルを指定します。<BR>
+      IGS_01.PCV形式またはANTEX形式ファイルを指定して下さい。<BR>
+      空白が指定された場合、受信アンテナPCV補正は行いません。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Receiver Position</FONT></TD>
+      <TD><FONT size="-1">受信機位置を設定ファイルで指定する場合に受信機位置パラメータファイル(m-file)を指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Ocean Loading Parameter</FONT></TD>
+      <TD><FONT size="-1">海洋荷重潮汐係数ファイル(BLQ形式)を指定します。<BR>
+      空白が指定された場合、海洋荷重潮汐による局位置変動補正は行いません。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Excluded Sats/Rcvs</FONT></TD>
+      <TD><FONT size="-1">除外衛星/受信機パラメータを指定します。<BR>
+      空白が指定された場合、衛星/受信機を除外しません。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Phase Multipath Profile</FONT></TD>
+      <TD><FONT size="-1">搬送波位相マルチパスプロファイルファイルを指定します。<BR>
+      <A href="gpstools4.htm#genmp">マルチパスプロファイル推定</A>で出力されたマルチパスプロファイルデータを指定して下さい。<BR>
+      空白が指定された場合、搬送波位相マルチパス補正は行いません。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">?</FONT></TD>
+      <TD><FONT size="-1">ディレクトリ・ファイルパス中の<A href="#keyword">キーワード置換</A>に関する情報を表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">OK</FONT></TD>
+      <TD><FONT size="-1">設定変更を有効として、画面を閉じます。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Cancel</FONT></TD>
+      <TD><FONT size="-1">設定変更を無効として、画面を閉じます。</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE><BR>
+</CENTER>
+<DIV align="center">
+<HR>
+<P align="left"><U><A name="keyword">ディレクトリ/ファイルパス中のキーワード置換<FONT size="-1"> Keyword Replacement in Directory or File
+Settings</FONT></A></U></P>
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="150">
+  <COL span="1" width="300">
+  <COL span="1" width="150">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">キーワード</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">置換文字列</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">範囲</FONT></TH>
+    </TR>
+    <TR>
+      <TD align="center"><FONT size="-1">%P</FONT></TD>
+      <TD align="center"><FONT size="-1">install directory path</FONT></TD>
+      <TD align="center"><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><FONT size="-1">%S</FONT></TD>
+      <TD align="center"><FONT size="-1">station code (UPPER case)</FONT></TD>
+      <TD align="center"><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><FONT size="-1">%s</FONT></TD>
+      <TD align="center"><FONT size="-1">station code (lower case)</FONT></TD>
+      <TD align="center"><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><FONT size="-1">%G</FONT></TD>
+      <TD align="center"><FONT size="-1">station code (tail 4 chars)</FONT></TD>
+      <TD align="center"><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><FONT size="-1">%Y</FONT></TD>
+      <TD align="center"><FONT size="-1">year (4 digits)</FONT></TD>
+      <TD align="center"><FONT size="-1">1970-9999</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><FONT size="-1">%y</FONT></TD>
+      <TD align="center"><FONT size="-1">year (2 digits)</FONT></TD>
+      <TD align="center"><FONT size="-1">00-99</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><FONT size="-1">%m</FONT></TD>
+      <TD align="center"><FONT size="-1">month</FONT></TD>
+      <TD align="center"><FONT size="-1">01-12</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><FONT size="-1">%d</FONT></TD>
+      <TD align="center"><FONT size="-1">day</FONT></TD>
+      <TD align="center"><FONT size="-1">01-31</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><FONT size="-1">%n</FONT></TD>
+      <TD align="center"><FONT size="-1">day of year</FONT></TD>
+      <TD align="center"><FONT size="-1">001-366</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><FONT size="-1">%W</FONT></TD>
+      <TD align="center"><FONT size="-1">gpsweek no.</FONT></TD>
+      <TD align="center"><FONT size="-1">0000-9999</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><FONT size="-1">%D</FONT></TD>
+      <TD align="center"><FONT size="-1">day of gpsweek</FONT></TD>
+      <TD align="center"><FONT size="-1">0,1,2,3,4,5,6</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><FONT size="-1">%M</FONT></TD>
+      <TD align="center"><FONT size="-1">iers bulletin month</FONT></TD>
+      <TD align="center"><FONT size="-1">1,2,3,...</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE><BR>
+</DIV>
+<HR>
+<TABLE width="100%" cellpadding="0">
+  <TBODY>
+    <TR>
+      <TD align="center"><FONT size="-2"><FONT size="-2">Copyright (C) 2004-2006, T.Takasu, All Rights
+      Reserved.</FONT></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+</BODY>
+</HTML>

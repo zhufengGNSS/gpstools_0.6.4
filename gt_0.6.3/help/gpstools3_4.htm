@@ -1,0 +1,350 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META name="GENERATOR" content="IBM HomePage Builder 2001 V5.0.3 for Windows">
+<TITLE>GpsTools : データ表示</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff" text="#666666" link="#33cc66" vlink="#006666" alink="#99ff00">
+<TABLE width="100%" cellspacing="0">
+  <TBODY>
+    <TR>
+      <TD><FONT size="-1"><A href="gpstools.htm">概要</A> | </FONT><FONT size="-1"><A href="gpstools0.htm">仕様</A> | <A href="gpstools1.htm">プログラム実行</A> | </FONT><FONT size="-1"><A href="gpstools2.htm">パラメータ推定</A> | </FONT><FONT size="-1">データ表示 | </FONT><FONT size="-1"><A href="gpstools4.htm">ユーティリティ</A> | </FONT><FONT size="-1"><A href="gpstools5.htm">データファイル</A> | <A href="gpstools6.htm">ライブラリ</A></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<TABLE width="100%" cellpadding="0" height="60">
+  <TBODY>
+    <TR>
+      <TD><FONT size="+1">GPS精密解析ソフトウェア GpsTools : データ表示
+      (5)</FONT><BR>
+      <FONT size="-1">GPS Precise Analysis Software GpsTools :
+      Plot Data</FONT></TD>
+      <TD valign="bottom" align="right"><FONT size="-1"><A href="../index.shtml"></A></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<HR>
+<TABLE>
+  <TBODY>
+    <TR>
+      <TD><FONT size="-1"><A href="gpstools3.htm">(1)</A> <A href="gpstools3_1.htm">(2)</A> <A href="gpstools3_2.htm">(3)</A> <A href="gpstools3_3.htm">(4)</A> (5) <A href="gpstools3_5.htm">(6)</A> <A href="gpstools3_6.htm">(7)</A> <A href="gpstools3_7.htm">(8)</A> <A href="gpstools3_8.htm">(9)</A> <A href="gpstools3_9.htm">(10)</A> <A href="gpstools3_10.htm">(11)</A> <A href="gpstools3_11.htm">(12)</A></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P><U><A name="plotclk">衛星/受信機時計表示<FONT size="-1"> Plot Satellite/Receiver Clock</FONT></A></U></P>
+<P align="center"><IMG src="image/image108.jpg" border="0" width="608" height="447"><BR>
+<FONT size="-1">(衛星時計バイアス/バイアス誤差表示 Satellite
+Clock-Bias/Bias Erro Plot)</FONT></P>
+<DIV align="center">
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="20">
+  <COL span="1" width="180">
+  <COL span="1" width="600">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0" colspan="2" width="191"><FONT size="-1">項目</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0" width="578"><FONT size="-1">操作</FONT></TH>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">メニュー</FONT></TD>
+      <TD><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Data</FONT></TD>
+      <TD><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="left" rowspan="5"><FONT size="-1">　</FONT></TD>
+      <TD align="left"><FONT size="-1">Read...</FONT></TD>
+      <TD><FONT size="-1"><A href="#readdata">データ読み込み</A>画面を表示し、データを読み込みます。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">New Window</FONT></TD>
+      <TD><FONT size="-1">現在表示中のデータを再読込し、別ウインドウを開いて表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Output...</FONT></TD>
+      <TD><FONT size="-1">現在表示中のデータをCSV形式で出力します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Export Plot...</FONT></TD>
+      <TD><FONT size="-1"><A href="#exportplots">画像出力</A>画面を表示し、一連の画面を画像ファイルに保存します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Options...</FONT></TD>
+      <TD><FONT size="-1"><A href="#options">表示オプション</A>画面を表示し、表示オプションを変更します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Plot</FONT></TD>
+      <TD><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD rowspan="7"><FONT size="-1">　</FONT></TD>
+      <TD><FONT size="-1">Clock Bias</FONT></TD>
+      <TD><FONT size="-1">衛星/受信機時計バイアスの値を</FONT><FONT size="-1">グラフ表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Clock Drift</FONT></TD>
+      <TD><FONT size="-1">衛星/受信機時計ドリフトの値をグラフ表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1"><FONT size="-1">Clock Bias Error</FONT></FONT></TD>
+      <TD><FONT size="-1">基準衛星/受信機時計</FONT><FONT size="-2"></FONT><FONT size="-1">と</FONT><FONT size="-1"><FONT size="-1">比較した衛星/受信機時計バイアスの誤差をグラフ表示します。</FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Clock Error by Sats/Rcvs</FONT></TD>
+      <TD><FONT size="-1">衛星/受信機毎の衛星/受信機時計バイアスRMS誤差をバーグラフ表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Clock</FONT><FONT size="-1"> Error by Dates</FONT></TD>
+      <TD><FONT size="-1">日付毎の衛星/受信機時計バイアスRMS誤差をバーグラフ表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Clock Stability</FONT></TD>
+      <TD><FONT size="-1">衛星/受信機時計安定度(Allan Deviation)グラフを表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Summary...</FONT></TD>
+      <TD><FONT size="-1"><FONT size="-1">基準衛星/受信機時計</FONT><FONT size="-1">と</FONT><FONT size="-1"><FONT size="-1">比較した衛星/受信機時計バイアスの誤差</FONT></FONT>サマリを出力します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="left" colspan="2"><FONT size="-1">Satellites/Receivers</FONT></TD>
+      <TD><FONT size="-1">表示する衛星/受信機を選択します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">&lt; &gt; (衛星/受信機切替ボタン)</FONT></TD>
+      <TD><FONT size="-1">ボタンを押す毎に表示する衛星/受信機を切り替えます。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">(グラフ表示画面)</FONT></TD>
+      <TD><FONT size="-1">グラフ下の時間軸近くでマウスの左ボタンをクリックすることによりカーソルが移動カーソルに変わり、左右にドラッグすることにより時間軸を移動することができます。<BR>
+      グラフ下の時間軸近くでマウスの右ボタンをクリックすることによりカーソルが拡大/縮小カーソル変わり、左右にドラッグすることにより時間軸を拡大/縮小することができます。<BR>
+      グラフ左の値軸近くでマウスの左ボタンをクリックすることによりカーソルが移動カーソルに変わり、上下にドラッグすることにより値軸を移動することができます。<BR>
+      グラフ左の値軸近くでマウスの右ボタンをクリックすることによりカーソルが拡大/縮小カーソル変わり、上下にドラッグすることにより値軸を拡大/縮小することができます。</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+</DIV>
+<DIV align="center"></DIV>
+<HR>
+<P><U><A name="readdata">データ読み込み<FONT size="-1"> Read Data Dialog</FONT></A></U></P>
+<P align="center"><IMG src="image/image109.jpg" border="0" width="326" height="391"></P>
+<DIV align="center">
+<DIV align="center">
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="20">
+  <COL span="1" width="180">
+  <COL span="1" width="600">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0" colspan="2" width="191"><FONT size="-1">項目</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0" width="578"><FONT size="-1">操作</FONT></TH>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Start Time (GPST)</FONT></TD>
+      <TD><FONT size="-1">読み込む衛星/受信機時計データの開始日時を指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">End Time (GPST)</FONT></TD>
+      <TD><FONT size="-1">読み込む衛星/受信機時計データの終了日時を指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Time Interval</FONT></TD>
+      <TD><FONT size="-1">読み込む衛星/受信機時計データの時間間隔(秒)を指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Processing Unit Time</FONT></TD>
+      <TD><FONT size="-1">推定結果を読み込む場合に解析時間単位(hr)を指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Clock Type</FONT></TD>
+      <TD><FONT size="-1">衛星時計/受信機時計の種別を指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="left" colspan="2"><FONT size="-1">Satellites/Receivers</FONT></TD>
+      <TD><FONT size="-1">衛星/受信機を選択します。<BR>
+      [...]ボタンを押して表示される衛星/受信機選択画面で衛星/受信機を選択してください。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Receiver/Station Clock</FONT></TD>
+      <TD><FONT size="-1">読み込む衛星/受信機時計データの種別を指定します。<BR>
+      <FONT size="-1">・Est(Forward) : Forward推定値<BR>
+      <FONT size="-1">・Est(Backward) : Backward推定値<BR>
+      </FONT><FONT size="-1"><FONT size="-1">・Est(Smoothed) : Smoothed推定値<BR>
+      </FONT></FONT>・IGS Final : IGS Final時計<BR>
+      ・IGS Rapid : IGS Rapid時計<BR>
+      ・IGS URapid : IGS Ultra-Rapid時計<BR>
+      ・IGS URapid(Pred) : IGS Ultira-Rapid時計推定値<BR>
+      ・CODE, EMR, ESA, GFZ, JPL, MIT, NGS : 各AC時計解<BR>
+      <FONT size="-1"><FONT size="-1"><FONT size="-1"><FONT size="-1">・IGS/CODE : IGS Final時計をCODE時計で補間した推定値<BR>
+      ・CODE Rapid : CODE Rapid時計<BR>
+      ・IGR/CODE Rapid : <FONT size="-1"><FONT size="-1"><FONT size="-1"><FONT size="-1">IGS Rapid時計をCODE Rapid時計で補間した推定値</FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT><BR>
+      <FONT size="-1">・Broadcast : 航法メッセージ衛星時</FONT>計</TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Reference Satellte/Receiver Clock</FONT></TD>
+      <TD><FONT size="-1"><FONT size="-1">比較を行う場合の基準となる衛星/受信機時計種別を指定します。<BR>
+      ・(同上)</FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Baseline Clock</FONT></TD>
+      <TD><FONT size="-1">衛星/受信機時計比較時の戦略を指定します。<BR>
+      ・(空白) : 衛星/受信機時計バイアスの絶対値を比較します。<BR>
+      ・Ref Rcv-Clock : 推定時の基準時計局の時計を基準にして比較します。<BR>
+      ・Mean Sat-Clock : 全衛星時計の平均を基準にして比較します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Interpolate Reference Clock</FONT></TD>
+      <TD><FONT size="-1">比較を行う場合の基準となる衛星/受信機時計の補間を行うか否かを指定します。<BR>
+      ・OFF : 補間は行いません。<BR>
+      ・ON : 線形補間を行います。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1"><FONT size="-1">Satellite/Receiver Clock Directory</FONT></FONT></TD>
+      <TD><FONT size="-1"><FONT size="-1">読み込む衛星/受信機時計データのディレクトリパスを指定します。<BR>
+      ディレクトリパス中にキーワードが含まれている場合、<A href="gpstools2_7.htm#keyword">ディレクトリパス中のキーワード置換</A>に従い置換されます。</FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Reference Satellite/Receiver Clock Directory</FONT></TD>
+      <TD><FONT size="-1">基準となる衛星/受信機位置データのディレクトリパスを指定します。<BR>
+      ディレクトリパス中にキーワードが含まれている場合、<A href="gpstools2_7.htm#keyword">ディレクトリパス中のキーワード置換</A>に従い置換されます。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">OK</FONT></TD>
+      <TD><FONT size="-1">設定に従い衛星/受信機データを読み込みます。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Cancel</FONT></TD>
+      <TD><FONT size="-1">設定を無効にして画面を閉じます。</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE><BR>
+</DIV>
+</DIV>
+<HR>
+<P><U><A name="exportplots">画像出力 <FONT size="-1">Export Plots Dialog</FONT></A></U></P>
+<P align="center"><IMG src="image/image110.jpg" border="0" width="280" height="165"></P>
+<DIV align="center">
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="20">
+  <COL span="1" width="180">
+  <COL span="1" width="600">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0" colspan="2" width="191"><FONT size="-1">項目</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0" width="578"><FONT size="-1">操作</FONT></TH>
+    </TR>
+    <TR>
+      <TD align="left" colspan="2"><FONT size="-1">File Name</FONT></TD>
+      <TD><FONT size="-1">出力する画像ファイルの名前を入力します。一連の画像を出力する場合は名前の後ろに01,
+      02, 03, ...と連番が付加されます。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">File Format</FONT></TD>
+      <TD><FONT size="-1">出力する画像ファイル形式を選択します。</FONT><BR>
+      <FONT size="-1">・EPS : EPSファイル<BR>
+      ・JPEG : JPEGファイル<BR>
+      ・TIFF : TIFFファイル<BR>
+      ・META FILE : Windows Metaファイル</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Directory</FONT></TD>
+      <TD><FONT size="-1">出力する画像を格納するディレクトリを指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">OK</FONT></TD>
+      <TD><FONT size="-1">設定に従い画像を出力します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Cancel</FONT></TD>
+      <TD><FONT size="-1">設定変更を無効として画面を閉じます。</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+</DIV>
+<DIV align="center"><BR>
+</DIV>
+<HR>
+<P><U><A name="options">表示オプション<FONT size="-1"> Options Dialog</FONT></A></U></P>
+<P align="center"><IMG src="image/image111.jpg" border="0" width="326" height="263"></P>
+<DIV align="center">
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="20">
+  <COL span="1" width="180">
+  <COL span="1" width="600">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0" colspan="2" width="191"><FONT size="-1">項目</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0" width="578"><FONT size="-1">操作</FONT></TH>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Show Referece Clock</FONT></TD>
+      <TD><FONT size="-1">基準となる衛星/受信機時計(ラベル)をグラフ中に表示するか否か選択します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Show Mean and RMS Error</FONT></TD>
+      <TD><FONT size="-1">平均及びRMS誤差の値をグラフ中に表示するか否か選択します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Show Relativ Value</FONT></TD>
+      <TD><FONT size="-1">相対時計表示を行うか否か選択します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Show Est Std Dev</FONT></TD>
+      <TD><FONT size="-1">グラフ中に表示する推定標準偏差の倍率を指定します。<BR>
+      0を指定した場合は標準偏差の値は表示しません。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Clock Units</FONT></TD>
+      <TD><FONT size="-1">衛星/受信機時計の単位を選択します。(nsec/m)</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Plot Style</FONT></TD>
+      <TD><FONT size="-1">グラフ表示スタイルを選択します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Plot Line Width / Marker Size</FONT></TD>
+      <TD><FONT size="-1">グラフの線幅、マーカーサイズを指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Detrend Postion</FONT></TD>
+      <TD><FONT size="-1">デトレンドを行うか否か選択します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1"><FONT size="-1">Plot Axis Range</FONT></FONT></TD>
+      <TD><FONT size="-1">グラフの値域 (上下限値)を指定します。(nsec)</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">OK</FONT></TD>
+      <TD><FONT size="-1">設定に従い表示画面を更新します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Cancel</FONT></TD>
+      <TD><FONT size="-1">設定変更を無効にして画面を閉じます。</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE><BR>
+</DIV>
+<HR>
+<P><U>衛星/受信機時計バイアス誤差衛星毎バーグラフ表示<FONT size="-1"> Plot <FONT size="-1">Satellite/Receiver </FONT>Clock-Bias Errors by Satellites/Receivers</FONT></U></P>
+<P align="center"><IMG src="image/image112.jpg" border="0" width="608" height="447"><BR>
+</P>
+<P><U>衛星/受信機時計安定度(Allan Deviation)表示<FONT size="-1"> Plot Satellite/Receiver Clock Stabilities
+(Allan Deviations)</FONT></U></P>
+<P align="center"><IMG src="image/image113.jpg" border="0" width="608" height="447"><BR>
+</P>
+<P><U>衛星/受信機時計推定値テキスト出力<FONT size="-1"> Satellite/Receiver Clock Output View</FONT></U></P>
+<P align="center"><IMG src="image/image114.jpg" border="0" width="608" height="427"></P>
+<P><U>衛星/受信機時計誤差サマリ出力<FONT size="-1"> Satellite/Receiver Clock Error Summary View</FONT></U></P>
+<P align="center"><IMG src="image/image115.jpg" border="0" width="608" height="427"></P>
+<HR>
+<TABLE width="100%" cellpadding="0">
+  <TBODY>
+    <TR>
+      <TD align="center"><FONT size="-2"><FONT size="-2">Copyright (C) 2004-2006, T.Takasu, All Rights
+      Reserved.</FONT></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+</BODY>
+</HTML>

@@ -1,0 +1,25 @@
+%-------------------------------------------------------------------------------
+% [system] : GpsTools
+% [module] : non-cc receiver definitions
+% [format] : - 1 line = 1 record
+%            - % ...  = comments
+%            - fields separated by comma(,)
+% [version]: $Revision:$ $Date: 06/03/24 18:19 $
+% [history]: 06/07/06  0.1  new
+%-------------------------------------------------------------------------------
+
+% non-cc receivers reporting C1 instead of P1
+
+TRIMBLE 4700
+TRIMBLE 5700
+TRIMBLE MS750
+LEICA RS500
+LEICA CRS1000
+LEICA SR520
+LEICA SR530
+LEICA SR9600
+NOV MILLEN-RT2
+NOV MILLEN-STD
+NOV MILLEN-STDW
+NOVATEL OEM4
+NOV WAAS

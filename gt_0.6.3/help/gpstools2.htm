@@ -1,0 +1,577 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META name="GENERATOR" content="IBM HomePage Builder 2001 V5.0.3 for Windows">
+<TITLE>GpsTools : パラメータ推定</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff" text="#666666" link="#33cc66" vlink="#006666" alink="#99ff00">
+<TABLE width="100%" cellspacing="0">
+  <TBODY>
+    <TR>
+      <TD><FONT size="-1"><A href="gpstools.htm">概要</A> | </FONT><FONT size="-1"><A href="gpstools0.htm">仕様</A> | <A href="gpstools1.htm">プログラム実行</A> | </FONT><FONT size="-1">パラメータ推定 | </FONT><FONT size="-1"><A href="gpstools3.htm">データ表示</A> | </FONT><FONT size="-1"><A href="gpstools4.htm">ユーティリティ</A> | </FONT><FONT size="-1"><A href="gpstools5.htm">データファイル</A> | <A href="gpstools6.htm">ライブラリ</A></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<TABLE width="100%" cellpadding="0" height="60">
+  <TBODY>
+    <TR>
+      <TD width="90%">
+      <P><FONT size="+1">GPS精密解析ソフトウェア GpsTools </FONT><FONT size="+1">: 観測データ編集/パラメータ推定 (1)</FONT><BR>
+      <FONT size="-1">GPS Precise Analysis Software GpsTools</FONT> : <FONT size="-1">Obs Data Editor/Parameter Estimator</FONT><FONT size="-1"> </FONT></P>
+      </TD>
+      <TD valign="bottom" align="right"></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<HR>
+<TABLE>
+  <TBODY>
+    <TR>
+      <TD><FONT size="-1">(1) <A href="gpstools2_1.htm">(2)</A> <A href="gpstools2_2.htm">(3)</A> <A href="gpstools2_3.htm">(4)</A> <A href="gpstools2_4.htm">(5)</A> <A href="gpstools2_5.htm">(6)</A> <A href="gpstools2_6.htm">(7)</A> <A href="gpstools2_7.htm">(8)</A></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P><U><A name="gpsest">観測データ編集/パラメータ推定設定/実行<FONT size="-1"> Obs Data Editor/Parameter Estimator</FONT></A></U></P>
+<P align="center"><FONT size="-1"><IMG src="image/image7.jpg" border="0" width="606" height="425"></FONT></P>
+<DIV align="center">
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="20">
+  <COL span="1" width="180">
+  <COL span="1" width="600">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0" colspan="2" width="191"><FONT size="-1">項目</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0" width="578"><FONT size="-1">操作</FONT></TH>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Satellites</FONT></TD>
+      <TD><FONT size="-1">解析に使用する衛星リストを表示します。<BR>
+      </FONT><FONT size="-1">衛星リストを変更する場合は「Satellites...」ボタンを押して表示される<A href="#editsatlist">衛星リスト編集</A>画面で衛星リストを編集してください。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Receivers</FONT></TD>
+      <TD><FONT size="-1">解析に使用する受信機リストを表示します。<BR>
+      </FONT><FONT size="-1">受信機リストを変更する場合は「Receivers...」ボタンを押して表示される<A href="#editrcvlist">受信機リスト編集</A>画面で受信機リストを編集してください。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Estimation Start Time</FONT></TD>
+      <TD><FONT size="-1">推定開始日時(GPS Time)を設定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Estimation End Time</FONT></TD>
+      <TD><FONT size="-1">推定終了日時(GPS Time)を設定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Estimation Interval</FONT></TD>
+      <TD><FONT size="-1">推定時刻間隔(秒)を設定します。<BR>
+      観測データのサンプリング間隔の整数倍を指定してください。<BR>
+      現行バージョンでは1秒以上の値を指定して下さい。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Est Unit/Overlap Time</FONT></TD>
+      <TD><FONT size="-1">解析単位時間(hr)及びオーバラップ時間(hr)を設定します。<BR>
+      解析単位時間は推定処理を分割する単位(hr)です。この設定値に従い推定期間が分割され推定結果はこの分割期間単位で格納されます。例えば推定開始/終了日時が2004/1/1
+      2:30-9:30、推定時刻間隔1分、推定分割単位時間3
+      hrとした場合、推定期間が2:30-2:59, 3:00-5:59,
+      6:00-8:59, 9:00-9:30の期間に分割されて推定が実行されます。推定期間の分割を行いたくない場合には十分に大きな値を設定して下さい。<BR>
+      オーバラップ時間は(分割された)推定期間の前後に付加する推定時間です。一般には0を設定して下さい。解析<FONT size="-1">単位時間及びオーバラップ時間の定義を<A href="#proctime">図</A>に示します。</FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Exec Obs Data Editor</FONT></TD>
+      <TD><FONT size="-1"><FONT size="-1">観測データ編集を実行するか否かを設定します。<BR>
+      ・ON : 観測データ編集が実行され、編集済観測データが生成されます。観測データ編集に使用される解析パラメータは<A href="gpstools2_2.htm#obsedit">観測データ編集設定</A>画面で設定したパラメータが使用されます。<BR>
+      <FONT size="-1"><FONT size="-1">・OFF : 観測データ編集は実行されません。事前に観測データ編集を実行し生成された編集済みデータを使って推定を行う場合に選択してください。</FONT></FONT></FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Exec Parameter Estimator</FONT></TD>
+      <TD><FONT size="-1">パラメータ推定の実行パスを設定します。<BR>
+      ・OFF : パラメータ推定は実行しません。観測データ編集のみ実行する場合に指定して下さい。<BR>
+      ・１pass(F) : 1パス(forward)<BR>
+      ・2pass(FB) : 2パス(forward+backward)<BR>
+      </FONT><FONT size="-1">・3pass(FBF) : 3パス(forward+backward+forward)</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Estimation Strategy</FONT></TD>
+      <TD><FONT size="-1">パラメータ推定戦略を設定します。<BR>
+      ・ZD/PPP : ゼロ差(Undifferenced)またはPPP(精密単独測位)<BR>
+      ・DD : 二重差(Double-Differenced)<BR>
+      (現バージョンではDDは正常動作しません)</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Est/Fixed Parameters</FONT></TD>
+      <TD><FONT size="-1">推定または固定するパラメータを設定します。<BR>
+      ボタンを押して表示される<A href="gpstools2_1.htm">推定/固定パラメータ設定</A>画面で設定を行ってください。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Baselines</FONT></TD>
+      <TD><FONT size="-1">パラメータ推定戦略が二重差(DD)の場合に使用する基線(Baseline)を指定します。<BR>
+      ボタンを押して表示される基線設定画面で設定を行ってください。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Satellite Clock Model</FONT></TD>
+      <TD><FONT size="-1">衛星時計を推定する場合に衛星時計の時間変動モデルを設定します。<BR>
+      <FONT size="-1">・White-Noise : White-Noise過程<BR>
+      </FONT>・Gauss-Marcov : Gauss-Marcov過程</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Receiver Clock Model</FONT></TD>
+      <TD><FONT size="-1">受信機時計を推定する場合に受信機時計の時間変動モデルを設定します。<BR>
+      ・White-Noise : White-Noise過程<BR>
+      <FONT size="-1">・Gauss-Marcov : Gauss-Marcov過程</FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Receiver Position Model</FONT></TD>
+      <TD><FONT size="-1">受信機位置を推定する場合に受信機位置の時間変動モデルを設定します。<BR>
+      ・Static : Static (固定値またはRandom-Walk過程)<BR>
+      ・Kinematic : Kinematic (White-Noise過程)</FONT><BR>
+      <FONT size="-1">固定観測点のスタティック測位を行う場合には本設定をStaticとした上で受信機位置Process
+      Noise=0と設定してください。<BR>
+      </FONT><FONT size="-1">受信機位置の時間変動モデルとしてRandom-Walk過程を選択する場合は、本設定をStaticとした上で受信機位置のProcess
+      Noise設定&gt;0として下さい。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Clock Reference</FONT></TD>
+      <TD><FONT size="-1">衛星時計を推定する場合に基準時計受信機を設定します。<BR>
+      指定基準時計受信機の時計誤差=0と仮定した時計誤差相対値が推定されます。<BR>
+      空白に設定した場合には基準時計受信機を指定しません。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Raw Observation Data</FONT></TD>
+      <TD><FONT size="-1">入力する観測データ及びファイル分割単位を設定します。<BR>
+      観測データファイル名は以下の[...]で示す形式でつけられている必要があります。<BR>
+      ・RINEX : RINEX OBS [rrrrddd0.yyo]<BR>
+      ・RINEX (3H) : RINEX OBS (3H) [rrrrdddh.yyo]<BR>
+      ・RINEX (1H) : RINEX OBS (1H) [rrrrdddx.yyo]<BR>
+      ・RINEX (15min) : RINEX OBS (15min)
+      [rrrrdddxmm.yyo]</FONT><BR>
+      <FONT size="-1">(rrrr : 受信機/観測局ID(4桁), ddd : day of
+      year, yy : 年(2桁), h : 1,2,.. (=0:00,3:00,...),
+      x : a,b,c,... (=0:00,1:00,2:00,...), mm :
+      分)<BR>
+      <FONT size="-1">入力する観測データファイル名が以上の形式に従っていない場合には以上のファイル名に合うようにリネームする必要があります。<BR>
+      </FONT>観測データファイルはHatanaka-Compression,
+      Compress, Gzip圧縮されていてもかまいません。<BR>
+      圧縮ファイルの場合にはそれに応じたファイル拡張子がつけられている必要があります。<BR>
+      (例 : *.yyo.Z, *.yyo.gz, *.yyd, *.yyd.Z,
+      *.yyd.gz)</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Navigation Message</FONT></TD>
+      <TD><FONT size="-1">入力する航法メッセージ及びファイル分割単位を設定します。<BR>
+      <FONT size="-1">航法メッセージファイル名は以下の[...]で示す形式でつけられている必要があります。</FONT><BR>
+      ・Combined : IGS Combined RINEX NAV (daily)
+      [brdcddd0.yyn]<BR>
+      ・RINEX : RINEX NAV (daily) [rrrrddd0.yyn]<BR>
+      ・RINEX (3hr) : RINEX NAV (3H) [rrrrdddh.yyn]<BR>
+      ・RINEX (1hr) : RINEX NAV (1H) [rrrrdddx.yyn]<BR>
+      ・RINEX (15min) : RINEX NAV (15min) [rrrrdddxmm.yyn]</FONT><FONT size="-1"><BR>
+      入力する航法メッセージファイル名が以上の形式に従っていない場合には以上のファイル名に合うようにリネームする必要があります。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Obs Data Editor Settings</FONT></TD>
+      <TD><FONT size="-1">観測データ編集のパラメータを設定します。<BR>
+      </FONT><FONT size="-1">ボタンを押して表示される<A href="gpstools2_2.htm#obsedit">観測データ編集設定</A>画面で設定してください。</FONT></TD>
+    </TR>
+     <TR>
+      <TD colspan="2"><FONT size="-1">Estimation/Meas. Model</FONT></TD>
+      <TD><FONT size="-1">推定・観測モデルパラメータを設定します。<BR>
+      ボタンを押して表示される<A href="gpstools2_3.htm#estmeasmodel">推定・観測モデル設定</A>画面で設定を行ってください。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Measurement Noises</FONT></TD>
+      <TD><FONT size="-1">観測雑音を設定します。<BR>
+      ボタンを押して表示される<A href="gpstools2_4.htm#measnoise">観測雑音設定</A>画面で設定を行ってください。　</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">A Priori Std. Deviation</FONT></TD>
+      <TD><FONT size="-1">推定状態量の初期値誤差を設定します。<BR>
+      ボタンを押して表示される<A href="#apriorisigma">推定状態量初期誤差設定</A>画面で設定を行ってください。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Process Noises</FONT></TD>
+      <TD><FONT size="-1">推定状態量のプロセスノイズを設定します。<BR>
+      ボタンを押して表示される<A href="#processnoise">推定状態量プロセスノイズ設定</A>画面で設定を行ってください。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Satellite Orbit Model</FONT></TD>
+      <TD><FONT size="-1">衛星軌道を推定する場合、衛星運動モデルパラメータを設定します。<BR>
+      ボタンを押して表示される<A href="#orbitmodel">衛星運動モデル設定</A>画面で設定を行ってください。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Quality Control Settlings</FONT></TD>
+      <TD><FONT size="-1">品質管理パラメータを設定します。<BR>
+      ボタンを押して表示される<A href="#qualityctr">品質管理設定</A>画面で設定を行ってください。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Data Directories/Files</FONT></TD>
+      <TD><FONT size="-1">データディレクトリ及びファイルを設定します。<BR>
+      ボタンを押して表示される<A href="gpstools2_7.htm#dirsetting">データディレクトリ/ファイル設定</A>画面で設定を行ってください。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Clean Observation Data Directory</FONT></TD>
+      <TD><FONT size="-1">編集済観測データファイル出力ディレクトリパスを設定します。<BR>
+      ディレクトリパス中にキーワードが含まれる場合、<A href="gpstools2_7.htm#keyword">ディレクトリパス中のキーワード置換</A>に従い置換されます。指定<FONT size="-1">ディレクトリが存在しない場合、自動的にディレクトリが生成されます。<BR>
+      本設定を空白にした場合、Output Directoryで指定したディレクトリが使用されます。</FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Output Directory</FONT></TD>
+      <TD><FONT size="-1">解析結果データ出力ディレクトリパスを設定します。<BR>
+      </FONT><FONT size="-1">ディレクトリパス中にキーワードが含まれる場合、<A href="gpstools2_7.htm#keyword">ディレクトリパス中のキーワード置換</A>に従い置換されます。指定ディレクトリが存在しない場合、自動的にディレクトリが生成されます。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">File</FONT></TD>
+      <TD><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="left" rowspan="5"><FONT size="-1">　</FONT></TD>
+      <TD align="left"><FONT size="-1">Files...</FONT></TD>
+      <TD><FONT size="-1"><A href="gpstools4.htm#gpsfiles">ファイル管理/操作ツール</A>を起動します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Download...</FONT></TD>
+      <TD><FONT size="-1"><A href="gpstools4.htm#gpsdown">データ/プロダクトダウンローダ</A></FONT><FONT size="-1">を起動します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Execute Batch...</FONT></TD>
+      <TD><FONT size="-1"><A href="#execbatch">バッチ推定</A>画面を表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Load Setting...</FONT></TD>
+      <TD><FONT size="-1">解析パラメータファイルを読み込みます。<BR>
+      表示されるファイル選択ダイアログで保存する解析パラメータファイルを指定してください。<BR>
+      </FONT><FONT size="-1">読み込む解析パラメータファイルにはSave Settingメニューで保存した解析パラメータ、解析実行時に実行ヒストリディレクトリ下に解析ヒストリ
+      (&lt;install path&gt;\history\prm_*.mat&gt;)
+      としてに保存された解析パラメータが使用できます。</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="left"><FONT size="-1"><FONT size="-1">Save Setting...</FONT></FONT></TD>
+      <TD><FONT size="-1">設定した解析パラメータに名前をつけて解析パラメータファイルに保存します。<BR>
+      表示されるファイル保存ダイアログで保存する解析パラメータファイルパスを指定してください。</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="left" colspan="2"><FONT size="-1">Log</FONT></TD>
+      <TD><FONT size="-1">観測データ編集/パラメータ推定実行ログを表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Plot</FONT></TD>
+      <TD><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD rowspan="8"><FONT size="-1">　</FONT></TD>
+      <TD><FONT size="-1">Observation Data</FONT></TD>
+      <TD><FONT size="-1"><A href="gpstools3_1.htm">観測データ表示</A>画面により観測データ/編集済観測データの内容を表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Satellite Orbit...</FONT></TD>
+      <TD><FONT size="-1"><A href="gpstools3_2.htm">衛星軌道表示</A>画面により推定結果を表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Satellite Clock...</FONT></TD>
+      <TD><FONT size="-1"><A href="gpstools3_4.htm">衛星/受信機時計表示</A>画面により推定結果を表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Receiver Position...</FONT></TD>
+      <TD><FONT size="-1"><A href="gpstools3_3.htm">受信機位置表示</A>画面により推定結果を表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Receiver Clock...</FONT></TD>
+      <TD><FONT size="-1"><A href="gpstools3_4.htm">衛星/受信機時計表示</A>画面により推定結果を表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Tropospheric Parameters...</FONT></TD>
+      <TD><FONT size="-1"><A href="gpstools3_5.htm">対流圏パラメータ表示</A>画面により推定結果を表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Residuals/Statistics...</FONT></TD>
+      <TD><FONT size="-1"><A href="gpstools3_9.htm">残差/統計情報表示</A>画面により推定残差を表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Satellite Track/Station Pos...</FONT></TD>
+      <TD><FONT size="-1"><A href="gpstools3_11.htm">衛星直下点軌跡/受信機位置表示</A>画面を表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="left" colspan="2"><FONT size="-1">Execute/Abort</FONT></TD>
+      <TD><FONT size="-1">設定した解析パラメータを使って解析を実行します。<BR>
+      解析実行途中で実行を中止する場合はAbortボタンを押して下さい。</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="left" colspan="2"><FONT size="-1">Close</FONT></TD>
+      <TD><FONT size="-1">観測データ編集/パラメータ推定設定/実行画面を閉じます。</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE><BR>
+</DIV>
+<HR>
+<P><FONT size="-1"><A name="proctime"><FONT size="+0"><U>解析単位時間及びオーバラップ時間の定義 </U></FONT></A></FONT><FONT size="-2"><A name="proctime"><FONT size="-1"><U>Definitions of Processing Unit Time and Overlap
+Time</U></FONT></A></FONT></P>
+<P align="center"><IMG src="image/image39.jpg" border="0" width="623" height="334"><FONT size="-1"><A name="proctime"></A></FONT><BR>
+</P>
+<HR>
+<P><U><A name="editsatlist">衛星リスト編集<FONT size="-1"> Satellite List Editor</FONT></A></U></P>
+<P align="center"><IMG src="image/image18.jpg" border="0" width="541" height="425"></P>
+<CENTER>
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="200">
+  <COL span="1" width="600">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">項目</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">操作</FONT></TH>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Selected Satellites</FONT></TD>
+      <TD><FONT size="-1">星リストを表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">(Selectable Satellites)</FONT></TD>
+      <TD><FONT size="-1">選択可能衛星リストを表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">&lt;&lt;</FONT></TD>
+      <TD><FONT size="-1">選択可能衛星リストで選択された衛星を選択済み衛星リストに追加します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">&gt;&gt;</FONT></TD>
+      <TD><FONT size="-1">衛星リスト中の選択された衛星を衛星リストから削除します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Clear</FONT></TD>
+      <TD><FONT size="-1">衛星リストをクリアします。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Edit...</FONT></TD>
+      <TD><FONT size="-1">衛星定義ファイルをテキストエディタで表示します。<BR>
+      選択可能衛星リストの内容を変更する場合は衛星定義ファイル
+      (&lt;install path&gt;\data\prm_gpssats.txt)
+      をエディタ等で修正してください。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Load...</FONT></TD>
+      <TD><FONT size="-1">衛星リストをファイルから読み込みます。<BR>
+      ボタンを押して表示されるファイル選択ダイアログで読み込むファイルを指定して下さい。<BR>
+      ファイルは1行1衛星で記述されたテキストファイルまたは解析パラメータファイル(prm_*.mat)を指定して下さい。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Save...</FONT></TD>
+      <TD><FONT size="-1">衛星リストをテキストファイルとして保存します。<BR>
+      ボタンを押して表示されるファイル保存ダイアログで保存先ファイルを指定して下さい。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">List...</FONT></TD>
+      <TD><FONT size="-1"><FONT size="-1"><A href="#addlists">衛星リスト登録/呼び出し</A>画面を表示します。<BR>
+      衛星リストを名前をつけて登録したり、登録された衛星リストを読み込むことができます。</FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Input...</FONT></TD>
+      <TD><FONT size="-1"><FONT size="-1">入力した衛星を衛星リストに追加します。<BR>
+      ボタンを押して表示される衛星名入力画面で衛星名を入力して下さい。<BR>
+      選択可能衛星リストに含まれない衛星を衛星リストに追加する場合等に使用して下さい</FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">OK</FONT></TD>
+      <TD><FONT size="-1">設定変更を有効にして画面を閉じます。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Cancel</FONT></TD>
+      <TD><FONT size="-1">設定変更を無効にして画面を閉じます。</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<BR>
+</CENTER>
+<HR>
+<P><A name="editrcvlist"><U>受信機リスト編集<FONT size="-1"> Receiver List Editor</FONT></U></A></P>
+<P align="center"><FONT size="-1"><IMG src="image/image19.jpg" border="0" width="541" height="425"><BR>
+(受信機リスト編集 - リスト表示)</FONT></P>
+<P align="center"><IMG src="image/image101.jpg" border="0" width="541" height="425"><BR>
+<FONT size="-1">(<FONT size="-1">受信機リスト編集 - </FONT>地図表示)</FONT></P>
+<CENTER>
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="200">
+  <COL span="1" width="600">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">項目</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">操作</FONT></TH>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Selected Receivers</FONT></TD>
+      <TD><FONT size="-1">受信機リストを表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">(Selectable Receivers Group)</FONT></TD>
+      <TD><FONT size="-1">選択可能受信機リストグループを指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">(Selectable Receivers)</FONT></TD>
+      <TD><FONT size="-1">選択可能受信機リストを表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">&lt;&lt;</FONT></TD>
+      <TD><FONT size="-1">選択可能受信機リストで選択された受信機を受信機リストに追加します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">&gt;&gt;</FONT></TD>
+      <TD><FONT size="-1">選択された受信機を選択済み受信機リストから削除します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Clear</FONT></TD>
+      <TD><FONT size="-1">受信機リストをクリアします。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Edit...</FONT></TD>
+      <TD><FONT size="-1">受信機定義ファイルをテキストエディタで表示します。<BR>
+      選択可能受信機リストの内容を変更する場合は受信機定義ファイル
+      (&lt;install path&gt;\data\prm_gpsrcvs.txt)
+      をエディタ等で修正してください。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Load...</FONT></TD>
+      <TD><FONT size="-1">受信機リストをファイルから読み込みます。<BR>
+      ボタンを押して表示されるファイル選択ダイアログで読み込むファイルを指定して下さい。<BR>
+      ファイルには1行1受信機で記述されたテキストファイルまたは解析パラメータファイル(prm_*.mat)を指定して下さい。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Save...</FONT></TD>
+      <TD><FONT size="-1">受信機リストをテキストファイルとして保存します。<BR>
+      ボタンを押して表示されるファイル保存ダイアログで保存先ファイルを指定して下さい。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">List...</FONT></TD>
+      <TD><FONT size="-1"><A href="#addlists">受信機リスト登録/呼び出し</A>画面を表示します。<BR>
+      受信機リストを名前をつけて登録したり、登録された受信機リストを読み込むことができます。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Input...</FONT></TD>
+      <TD><FONT size="-1">入力した受信機を受信機リストに追加します。<BR>
+      <FONT size="-1">ボタンを押して表示される受信機名入力画面で受信機名を入力して下さい。</FONT><BR>
+      <FONT size="-1">選択可能受信機リストに含まれない受信機を受信機リストに追加する場合等に使用して下さい。</FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">MapView/ListView...</FONT></TD>
+      <TD><FONT size="-1">受信機リストのリスト表示/地図表示を切り替えます。<BR>
+      地図表示の場合選択された受信機の位置が地図上に赤点</FONT><FONT size="-1" color="#FF0000">●</FONT><FONT size="-1">で表示されます。<BR>
+      ・地図上を右ボタンでドラッグすることにより矩形領域に含まれる受信機を選択することができます。<BR>
+      ・地図上を左ボタンでドラッグすることにより矩形領域に含まれる受信機を追加することができます。<BR>
+      ・地図上でダブルクリックすることにより指定位置を地図の中心に移動することができます。<BR>
+      ・スクロールバーを操作することにより地図の縮尺を変更することができます。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">OK</FONT></TD>
+      <TD><FONT size="-1">設定変更を有効にして画面を閉じます。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Cancel</FONT></TD>
+      <TD><FONT size="-1">設定変更を無効にして画面を閉じます。</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE><BR>
+</CENTER>
+<HR>
+<P><A name="addlists"><U>衛星/受信機リスト登録/呼び出し<FONT size="-1"> Add/Set Satellite/Receiver List as List
+Name</FONT></U></A></P>
+<P align="center"><IMG src="image/image20.jpg" border="0" width="291" height="311"></P>
+<CENTER>
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="200">
+  <COL span="1" width="600">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">項目</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">操作</FONT></TH>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Satellite/Receiver List</FONT></TD>
+      <TD><FONT size="-1">登録済み衛星/受信機リストを表示します。一覧から登録済み衛星/受信機リストを選択し「OK」ボタンを押すか、リストをダブルクリックすることにより、選択した登録済み衛星/受信機リストが呼び出され、選択済み衛星/受信機リストに入力されます。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">(Newlist Input)</FONT></TD>
+      <TD><FONT size="-1">新規登録する衛星/受信機リスト名を入力します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Add/Set</FONT></TD>
+      <TD><FONT size="-1">(Newlist Input)に入力されたリスト名で選択済み衛星/受信機リスト</FONT><FONT size="-2"></FONT><FONT size="-1">を登録します。新規リスト名の場合、登録済み衛星/受信機リストに追加します。既存リスト名の場合は既存リスト名の内容が書き換えられます。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Delete</FONT></TD>
+      <TD><FONT size="-1">選択した登録済み衛星/受信機リストを登録済み衛星/受信機リスト一覧から削除します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">OK</FONT></TD>
+      <TD><FONT size="-1">設定変更を有効として画面を閉じ、選択した登録済み衛星/受信機リストを呼び出します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Cancel</FONT></TD>
+      <TD><FONT size="-1">設定変更を無効として画面を閉じます。</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<BR>
+</CENTER>
+<HR>
+<DIV align="left"><U><A name="execbatch">バッチ推定<FONT size="-1"> Execute Batch Estimation</FONT></A></U></DIV>
+<P align="center"><IMG src="image/image21.jpg" border="0" width="401" height="263"></P>
+<CENTER>
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="200">
+  <COL span="1" width="600">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">項目</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">操作</FONT></TH>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Estimation Start Time/End Time (GPST)</FONT></TD>
+      <TD><FONT size="-1">解析パラメータリストの推定開始/終了時刻を変更してバッチ推定を行う場合、チェックボックスをONにして推定開始/終了時刻を指定して下さい。チェックボックスがOFFの場合には個々の解析パラメータで指定された推定開始/終了時刻が使用されます。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Receivers</FONT></TD>
+      <TD><FONT size="-1">解析パラメータリストの受信機リストを変更して<FONT size="-1">バッチ推定</FONT>を行う場合、チェックボックスをONにして受信機リストを指定して下さい。チェックボックスがOFFの場合には個々の解析パラメータで指定された受信機リストが使用されます。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Output Directory</FONT></TD>
+      <TD><FONT size="-1">解析パラメータリストの解析結果出力ディレクトリを変更して<FONT size="-1">バッチ推定</FONT>を行う場合、チェックボックスをONにして解析結果出力ディレクトリを入力して下さい。チェックボックスがOFFの場合は個々の解析パラメータで指定された出力ディレクトリが使用されます。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Processing Parameters</FONT></TD>
+      <TD><FONT size="-1">解析パラメータリストを一覧表示します。Add...ボタン、Deleteボタンを使用し解析パラメータファイルパスを入力して下さい。<BR>
+      バッチ推定にあたって指定した解析パラメータリストは一覧の上から下に向けて順次使用されます。<BR>
+      バッチ推定実行中には実行中の解析パラメータが反転表示されます。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Add...</FONT></TD>
+      <TD><FONT size="-1">解析パラメータリストに解析パラメータを追加します。ボタンを押して表示されるファイル選択ダイアログで追加したい解析パラメータファイルパス(prm_*.mat)を指定して下さい。追加する解析パラメータは<A href="#gpsest">観測データ編集/パラメータ推定設定/実行</A>画面のメニュー「File」「Save Setting...」を使って保存した解析パラメータ、解析実行時に実行ヒストリファイル
+      (&lt;install_Directory&gt;\history\prm_*.mat&gt;
+      に保存された解析パラメータが使用できます。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Delete</FONT></TD>
+      <TD><FONT size="-1">解析パラメータリストから選択された解析パラメータを削除します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Log</FONT></TD>
+      <TD><FONT size="-1">バッチ推定実行ログを表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Execute/Abort</FONT></TD>
+      <TD><FONT size="-1">指定された解析パラメータリストを使用してバッチ推定を実行します。<BR>
+      実行途中で実行を中止する場合にはAbortボタンを押してください。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Close</FONT></TD>
+      <TD><FONT size="-1">バッチ推定画面を閉じます。</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE><BR>
+</CENTER>
+<HR>
+<TABLE width="100%" cellpadding="0">
+  <TBODY>
+    <TR>
+      <TD align="center"><FONT size="-2"><FONT size="-2">Copyright (C) 2004-2006, T.Takasu, All Rights
+      Reserved.</FONT></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+</BODY>
+</HTML>

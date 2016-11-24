@@ -1,0 +1,209 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META name="GENERATOR" content="IBM HomePage Builder 2001 V5.0.3 for Windows">
+<TITLE>GpsTools : パラメータ推定</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff" text="#666666" link="#33cc66" vlink="#006666" alink="#99ff00">
+<TABLE width="100%" cellspacing="0">
+  <TBODY>
+    <TR>
+      <TD><FONT size="-1"><A href="gpstools.htm">概要</A> | </FONT><FONT size="-1"><A href="gpstools0.htm">仕様</A> | <A href="gpstools1.htm">プログラム実行</A> | </FONT><FONT size="-1">パラメータ推定 | </FONT><FONT size="-1"><A href="gpstools3.htm">データ表示</A> | </FONT><FONT size="-1"><A href="gpstools4.htm">ユーティリティ</A> | </FONT><FONT size="-1"><A href="gpstools5.htm">データファイル</A> | <A href="gpstools6.htm">ライブラリ</A></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<TABLE width="100%" cellpadding="0" height="60">
+  <TBODY>
+    <TR>
+      <TD width="90%">
+      <P><FONT size="+1">GPS精密解析ソフトウェア GpsTools </FONT><FONT size="+1">: 観測データ編集/パラメータ推定 (4)</FONT><BR>
+      <FONT size="-1">GPS Precise Analysis Software GpsTools</FONT> : <FONT size="-1">Obs Data Editor/Parameter Estimator</FONT><FONT size="-1"> </FONT></P>
+      </TD>
+      <TD valign="bottom" align="right"></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<HR>
+<TABLE>
+  <TBODY>
+    <TR>
+      <TD><FONT size="-1"><A href="gpstools2.htm">(1)</A> <A href="gpstools2_1.htm">(2)</A> <A href="gpstools2_2.htm">(3)</A> (4) <A href="gpstools2_4.htm">(5)</A> <A href="gpstools2_5.htm">(6)</A> <A href="gpstools2_6.htm">(7)</A> <A href="gpstools2_7.htm">(8)</A></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P><U><A name="estmeasmodel">推定・観測モデル設定<FONT size="-1"> Estimation/Measurement Model Settings</FONT></A></U></P>
+<P align="center"><A name="measmodel"><FONT size="-1"><IMG src="image/image11.jpg" border="0" width="556" height="423" alt="img"></FONT></A></P>
+<CENTER>
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="200">
+  <COL span="1" width="600">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">項目</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">操作</FONT></TH>
+    </TR>
+    <TR>
+      <TD align="left"><FONT size="-1">Min/Max Elevation Angle</FONT></TD>
+      <TD width="606"><FONT size="-1">推定に使用する観測データの最低仰角(カットオフ仰角)、最高仰角
+      (度) を指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="left"><FONT size="-1">Tropospheric Model</FONT></TD>
+      <TD width="606"><FONT size="-1">アプリオリ対流圏遅延モデルを指定します。<BR>
+      ・Saastamoinen : Saastamoinenモデル</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="left" width="206"><FONT size="-1">Tropospheric Mapping Function</FONT></TD>
+      <TD width="606"><FONT size="-1">対流圏遅延マッピング関数を指定します。<BR>
+      ・COSZ : cos zマッピング関数<BR>
+      ・NMF : Niell Mapping Function<BR>
+      ・GMF : Global Mapping Function</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Tropospheric Stochastic Model</FONT></TD>
+      <TD><FONT size="-1">対流圏遅延(天頂全遅延)を推定する場合の時間変動モデルを指定します。<BR>
+      ・Random-Walk : Random-Walk過程モデル<BR>
+      ・Gauss-Marcov : Gauss-Marcov過程モデル</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Tropospheric Gradient Model</FONT></TD>
+      <TD><FONT size="-1">対流圏遅延勾配モデルを指定します。<BR>
+      ・(空白) : 対流圏遅延勾配モデルを使用しません。<BR>
+      ・Linear : 1次 (線形) モデル<BR>
+      ・Quadratic : 2次モデル</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="left"><FONT size="-1">Meas. Noise Elev. Angle Factor</FONT></TD>
+      <TD width="606"><FONT size="-1">観測雑音を衛星仰角で重み付け係数を指定します。<BR>
+      0の場合重み付けせず観測雑音設定で設定した値がすべての仰角で使用されます。1の場合1/sin(仰角)で重み付けされます。<A href="#measnoisefact">観測雑音ファクタ</A>を参照して下さい。</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="left"><FONT size="-1">Meas. Noise Factor in Eclipse</FONT></TD>
+      <TD width="606"><FONT size="-1">食期間及び食後姿勢擾乱期間衛星の観測雑音倍率をBlock
+      II/IIA衛星、Block IIR衛星毎に指定します。<BR>
+      0を指定した場合には指定Block衛星の食期間及び食後姿勢擾乱期間の観測データを除外します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Process Noise Factor in Eclipse</FONT></TD>
+      <TD width="606"><FONT size="-1">衛星軌道を推定する場合、食後姿勢擾乱期間の衛星位置/速度プロセスノイズの倍率をBlock
+      II/IIA衛星、Block IIR衛星毎に指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Max Post-Eclipse Manuver</FONT></TD>
+      <TD width="606"><FONT size="-1">食後姿勢擾乱期間 (秒) を指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Std. Dev. Factor of Initial States</FONT></TD>
+      <TD width="606"><FONT size="-1">複数パスで推定を行う場合、推定状態量の初期標準偏差として使用する事前パス最終推定状態量標準偏差の倍率を指定します。<BR>
+      0を指定した場合、推定状態量標準偏差は推定パス開始時に初期値にリセットされます。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Std. Dev. Factor of PreDet States</FONT></TD>
+      <TD><FONT size="-1">既知状態量の誤差が与えられる場合に、既知状態量標準偏差の倍率を指定します。<BR>
+      0の場合、既知状態量の誤差は0と扱われます。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Max Count of Filter Iteration</FONT></TD>
+      <TD width="606"><FONT size="-1">カルマンフィルタ観測更新則におけるiterationの最大回数を指定します。<BR>
+      通常は1に設定して下さい。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Min Count of Obs for Estimation</FONT></TD>
+      <TD><FONT size="-1">パラメータ推定を行うための観測データ点数の最小値を指定します。<BR>
+      観測データ点数がこの値未満の場合にはパラメータ推定は行わず欠測として扱われます。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Nutation Model</FONT></TD>
+      <TD><FONT size="-1">歳差・章動モデルを指定します。<BR>
+      ・IAU1976/1980 : IAU1976歳差/IAU1980章動<BR>
+      ・IERS1996 : IERS1996歳差/章動</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Filter</FONT></TD>
+      <TD><FONT size="-1">使用するフィルタを指定します。<BR>
+      ・Standard Kalman : 標準Kalmanフィルタ</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Clock Correction by Phase-Bias</FONT></TD>
+      <TD width="606"><FONT size="-1">衛星/受信機時計推定を行う場合、推定期間中の搬送波位相バイアス推定値平均を使って衛星/受信機時計推定値のオフセット補正を行うか否か指定します。</FONT><FONT size="-1"><BR>
+      ・OFF : 衛星/受信機時計推定値のオフセット補正を行いません。<BR>
+      ・ON : </FONT><FONT size="-1"><FONT size="-1">時計推定値のオフセット補正を行います。</FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Align Clock to Reference</FONT></TD>
+      <TD><FONT size="-1">衛星時計推定を行う場合、</FONT><FONT size="-1">推定値を基準時計値と比較し一定以上ずれた推定値を除外するか否か指定します。</FONT><FONT size="-1">また推定値のバイアス、ドリフトを補正し絶対値が基準時計に合致するよう修正するか否か指定します。</FONT><BR>
+      <FONT size="-1">・OFF : 基準衛星時計による補正を行いません。<BR>
+      ・IGS Final : IGS Final時計を基準衛星時計として補正を行います。<BR>
+      ・IGS Rapid : IGS Rapid時計を基準衛星時計として補正を行います。<BR>
+      </FONT><FONT size="-1">・IGS-CODE : IGS Final時計をCODE時計で補間した時計を基準衛星時計として補正を行います。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Receiver Attitude Model</FONT></TD>
+      <TD><FONT size="-1">受信機アンテナの姿勢モデルを指定します。<BR>
+      ・Fixed Station : 受信機アンテナが地球に固定された姿勢を取ること仮定します。<BR>
+      ・LEO Satellite : 受信機アンテナが移動体に固定されていることを仮定します。移動体の姿勢はZ軸は地心方向、X軸は運動方向に平行であることを仮定します</FONT>。</TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Measurement Corrections</FONT></TD>
+      <TD width="606"><FONT size="-1">観測モデル補正を行うか否か指定します。OFFの場合指定の観測モデル補正を行いません。<BR>
+      ・Satellite Antenna Offset : 衛星アンテナ位相中心オフセット/変動<BR>
+      ・Receiver Antenna Offset : 受信アンテナ位相中心オフセット/変動<BR>
+      ・Relativistic Effects : 相対論効果<BR>
+      ・Phase Windup : Phase-Windup効果<BR>
+      ・Phase Multipath : 搬送波位相マルチパス</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Station Displacement Corrections</FONT></TD>
+      <TD width="606"><FONT size="-1">観測点位置変位(Site Displacement)による観測局位置座標補正を行うか否か指定します。OFFの場合指定の補正を行いません。<BR>
+      ・Solid Earth Tides : 固体地球潮汐<BR>
+      ・Ocean Loading : 海洋荷重潮汐<BR>
+      ・Pole Tides : 極運動潮汐<BR>
+      ・Eliminate Permanent Deform. : 潮汐による永年変位項の除去</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">ERP Variation Correction</FONT></TD>
+      <TD width="606"><FONT size="-1">地球回転パラメータの日周以下変動(subdaily
+      variation)の補正を行うか否か指定します。OFFの場合地球回転パラメータ変動補正を行いません。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Meteorological Paraemters</FONT></TD>
+      <TD><FONT size="-1">対流圏遅延モデルで使用する気象データの入力先を指定します。<BR>
+      ・Standard Atmosphere : 標準大気モデルを使用します。<BR>
+      ・JMA GSM Online : 気象庁数値予報モデルデータ(GSM)を読み込みその値を使用します。<BR>
+      ・JMA MSM Online : <FONT size="-1">気象庁数値予報モデルデータ(MSM)を読み込みその値を</FONT>使用します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Default MSL Pressure</FONT></TD>
+      <TD><FONT size="-1">気象データとして標準大気モデルを使用する場合のデフォルト海面更正気圧(hPa)を指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Default Temp/Rel Humidity</FONT></TD>
+      <TD><FONT size="-1">気象データとして標準大気モデルを使用する場合のデフォルト海面気温(C)及び相対湿度(%)を指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">OK</FONT></TD>
+      <TD><FONT size="-1">設定変更を有効にして画面を閉じます。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Cancel</FONT></TD>
+      <TD><FONT size="-1">設定変更を無効にして画面を閉じます。</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<BR>
+</CENTER>
+<HR>
+<P><U><A name="measnoisefact">観測雑音ファクタ <FONT size="-1">Measurement Noise Factor</FONT></A></U></P>
+<P align="center"><IMG src="image/image102.jpg" border="0" width="586" height="383"><BR>
+<FONT size="-1">(Measurement Noise = 0.01m)</FONT></P>
+<HR>
+<TABLE width="100%" cellpadding="0">
+  <TBODY>
+    <TR>
+      <TD align="center"><FONT size="-2"><FONT size="-2">Copyright (C) 2004-2006, T.Takasu, All Rights
+      Reserved.</FONT></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+</BODY>
+</HTML>

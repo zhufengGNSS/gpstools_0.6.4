@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META name="GENERATOR" content="IBM HomePage Builder 2001 V5.0.3 for Windows">
+<TITLE>GpsTools : パラメータ推定</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff" text="#666666" link="#33cc66" vlink="#006666" alink="#99ff00">
+<TABLE width="100%" cellspacing="0">
+  <TBODY>
+    <TR>
+      <TD><FONT size="-1"><A href="gpstools.htm">概要</A> | </FONT><FONT size="-1"><A href="gpstools0.htm">仕様</A> | <A href="gpstools1.htm">プログラム実行</A> | </FONT><FONT size="-1">パラメータ推定 | </FONT><FONT size="-1"><A href="gpstools3.htm">データ表示</A> | </FONT><FONT size="-1"><A href="gpstools4.htm">ユーティリティ</A> | </FONT><FONT size="-1"><A href="gpstools5.htm">データファイル</A> | <A href="gpstools6.htm">ライブラリ</A></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<TABLE width="100%" cellpadding="0" height="60">
+  <TBODY>
+    <TR>
+      <TD width="90%">
+      <P><FONT size="+1">GPS精密解析ソフトウェア GpsTools </FONT><FONT size="+1">: 観測データ編集/パラメータ推定</FONT><FONT size="+2"></FONT><FONT size="+1"> (6)</FONT><BR>
+      <FONT size="-1">GPS Precise Analysis Software GpsTools</FONT> : <FONT size="-1">Obs Data Editor/Parameter Estimator</FONT><FONT size="-1"> </FONT></P>
+      </TD>
+      <TD valign="bottom" align="right"><FONT size="-1"><A href="../index.shtml"></A></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<HR>
+<TABLE>
+  <TBODY>
+    <TR>
+      <TD><FONT size="-1"><A href="gpstools2.htm">(1)</A> <A href="gpstools2_1.htm">(2)</A> <A href="gpstools2_2.htm">(3)</A> <A href="gpstools2_3.htm">(4)</A> <A href="gpstools2_4.htm">(5)</A> (6) <A href="gpstools2_6.htm">(7)</A> <A href="gpstools2_7.htm">(8)</A></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P align="left"><A name="orbitmodel"><U>衛星運動モデル設定<FONT size="-1"> Satellite Orbit Model Settings</FONT></U></A></P>
+<P align="center"><A name="orbitmodel"></A><IMG src="image/image15.jpg" border="0" width="301" height="275"></P>
+<CENTER>
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="200">
+  <COL span="1" width="600">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">項目</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">操作</FONT></TH>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Max Degree of Geopotential</FONT></TD>
+      <TD width="605"><FONT size="-1">地球重力モデルの最大次数を指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Solar/Planetary Potentials</FONT></TD>
+      <TD width="605"><FONT size="-1">他天体重力モデルを指定します。<BR>
+      ・OFF : 他天体重力を考慮しません。<BR>
+      ・Sun/Moon : 月及び太陽重力を考慮します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Solar Radiation Pressure Model</FONT></TD>
+      <TD width="605"><FONT size="-1">太陽輻射圧モデルを指定します。<BR>
+      ・OFF : 太陽輻射圧を考慮しません。<BR>
+      ・Simple : 単純モデル<BR>
+      ・ROCK4 : ROCK4/42モデル<BR>
+      ・GSPM.04 : GSPM.04bモデル+scale,ybias推定<BR>
+      ・GSPM.04+A/C : GSPM.04bモデル+scale,ybias,along-trk,cross-trk加速度推定<BR>
+      ・CODE(D/Y/B) : CODEモデル+3パラメータ(D0,Y0,B0)推定<BR>
+      ・CODE(D/Y/B/Z) : CODEモデル+4パラメータ(D0,Y0,B0,Z0)推定<BR>
+      ・CODE(D/Y/B/Z/X) : CODEモデル+6パラメータ(D0,Y0,B0,Z0,X10,X30)推定</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Eclipse Model</FONT></TD>
+      <TD width="605"><FONT size="-1">食モデルを指定します。<BR>
+      ・Cylindric : 円筒モデル<BR>
+      ・Penumbra/Unmra : 本影・半影モデル</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Atmospheric Drag Model</FONT></TD>
+      <TD width="605"><FONT size="-1">大気抵抗モデルを指定します。<BR>
+      ・OFF : 大気抵抗を考慮しません。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Earth Tides</FONT></TD>
+      <TD width="605"><FONT size="-1">地球潮汐効果による地球重力補正を行うか否か指定します。<BR>
+      ・OFF : 地球潮汐効果の補正を行いません。<BR>
+      ・Solid Earth Tide : 固体地球潮汐補正<BR>
+      ・Solid/Ocean Tide : 固体地球潮汐、海洋潮汐、極運動潮汐補正</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Relativistic Effects</FONT></TD>
+      <TD width="605"><FONT size="-1">相対論効果による加速度補正を行うか否か指定します。<BR>
+      ・OFF : 相対論効果による加速度補正を行いません。<BR>
+      ・IERS : IERS Conventions 1996補正</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Thrust Force</FONT></TD>
+      <TD width="605"><FONT size="-1">スラスターによる加速度補正を行うか否か指定します。<BR>
+      ・OFF : スラスターによる加速度補正を行わない。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Integration Step</FONT></TD>
+      <TD width="605"><FONT size="-1">数値積分時間間隔(秒)を指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">OK</FONT></TD>
+      <TD><FONT size="-1">設定変更を有効にして画面を閉じます。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Cancel</FONT></TD>
+      <TD><FONT size="-1">設定変更を無効にして画面を閉じます。</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE><BR>
+</CENTER>
+<HR>
+<TABLE width="100%" cellpadding="0">
+  <TBODY>
+    <TR>
+      <TD align="center"><FONT size="-2"><FONT size="-2">Copyright (C) 2004-2006, T.Takasu, All Rights
+      Reserved.</FONT></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+</BODY>
+</HTML>

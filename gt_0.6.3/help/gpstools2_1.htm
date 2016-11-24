@@ -1,0 +1,222 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META name="GENERATOR" content="IBM HomePage Builder 2001 V5.0.3 for Windows">
+<TITLE>GpsTools : パラメータ推定</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff" text="#666666" link="#33cc66" vlink="#006666" alink="#99ff00">
+<TABLE width="100%" cellspacing="0">
+  <TBODY>
+    <TR>
+      <TD><FONT size="-1"><A href="gpstools.htm">概要</A> | </FONT><FONT size="-1"><A href="gpstools0.htm">仕様</A> | <A href="gpstools1.htm">プログラム実行</A> | </FONT><FONT size="-1">パラメータ推定 | </FONT><FONT size="-1"><A href="gpstools3.htm">データ表示</A> | </FONT><FONT size="-1"><A href="gpstools4.htm">ユーティリティ</A> | </FONT><FONT size="-1"><A href="gpstools5.htm">データファイル</A> | <A href="gpstools6.htm">ライブラリ</A></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<TABLE width="100%" cellpadding="0" height="60">
+  <TBODY>
+    <TR>
+      <TD width="90%">
+      <P><FONT size="+1">GPS精密解析ソフトウェア GpsTools </FONT><FONT size="+1">: 観測データ編集/パラメータ推定 (2)</FONT><BR>
+      <FONT size="-1">GPS Precise Analysis Software GpsTools</FONT> : <FONT size="-1">Obs Data Editor/Parameter Estimator</FONT><FONT size="-1"> </FONT></P>
+      </TD>
+      <TD valign="bottom" align="right"></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<HR>
+<TABLE>
+  <TBODY>
+    <TR>
+      <TD><FONT size="-1"><A href="gpstools2.htm">(1)</A> (2) <A href="gpstools2_2.htm">(3)</A> <A href="gpstools2_3.htm">(4)</A> <A href="gpstools2_4.htm">(5)</A> <A href="gpstools2_5.htm">(6)</A> <A href="gpstools2_6.htm">(7)</A> <A href="gpstools2_7.htm">(8)</A></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P><A name="estparameter"><U>推定/固定パラメータ設定<FONT size="-1"> Estimated or Fixed Parameter Settings</FONT></U></A></P>
+<P align="center"><IMG src="image/image8.jpg" border="0" width="499" height="425"></P>
+<CENTER>
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="200">
+  <COL span="1" width="600">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">項目</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">操作</FONT></TH>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Satellite</FONT></TD>
+      <TD><FONT size="-1">衛星を指定して下さい。<BR>
+      ALLを指定した場合個々に設定した衛星以外のすべての衛星に適用されます。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Orbit</FONT></TD>
+      <TD><FONT size="-1">衛星軌道を推定するか固定するか指定します。<BR>
+      ・(空白) : 放送暦の値に固定します。<BR>
+      ・&lt;estimated&gt; : 衛星軌道を推定します。<BR>
+      ・IGS Final : IGS最終暦の値に固定します。<BR>
+      <FONT size="-1">・IGS Rapid : IGS速報暦の値に固定します。<BR>
+      <FONT size="-1"><FONT size="-1">・IGS URapid : IGS超速報暦の値に固定し</FONT></FONT>ます。</FONT><BR>
+      <FONT size="-1"><FONT size="-1">・IGS URapid(Pred) : IGS超速報暦(予報値)の値に固定し</FONT></FONT>ます。<BR>
+      ・Est(Forward) : Forward推定値に固定します。<BR>
+      <FONT size="-1">・Est(Backward) : Backward推定値に固定します。<BR>
+      </FONT><FONT size="-1"><FONT size="-1">・Est(Smoothed) : Smoothed推定値に固定します。<BR>
+      </FONT></FONT>・ephs : 精密暦補間で生成した補間後精密暦の値に固定します。<BR>
+      </FONT><FONT size="-1"><FONT size="-1">・</FONT>CODE, EMR, ESA, GFZ, JPL, MIT : それぞれ指定したIGS
+      AC解の値に固定します。<BR>
+      ・CODE Rapid : CODE Rapid暦の値に固定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Clock</FONT></TD>
+      <TD><FONT size="-1">衛星時計を推定するか固定するか指定します。<BR>
+      ・(空白) : 放送暦の値に固定します。<BR>
+      ・&lt;estimated&gt; : 衛星軌道を推定します。<BR>
+      ・IGS Final : IGS最終暦の値に固定します。<BR>
+      ・ IGS Rapid : IGS速報暦の値に固定します。<BR>
+      ・ IGS URapid : IGS超速報暦の値に固定します。<BR>
+      ・ IGS URapid(Pred) : IGS超速報暦(予報値)の値に固定します。<BR>
+      ・Est(Forward) : Forward推定値に固定します。<BR>
+      ・Est(Backward) : Backward推定値に固定します。<BR>
+      <FONT size="-1"><FONT size="-1"><FONT size="-1">・Est(Smoothed) : Smoothed推定値に固定します。<BR>
+      <FONT size="-1">・CODE, EMR, ESA, GFZ, JPL, MIT : それぞれ指定したIGS
+      AC解の値に固定します。<BR>
+      ・IGS/CODE : IGS Final時計をCODE時計で補間した推定値に固定します。<BR>
+      </FONT>・CODE Rapid : CODE Rapid時計推定値に固定します。<BR>
+      ・IGR/CODE Rapid : <FONT size="-1"><FONT size="-1"><FONT size="-1"><FONT size="-1"><FONT size="-1">IGS Rapid時計をCODE Rapid時計で補間した推定値に固定します。</FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">SRP Prams</FONT></TD>
+      <TD><FONT size="-1">太陽輻射圧パラメータを固定するか指定します。<BR>
+      ・(空白) : デフォルト値または指定値に固定します。<BR>
+      ・&lt;estimated&gt; : 太陽輻射圧パラメータを推定します。<BR>
+      なお衛星軌道を推定しない場合本設定は無視されます。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Receiver</FONT></TD>
+      <TD><FONT size="-1">受信機を指定して下さい。<BR>
+      ALLを指定した場合個々に設定した受信機以外のすべての受信機に適用されます。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Position</FONT></TD>
+      <TD><FONT size="-1">受信機位置を推定するか固定するか指定します。<BR>
+      ・(空白) : 単独測位解に固定します。<BR>
+      ・&lt;estimated&gt; : 受信機位置を推定します。<BR>
+      ・IGS Final : IGS Final解位置に固定します。<BR>
+      ・ITRF2000 : ITRF2000座標値に固定します。<BR>
+      <FONT size="-1">・ITRF97 : ITRF97座標値に固定します。<BR>
+      </FONT>・GSIPOS : GSI推定値(F1/F2)に固定します。<BR>
+      ・Est(Forward) : Forward推定値に固定します。<BR>
+      <FONT size="-1">・Est(Backward) : Backward推定値に固定します。<BR>
+      </FONT><FONT size="-1"><FONT size="-1">・Est(Smoothed) : Smoothedd推定値に固定します。<BR>
+      </FONT></FONT>・IGS00 : IGS00座標値に固定します。<BR>
+      ・IGb00 : IGb00座標値に固定します。<BR>
+      ・Parameter File : 受信機位置パラメータファイルで指定した値に固定します。使用する受信機位置パラメータファイルは<A href="gpstools2_7.htm">データディレクトリ/ファイル設定</A>画面で設定してください。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Clock</FONT></TD>
+      <TD><FONT size="-1">観測局時計を推定するか固定するか指定します。<BR>
+      ・(空白) : コードによる単独測位で推定した値に固定します。<BR>
+      ・&lt;estimated&gt; : 観測局時計を推定します。<BR>
+      ・IGS Final : IGS最終暦の値に固定します。<BR>
+      ・ＩGS Rapid : IGS速報暦の値に固定します。<BR>
+      ・Est(Forward) : Forward推定値に固定します。<BR>
+      ・Est(Backward) : Backward推定値に固定します。<BR>
+      <FONT size="-1"><FONT size="-1"><FONT size="-1"><FONT size="-1">・Est(Smoothed) : Smoothed推定値に固定します。<BR>
+      <FONT size="-1"><FONT size="-1"><FONT size="-1"><FONT size="-1">・CODE, EMR, ESA, GFZ, JPL, MIT : それぞれ指定したIGS
+      AC解の値に固定します。<BR>
+      ・IGS/CODE : IGS Final時計をCODE時計で補間した推定値に固定します。<BR>
+      ・CODE Rapid : CODE Rapid時計推定値に固定します。<BR>
+      ・IGR/CODE Rapid : <FONT size="-1"><FONT size="-1"><FONT size="-1"><FONT size="-1">IGS Rapid時計をCODE Rapid時計で補間した推定値に固定します。</FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Tropos. ZTD/Grad</FONT></TD>
+      <TD><FONT size="-1">対流圏遅延(天頂全遅延)を推定するか固定するか指定します。<BR>
+      ・(空白) : アプリオリ対流圏遅延モデルによる推定値に固定します。<BR>
+      ・&lt;estimated&gt; : 対流圏遅延量を推定します。推定・観測モデル設定画面で対流圏遅延勾配モデルが設定されている場合天頂全遅延及び対流圏遅延勾配を推定します。<BR>
+      <FONT size="-1">・IGS ZPD : IGS Final 天頂全遅延(daily解)解に固定します。<BR>
+      <FONT size="-1"><FONT size="-1">・IGS ZPD Monthly : IGS Final 天頂全遅延(monthly解)に固定します。<BR>
+      </FONT></FONT><FONT size="-1">・Est(Forward) : Forward推定値に固定します。<BR>
+      ・Est(Backward) : Backward推定値に固定します。<BR>
+      <FONT size="-1"><FONT size="-1"><FONT size="-1">・Est(Smoothed) : Smoothed推定値に固定します。<BR>
+      ・JMA MSM Online : 気象庁数値予報モデル(MSM)から推定した天頂全遅延推定値に固定します。</FONT></FONT></FONT></FONT></FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Phase Bias</FONT></TD>
+      <TD><FONT size="-1">搬送波位相バイアスを推定するか固定するか指定します。<BR>
+      ・(空白) : 搬送波位相バイアスを推定します。</FONT><BR>
+      <FONT size="-1"><FONT size="-1"><FONT size="-1">・Est(Forward) : Forward推定値に固定します。<BR>
+      ・Est(Backward) : Backward推定値に固定します。<BR>
+      <FONT size="-1"><FONT size="-1">・Est(Smoothed) : Smoothed推定値に固定します。</FONT></FONT></FONT></FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">ERP</FONT></TD>
+      <TD><FONT size="-1">地球回転パラメータを推定するか固定するか指定します。<BR>
+      ・(空白) : 値を0に固定します。<BR>
+      ・&lt;estimated&gt; : 地球回転パラメータを推定します。<BR>
+      ・IGS Final : IGS最終暦の地球回転パラメータの値に固定します。<BR>
+      ・IGS Rapid : IGS速報暦の地球回転パラメータの値に固定します。<BR>
+      ・IERS BulB : IERS Bulletin Bの値に固定します。</FONT><BR>
+      <FONT size="-1">・IERS C04 : IERS C04の値に固定します。</FONT><BR>
+      <FONT size="-1">・Est(Forward) : Forward推定値に固定します。<BR>
+      ・Est(Backward) : Backward推定値に固定します。<BR>
+      <FONT size="-1"><FONT size="-1"><FONT size="-1"><FONT size="-1"><FONT size="-1">・Est(Smoothed) : Smoothed推定値に固定します。<BR>
+      <FONT size="-1"><FONT size="-1"><FONT size="-1"><FONT size="-1"><FONT size="-1"><FONT size="-1"><FONT size="-1"><FONT size="-1"><FONT size="-1">・CODE, EMR, ESA, GFZ, JPL, MIT : それぞれ指定したIGS
+      AC解の値に固定します。</FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Geocent</FONT></TD>
+      <TD><FONT size="-1">地球中心オフセットを推定するか固定するか指定します。<BR>
+      ・(空白) : 値を0に固定します。<BR>
+      ・&lt;estimated&gt; : 地球中心オフセットを推定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Initial ERP</FONT></TD>
+      <TD><FONT size="-1">地球回転パラメータを推定する場合に地球回転パラメータ初期値を指定します。</FONT><BR>
+      <FONT size="-1"><FONT size="-1">・(空白) : 値を0に固定します。<BR>
+      ・&lt;estimated&gt; : 地球回転パラメータを推定します。<BR>
+      ・IGS Final : IGS最終暦の地球回転パラメータの値に固定します。<BR>
+      ・IGS Rapid : IGS速報暦の地球回転パラメータの値に固定します。<BR>
+      ・IERS BulB : IERS Bulletin Bの値に固定します。</FONT><BR>
+      <FONT size="-1">・IERS C04 : IERS C04の値に固定します。</FONT><BR>
+      <FONT size="-1">・Est(Forward) : Forward推定値に固定します。<BR>
+      ・Est(Backward) : Backward推定値に固定します。<BR>
+      <FONT size="-1"><FONT size="-1"><FONT size="-1"><FONT size="-1"><FONT size="-1">・Est(Smoothed) : Smoothed推定値に固定します。<BR>
+      <FONT size="-1"><FONT size="-1"><FONT size="-1"><FONT size="-1"><FONT size="-1"><FONT size="-1"><FONT size="-1"><FONT size="-1"><FONT size="-1">・CODE, EMR, ESA, GFZ, JPL, MIT : それぞれ指定したIGS
+      AC解の値に固定します。</FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Input Unit Time</FONT></TD>
+      <TD><FONT size="-1">推定値を入力する場合の推定時の推定単位時間
+      (hr) を指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Day of Position</FONT></TD>
+      <TD><FONT size="-1">受信機位置を入力する場合の位置座標の日付を指定します。<BR>
+      空白の場合推定開始日の位置座標が使用されます。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Interp Clock</FONT></TD>
+      <TD><FONT size="-1">時計を入力する場合に入力時計の補間を行うかどうか指定します。<BR>
+      ONの場合入力時計は推定時間間隔に線形補間されます。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">OK</FONT></TD>
+      <TD><FONT size="-1">設定変更を有効にして画面を閉じます。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Cancel</FONT></TD>
+      <TD><FONT size="-1">設定変更を無効にして画面を閉じます。</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<BR>
+</CENTER>
+<HR>
+<TABLE width="100%" cellpadding="0">
+  <TBODY>
+    <TR>
+      <TD align="center"><FONT size="-2"><FONT size="-2">Copyright (C) 2004-2006, T.Takasu, All Rights
+      Reserved.</FONT></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+</BODY>
+</HTML>

@@ -1,0 +1,666 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META name="GENERATOR" content="IBM HomePage Builder 2001 V5.0.3 for Windows">
+<TITLE>GpsTools : ユーティリティ</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff" text="#666666" link="#33cc66" vlink="#006666" alink="#99ff00">
+<TABLE width="100%" cellspacing="0">
+  <TBODY>
+    <TR>
+      <TD><FONT size="-1"><A href="gpstools.htm">概要</A> | </FONT><FONT size="-1"><A href="gpstools0.htm">仕様</A> | <A href="gpstools1.htm">プログラム実行</A> | </FONT><FONT size="-1"><A href="gpstools2.htm">パラメータ推定</A> | </FONT><FONT size="-1"><A href="gpstools3.htm">データ表示</A> | </FONT><FONT size="-1">ユーティリティ | </FONT><FONT size="-1"><A href="gpstools5.htm">データファイル</A> | <A href="gpstools6.htm">ライブラリ</A></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<TABLE width="100%" cellpadding="0" height="60">
+  <TBODY>
+    <TR>
+      <TD>
+      <P><FONT size="+1">GPS精密解析ソフトウェア GpsTools : ユーティリティ</FONT><BR>
+      <FONT size="-1">GPS Precise Analysis Software GpsTools :
+      Utilities</FONT></P>
+      </TD>
+      <TD valign="bottom" align="right"></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<HR>
+<TABLE cellspacing="0">
+  <TBODY>
+    <TR>
+      <TD><FONT size="-1"><A href="#gpsfiles">ファイル管理</A> | <A href="#gpsdown">ダウンローダ</A> | <A href="#genprod">プロダクト生成</A> | <A href="#genpwv">可降水量推定</A> | <A href="#genload">海洋荷重潮汐係数</A> | <A href="#genmp">マルチパスプロファイル</A></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P><U><A name="gpsfiles">ファイル管理/操作ツール <FONT size="-1">File Manager</FONT></A></U></P>
+<P align="center"><FONT size="-1"><IMG src="image/image103.jpg" border="0" width="606" height="447"></FONT></P>
+<CENTER>
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="200">
+  <COL span="1" width="600">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">項目</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">操作</FONT></TH>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">\</FONT></TD>
+      <TD><FONT size="-1">ドライブ選択メニューを表示しドライブを選択します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">&lt;</FONT></TD>
+      <TD><FONT size="-1">親ディレクトリに移動します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">&gt;</FONT></TD>
+      <TD><FONT size="-1">子ディレクトリに移動します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Directory</FONT></TD>
+      <TD><FONT size="-1">ディレクトリ移動ダイアログを表示し指定されたディレクトリに移動します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">(Directory List)</FONT></TD>
+      <TD><FONT size="-1">ディレクトリ一覧を表示します。<BR>
+      カレントディレクトリを移動するためにはディレクトリ一覧から移動したいディレクトリを選択してください。ディレクトリ一覧をダブルクリックすることにより指定ディレクトリの子ディレクトリに移動することができます。また「..」をダブルクリックすることにより親ディレクトリに移動することができます。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">F</FONT></TD>
+      <TD><FONT size="-1">フィルタダイアログを表示しフィルタを設定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Name, Ext, Size, Date/Time</FONT></TD>
+      <TD><FONT size="-1">ファイル一覧を名前順、拡張子順、サイズ順、日時順に並べ替えます。ボタンを押す毎に正順、逆順を切り替えます。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">(File List)</FONT></TD>
+      <TD><FONT size="-1">ファイル一覧を表示します。<BR>
+      ファイル一覧に表示されたディレクトリ&lt;directory&gt;をダブルクリックすることによりディレクトリを移動することができます。ファイル一覧からファイルを選択しコマンドボタンを操作することによりファイルのコピー・移動・表示等の操作を行うことができます。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">File</FONT></TD>
+      <TD><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・New Directory... </FONT></TD>
+      <TD><FONT size="-1">新規ディレクトリ作成ダイアログを表示し作成したいディレクトリ名を入力することにより、カレントディレクトリに新規ディレクトリを作成することができます。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・Delete</FONT></TD>
+      <TD><FONT size="-1">ファイル一覧からファイルまたはディレクトリを選択し、このボタンを押すことにより、指定ファイルまたはディレクトリを削除することができます。なおディレクトリを削除する場合、内容が空である必要があります。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・Uncompact </FONT></TD>
+      <TD><FONT size="-1">ファイル一覧からファイルを選択し、このボタンを押すことにより圧縮ファイルを解凍・伸張することができます。対応している圧縮ファイルは以下の通りです。<BR>
+      ・compress圧縮ファイル (*.Z)<BR>
+      ・gzip圧縮ファイル (*.gz)<BR>
+      ・Hatanaka-Compression RINEX観測データ (*.nnd)</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・Compact</FONT></TD>
+      <TD><FONT size="-1">ファイル一覧からファイルを選択し、このボタンを押すことによりファイルを圧縮することができます。<BR>
+      RINEX観測データはHatanaka-Compression RINEX形式に変換後、圧縮されます。圧縮後のファイル拡張子は.Zです。Uncompactメニューにより再度解凍・伸張することができます。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・Close</FONT></TD>
+      <TD><FONT size="-1">ファイル管理・操作ツールを終了します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Edit</FONT></TD>
+      <TD><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・Copy... </FONT></TD>
+      <TD><FONT size="-1">ファイル一覧からファイルを選択しメニューを実行することによりディレクトリ選択ダイアログが開きます。ディレクトリ選択ダイアログでコピー先ディレクトリを選択することにより、選択ファイルを指定ディレクトリにコピーすることができます。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・Move... </FONT></TD>
+      <TD><FONT size="-1"><FONT size="-1">ファイル一覧からファイルを選択しメニューを実行することによりディレクトリ選択ダイアログが開きます。ディレクトリ選択ダイアログで移動先ディレクトリを選択することにより、選択ファイルを指定ディレクトリに移動することができます。</FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・Rename...</FONT></TD>
+      <TD><FONT size="-1">ファイル一覧からファイルを選択しメニューを実行することによりファイル名を変更することができます。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・Select All</FONT></TD>
+      <TD><FONT size="-1">ファイル一覧を全選択します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Filter</FONT></TD>
+      <TD><FONT size="-1">ファイル一覧に表示するファイルの条件を指定します。空白の場合すべてのファイルが表示されます。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・Filter...</FONT></TD>
+      <TD><FONT size="-1">フィルタダイアログを表示しフィルタを設定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・All (*.*) , ...</FONT></TD>
+      <TD><FONT size="-1">指定したパターンにフィルタを設定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">View</FONT></TD>
+      <TD><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・Update</FONT></TD>
+      <TD><FONT size="-1">ファイル一覧を最新の内容に更新します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・</FONT><FONT size="-1">View...</FONT></TD>
+      <TD><FONT size="-1">ファイル一覧からファイルを選択し、このボタンを押すことによりファイルの内容を表示することができます。対応しているファイル種別は以下の通りです。<BR>
+      ・テキストファイル<BR>
+      ・画像ファイル<BR>
+      ・MATLAB matファイル (*.mat)<BR>
+      ・HTMLファイル (*.html, *.htm)<BR>
+      テキストファイルの場合圧縮ファイルも直接内容を表示することができます。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Tools</FONT></TD>
+      <TD><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・</FONT><FONT size="-2"></FONT><FONT size="-1">Download... </FONT></TD>
+      <TD><FONT size="-1"><A href="#gpsdown">データ/プロダクトダウンローダ</A>を起動します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・Options</FONT></TD>
+      <TD><FONT size="-1">オプションを設定します。</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<BR>
+</CENTER>
+<HR>
+<P><U><A name="gpsdown">データ/プロダクトダウンローダ <FONT size="-1">Data and Products Downloader</FONT></A></U></P>
+<P align="center"><IMG src="image/image104.jpg" border="0" width="606" height="425"></P>
+<CENTER>
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="200">
+  <COL span="1" width="600">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">項目</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">操作</FONT></TH>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Data/Products (Source)</FONT></TD>
+      <TD><FONT size="-1">ダウンロードしたいデータ、プロダクトのカテゴリ及び種別を指定します。<BR>
+      データ・プロダクト種別は同時に複数指定することができます。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Address</FONT></TD>
+      <TD><FONT size="-1">ダウンロードするデータ、プロダクトのアドレスが表示されます。<BR>
+      アドレスのうちキーワードは<A href="#keyword">ダウンロードアドレス中のキーワード置換</A>に従って置換されます。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Start Date/Time</FONT></TD>
+      <TD><FONT size="-1">データ開始年月日<FONT size="-1">時分</FONT>を指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">End Date/Time </FONT></TD>
+      <TD><FONT size="-1">データ終了年月日時分を指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Sequence No </FONT></TD>
+      <TD><FONT size="-1">データアドレスに連番が含まれている場合、連番の開始・終了番号を指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Login User</FONT></TD>
+      <TD><FONT size="-1">サーバのログインユーザ名を指定します。<BR>
+      anonymous ftpサーバの場合anonymousとして下さい。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Password </FONT></TD>
+      <TD><FONT size="-1">サーバのログインパスワードを指定します。<BR>
+      anonymous ftpサーバの場合、自分のメールアドレスを指定して下さい。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Local Directory</FONT></TD>
+      <TD><FONT size="-1">ダウンロードしたファイルを格納するディレクトリパスを指定します。<BR>
+      直接ディレクトリパスを入力するか「...」ボタンを押して表示されたディレクトリ選択ダイアログでディレクトリを選択してください。<BR>
+      <FONT size="-1">ディレクトリパス中にキーワードが含まれている場合、<A href="gpstools2_7.htm#keyword">ディレクトリパス中のキーワード置換</A>に従い置換されます。指定ディレクトリが存在しない場合、自動的にディレクトリが生成されます。</FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Unzip/Uncompact Files</FONT></TD>
+      <TD><FONT size="-1">ダウンロードするファイルが圧縮ファイルの場合、ダウンロード時に同時に解凍・伸張を行うかどうか選択します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Skip Existing Files</FONT></TD>
+      <TD><FONT size="-1">ダウンロードするファイルが既にダウンロード済の場合、そのダウンロードファイルをスキップするか否か選択します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Abort on Download Error</FONT></TD>
+      <TD><FONT size="-1">ダウンロードが失敗した場合に残りのファイルのダウンロードを中止するか否か選択します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Stations...</FONT></TD>
+      <TD><FONT size="-1">データアドレスに受信機名が含まれている場合に使用される受信機リストを表示します。<BR>
+      受信機リストを変更する場合は「Stations...」ボタンを押し受信機リスト編集画面で受信機リストを編集してください。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Files...</FONT></TD>
+      <TD><A href="#utility1"><FONT size="-1">ファイル管理/操作ツール</FONT></A><FONT size="-1">を起動します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Stations...</FONT></TD>
+      <TD><FONT size="-1">受信機リストを編集します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Log...</FONT></TD>
+      <TD><FONT size="-1">ダウンロードログを表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Download/Abort</FONT></TD>
+      <TD><FONT size="-1">指定した条件でダウンロードを開始します。<BR>
+      ダウンロードを途中で中止する場合はAbortボタンを押して下さい。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Close</FONT></TD>
+      <TD><FONT size="-1">データ・プロダクトダウンローダを終了します。</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE><BR>
+</CENTER>
+<HR>
+<P><U><A name="keyword">ダウンロードアドレス中のキーワード置換<FONT size="-1"> Keyword Replacements in Download Addresses</FONT></A></U></P>
+<CENTER>
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="150">
+  <COL span="1" width="300">
+  <COL span="1" width="150">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0" width="120"><FONT size="-1">キーワード</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0" width="240"><FONT size="-1">置換文字列</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0" width="160"><FONT size="-1">範囲</FONT></TH>
+    </TR>
+    <TR>
+      <TD align="center"><FONT size="-1">%P</FONT></TD>
+      <TD><FONT size="-1">install path</FONT></TD>
+      <TD><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><FONT size="-1">%S</FONT></TD>
+      <TD><FONT size="-1">station code (UPPER case)</FONT></TD>
+      <TD align="left"><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><FONT size="-1">%s</FONT></TD>
+      <TD><FONT size="-1">station code (lower case)</FONT></TD>
+      <TD align="left"><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><FONT size="-1">%G</FONT></TD>
+      <TD><FONT size="-1">station code (tail 4 chars)</FONT></TD>
+      <TD align="left"><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><FONT size="-1">%Y</FONT></TD>
+      <TD><FONT size="-1">year (4 digits)</FONT></TD>
+      <TD align="left"><FONT size="-1">1970-9999</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><FONT size="-1">%y</FONT></TD>
+      <TD><FONT size="-1">year (2 digits)</FONT></TD>
+      <TD align="left"><FONT size="-1">00-99</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><FONT size="-1">%m</FONT></TD>
+      <TD><FONT size="-1">month</FONT></TD>
+      <TD align="left"><FONT size="-1">01-12</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><FONT size="-1">%d</FONT></TD>
+      <TD><FONT size="-1">day</FONT></TD>
+      <TD align="left"><FONT size="-1">01-31</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><FONT size="-1">%n</FONT></TD>
+      <TD><FONT size="-1">day of year</FONT></TD>
+      <TD align="left"><FONT size="-1">001-366</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><FONT size="-1">%h</FONT></TD>
+      <TD><FONT size="-1">1H hour</FONT></TD>
+      <TD align="left"><FONT size="-1">00,01,02,...,23</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><FONT size="-1">%ha</FONT></TD>
+      <TD><FONT size="-1">3H hour</FONT></TD>
+      <TD align="left"><FONT size="-1">00,03,06,...,21</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><FONT size="-1">%hb</FONT></TD>
+      <TD><FONT size="-1">6H hour</FONT></TD>
+      <TD align="left"><FONT size="-1">00,06,12,18</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><FONT size="-1">%hc</FONT></TD>
+      <TD><FONT size="-1">12H hour</FONT></TD>
+      <TD align="left"><FONT size="-1">00,12</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><FONT size="-1">%H</FONT></TD>
+      <TD><FONT size="-1">hour code</FONT></TD>
+      <TD align="left"><FONT size="-1">a,b,c,d,...,x</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><FONT size="-1">%t</FONT></TD>
+      <TD><FONT size="-1">15m minute</FONT></TD>
+      <TD align="left"><FONT size="-1">00,15,30,45</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><FONT size="-1">%g</FONT></TD>
+      <TD><FONT size="-1">3H hour</FONT></TD>
+      <TD align="left"><FONT size="-1">02,05,08,...,23</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><FONT size="-1">%f</FONT></TD>
+      <TD><FONT size="-1">1-8</FONT></TD>
+      <TD align="left"><FONT size="-1">1,2,3,...8</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><FONT size="-1">%W</FONT></TD>
+      <TD><FONT size="-1">gpsweek no.</FONT></TD>
+      <TD align="left"><FONT size="-1">0000-9999</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><FONT size="-1">%D</FONT></TD>
+      <TD><FONT size="-1">day of gpsweek</FONT></TD>
+      <TD align="left"><FONT size="-1">0,1,2,3,4,5,6</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><FONT size="-1">%M</FONT></TD>
+      <TD><FONT size="-1">iers bulletin month</FONT></TD>
+      <TD align="left"><FONT size="-1">1,2,3,...</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><FONT size="-1">%N</FONT></TD>
+      <TD><FONT size="-1">sequence no.</FONT></TD>
+      <TD align="left"><FONT size="-1">0000-99999999</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><FONT size="-1">%RO</FONT></TD>
+      <TD><FONT size="-1">rinex obs (%s%n0.%yo)</FONT></TD>
+      <TD align="left"><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><FONT size="-1">%RD</FONT></TD>
+      <TD><FONT size="-1">rinex cobs (%s%n0.%yd)</FONT></TD>
+      <TD align="left"><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><FONT size="-1">%RN</FONT></TD>
+      <TD><FONT size="-1">rinex nav(GPS) (%s%n0.%yn)</FONT></TD>
+      <TD align="left"><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><FONT size="-1">%RG</FONT></TD>
+      <TD><FONT size="-1">rinex nav(GLONASS) (%s%n0.%yg)</FONT></TD>
+      <TD align="left"><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><FONT size="-1">%RM</FONT></TD>
+      <TD><FONT size="-1">rinex met (%s%n0.%ym)</FONT></TD>
+      <TD align="left"><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="center"><FONT size="-1">%RS</FONT></TD>
+      <TD><FONT size="-1">rinex sum (%s%n0.%ys)</FONT></TD>
+      <TD align="left"><FONT size="-1">　</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<BR>
+</CENTER>
+<HR>
+<P><U><A name="genprod">プロダクト生成 <FONT size="-1">Generate Products</FONT></A></U></P>
+<P align="center"><IMG src="image/image120.jpg" border="0" width="320" height="333"></P>
+<CENTER>
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="200">
+  <COL span="1" width="600">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">項目</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">操作</FONT></TH>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Start Date/Time</FONT></TD>
+      <TD><FONT size="-1">生成するプロダクトの開始日時を指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">End Date/Time </FONT></TD>
+      <TD><FONT size="-1">生成するプロダクトの終了日時を指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Time Interval</FONT></TD>
+      <TD><FONT size="-1">生成するプロダクトの時間間隔 (秒) を指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Processing Unit Time</FONT></TD>
+      <TD><FONT size="-1">入力するパラメータ推定値の解析単位時間 (hr)を指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Product Type</FONT></TD>
+      <TD><FONT size="-1">生成するプロダクトの種別を指定します。<BR>
+      ・Sat Ephemeris (SP3) : 衛星軌道<BR>
+      ・Sat Clock (RINEX CLK) : 衛星時計<BR>
+      ・Rcv Clock (RINEX CLK) : 受信機時計<BR>
+      ・Rcv Position (SINEX) : 受信機位置</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Product Source</FONT></TD>
+      <TD><FONT size="-1">入力するパラメータ推定値種別を指定します。<BR>
+      ・Est(Smoothed) : Smoothed推定値<BR>
+      ・Est(Forward) : Forward推定値<BR>
+      ・Est(Backward) : Backward推定値</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Generation Option</FONT></TD>
+      <TD><FONT size="-1">プロダクト生成オプションを指定します。<BR>
+      ・(空白) : オプション無し<BR>
+      ・Include Velocity (SP3) : SP3出力で速度を含める。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Satellites/Receivers</FONT></TD>
+      <TD><FONT size="-1">生成するプロダクトの衛星/受信機リストを指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Input Estimation Data Directory</FONT></TD>
+      <TD><FONT size="-1">入力するパラメータ推定値の格納されたディレクトリパスを指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Output Products Directory</FONT></TD>
+      <TD><FONT size="-1">生成するプロダクトの出力先ディレクトリパスを指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Generate</FONT></TD>
+      <TD><FONT size="-1">設定された条件でプロダクトを生成します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Close</FONT></TD>
+      <TD><FONT size="-1">画面を閉じます。</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<BR>
+</CENTER>
+<HR>
+<P><U><A name="genpwv">可降水量推定 <FONT size="-1">Estimate PWV</FONT></A></U></P>
+<P align="center"><IMG src="image/image121.jpg" border="0" width="320" height="291"></P>
+<CENTER>
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="200">
+  <COL span="1" width="600">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">項目</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">操作</FONT></TH>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Start Date/Time</FONT></TD>
+      <TD><FONT size="-1">生成する可降水量の開始日時を指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">End Date/Time </FONT></TD>
+      <TD><FONT size="-1">生成する<FONT size="-1">可降水量</FONT>の終了日時を指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Time Interval</FONT></TD>
+      <TD><FONT size="-1">生成する<FONT size="-1">可降水量</FONT>の時間間隔 (秒) を指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Processing Unit Time</FONT></TD>
+      <TD><FONT size="-1">入力するパラメータ推定値の解析単位時間 (hr)を指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Receivers</FONT></TD>
+      <TD><FONT size="-1">生成する<FONT size="-1">可降水量</FONT>の受信機リストを指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Input Estimation Data Directory</FONT></TD>
+      <TD><FONT size="-1">入力するパラメータ推定値の格納されたディレクトリパスを指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Input Meteorological Data Directory</FONT></TD>
+      <TD><FONT size="-1">入力する数値気象予報モデルデータのディレクトリパスを指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Output Products Directory</FONT></TD>
+      <TD><FONT size="-1">生成する可降水量の出力先ディレクトリパスを指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Generate</FONT></TD>
+      <TD><FONT size="-1">設定された条件で可降水量を生成します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Close</FONT></TD>
+      <TD><FONT size="-1">画面を閉じます。</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE><BR>
+</CENTER>
+<HR>
+<P><U><A name="genload">海洋荷重潮汐係数生成 <FONT size="-1">Generate Ocean Loading Parameters</FONT></A></U></P>
+<P align="center"><IMG src="image/image122.jpg" border="0" width="306" height="365"></P>
+<CENTER>
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="200">
+  <COL span="1" width="600">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">項目</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">操作</FONT></TH>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Receivers</FONT></TD>
+      <TD><FONT size="-1">海洋荷重潮汐パラメータを生成する受信機リストを指定します。<BR>
+      「...」ボタンを押して表示される受信機リスト編集画面で受信機を指定して下さい。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Receiver Position</FONT></TD>
+      <TD><FONT size="-1">受信機位置データの種別を指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Day of Position</FONT></TD>
+      <TD><FONT size="-1">受信機位置の日付を指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Processing Unit Time </FONT></TD>
+      <TD><FONT size="-1">受信機位置の解析単位時間(hr)を指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">GOTIC2 Directory</FONT></TD>
+      <TD><FONT size="-1">海洋潮汐予測プログラムGOTIC2のインストールディレクトリを指定します。<BR>
+      gotic2.exeが格納されたディレクトリを指定して下さい。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Receiver Position Directory</FONT></TD>
+      <TD><FONT size="-1">受信機位置データの格納されたディレクトリを指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1"><FONT size="-1">Output Ocean Loading Parameter File</FONT></FONT></TD>
+      <TD><FONT size="-1">出力する海洋荷重パラメータファイルのファイルパスを指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Generate</FONT></TD>
+      <TD><FONT size="-1">設定された条件で海洋荷重潮汐パラメータを生成します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Close</FONT></TD>
+      <TD><FONT size="-1">海洋荷重潮汐パラメータ生成画面を閉じます。</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE><BR>
+</CENTER>
+<HR>
+<P><A name="genmp"><U>マルチパスプロファイル推定 <FONT size="-1">Generate Multipath Profile</FONT></U></A></P>
+<P align="center"><IMG src="image/image123.jpg" border="0" width="320" height="347"></P>
+<CENTER>
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="200">
+  <COL span="1" width="600">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">項目</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">操作</FONT></TH>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Start Date/Time</FONT></TD>
+      <TD><FONT size="-1">入力する残差データの開始日時を指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">End Date/Time </FONT></TD>
+      <TD><FONT size="-1"><FONT size="-1">入力する残差データの</FONT>終了日時を指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Time Interval</FONT></TD>
+      <TD><FONT size="-1"><FONT size="-1">入力する残差データの</FONT>の時間間隔 (秒) を指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Processing Unit Time</FONT></TD>
+      <TD><FONT size="-1">入力する残差データの解析単位時間 (hr)を指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Estimation Direction</FONT></TD>
+      <TD><FONT size="-1">入力する残差データの推定方向(Forward/Backward)を指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Stations</FONT></TD>
+      <TD><FONT size="-1">マルチパスプロファイルを生成する受信機リストを指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Estimation Data Directory</FONT></TD>
+      <TD><FONT size="-1">入力する残差データが格納されたディレクトリパスを指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Navigation Messages Directory</FONT></TD>
+      <TD><FONT size="-1">航法メッセージファイルが格納されたディレクトリパスを指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Output Multipath Profile Directory</FONT></TD>
+      <TD><FONT size="-1">生成するマルチパスプロファイルの出力先ディレクトリパスを指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Generate</FONT></TD>
+      <TD><FONT size="-1">設定された条件でマルチパスプロファイルを生成します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Close</FONT></TD>
+      <TD><FONT size="-1">画面を閉じます。</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE><BR>
+</CENTER>
+<HR>
+<TABLE width="100%" cellpadding="0">
+  <TBODY>
+    <TR>
+      <TD align="center"><FONT size="-2"><FONT size="-2">Copyright (C) 2004-2006, T.Takasu, All Rights
+      Reserved.</FONT></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+</BODY>
+</HTML>

@@ -1,0 +1,180 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META name="GENERATOR" content="IBM HomePage Builder 2001 V5.0.3 for Windows">
+<TITLE>GpsTools : パラメータ推定</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff" text="#666666" link="#33cc66" vlink="#006666" alink="#99ff00">
+<TABLE width="100%" cellspacing="0">
+  <TBODY>
+    <TR>
+      <TD><FONT size="-1"><A href="gpstools.htm">概要</A> | </FONT><FONT size="-1"><A href="gpstools0.htm">仕様</A> | <A href="gpstools1.htm">プログラム実行</A> | </FONT><FONT size="-1">パラメータ推定 | </FONT><FONT size="-1"><A href="gpstools3.htm">データ表示</A> | </FONT><FONT size="-1"><A href="gpstools4.htm">ユーティリティ</A> | </FONT><FONT size="-1"><A href="gpstools5.htm">データファイル</A> | <A href="gpstools6.htm">ライブラリ</A></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<TABLE width="100%" cellpadding="0" height="60">
+  <TBODY>
+    <TR>
+      <TD width="90%">
+      <P><FONT size="+1">GPS精密解析ソフトウェア GpsTools </FONT><FONT size="+1">: 観測データ編集/パラメータ推定 (3)</FONT><BR>
+      <FONT size="-1">GPS Precise Analysis Software GpsTools</FONT> : <FONT size="-1">Obs Data Editor/Parameter Estimator</FONT><FONT size="-1"> </FONT></P>
+      </TD>
+      <TD valign="bottom" align="right"></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<HR>
+<TABLE>
+  <TBODY>
+    <TR>
+      <TD><FONT size="-1"><A href="gpstools2.htm">(1)</A> <A href="gpstools2_1.htm">(2)</A> (3) <A href="gpstools2_3.htm">(4)</A> <A href="gpstools2_4.htm">(5)</A> <A href="gpstools2_5.htm">(6)</A> <A href="gpstools2_6.htm">(7)</A> <A href="gpstools2_7.htm">(8)</A></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P><A name="obsedit"><U>観測データ編集設定<FONT size="-1"> Observation Data Editor Settings</FONT></U></A></P>
+<P align="center"><A name="exclude"><FONT size="-1"><IMG src="image/image10.jpg" border="0" width="526" height="360" alt="img"></FONT></A></P>
+<CENTER>
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="200">
+  <COL span="1" width="600">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">項目</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">操作</FONT></TH>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">L1 Frequency</FONT></TD>
+      <TD><FONT size="-1">L1搬送波位相周波数 (GHz) を指定します。通常は1.57542GHzに設定してください。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">L2 Frequency</FONT></TD>
+      <TD><FONT size="-1">L2搬送波位相周波数 (GHz) を指定します。</FONT><FONT size="-1">通常は1.22760GHzに設定してください。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">L1 Code</FONT></TD>
+      <TD><FONT size="-1">(本バージョンでは使用できません)</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Min Elevation Angle</FONT></TD>
+      <TD><FONT size="-1">最低仰角 (度) を指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Max Arc Gap</FONT></TD>
+      <TD><FONT size="-1">最大アーク間ギャップ (秒) を指定します。観測データにMax
+      Gapより大きなデータ欠損期間があった場合別のアークと判定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Min Arc Length</FONT></TD>
+      <TD><FONT size="-1">最低アーク長 (秒) を指定します。Min Arc Length未満のアークは無効アークとしてデータを除外します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Min Arc Points</FONT></TD>
+      <TD><FONT size="-1">最低アーク観測データ数 (点) を指定します。Min
+      Arc Points未満の観測データ数のアークは無効アークとしてデータを除外します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Noise of MW Code</FONT></TD>
+      <TD><FONT size="-1">Melbourne Webbena Wide Lane線形結合の概算雑音レベル(m)を指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Noise of Ion-Free Code</FONT></TD>
+      <TD><FONT size="-1">疑似距離電離層フリー線形結合の概算雑音レベル(m)を指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Slip Threshold of LG</FONT></TD>
+      <TD><FONT size="-1">搬送波位相幾何学フリー線形結合飛びによる</FONT><FONT size="-1">サイクルスリップ検出閾値 (m) を指定します。指定閾値よりより大きな飛びが検出された場合サイクルスリップと判定します。0を設定した場合、幾何学フリー線形結合によるサイクルスリップ検出を行いません。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Slip Threshold of WL</FONT></TD>
+      <TD><FONT size="-1">Melbourne Webbena Wide Lane線形結合飛びによるサイクルスリップ検出閾値
+      (cycle) を指定します。指定閾値より大きな飛びが検出された場合サイクルスリップと判定します。<FONT size="-1">0を設定した場合、MW Wide Lane線形結合によるサイクルスリップ検出を行いません。</FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Slip Threshold of MP1</FONT></TD>
+      <TD><FONT size="-1">MP1線形結合飛びのサイクルスリップ検出閾値
+      (m) を指定します。<FONT size="-1">指定閾値より大きな飛びが検出された場合サイクルスリップと判定します。0を設定した場合、MP1線形結合によるサイクルスリップ検出を行いません。</FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1"><FONT size="-1">Slip Threshold of MP2</FONT></FONT></TD>
+      <TD><FONT size="-1"><FONT size="-1">MP2線形結合飛びのサイクルスリップ検出閾値
+      (m) を指定します。指定閾値より大きな飛びが検出された場合サイクルスリップと判定します。0を設定した場合、MP2線形結合によるサイクルスリップ検出を行いません。</FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Outlier Thres. of MW</FONT></TD>
+      <TD><FONT size="-1">アウトライアの検出・除外条件を指定します。Melbourne
+      Webbena Wide Lane線形結合の値がアーク内平均より指定値×標準偏差
+      (σ)以上外れた場合、アウトライアと判定し観測データを除外します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Moving Ave. Window 1</FONT></TD>
+      <TD><FONT size="-1">MW WL, MP1, MP2線形結合によるサイクルスリップ検出時に使用する検出点前後の移動平均、移動標準偏差算出に使用する観測データ数
+      (点) を指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Moving Ave. Window 2</FONT></TD>
+      <TD><FONT size="-1">MW WL, MP1, MP2線形結合によるサイクルスリップ検出時に使用する検出点前後の平均値に使用する観測データ数
+      (点) を指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Slip Threshold Elevation Weighting</FONT></TD>
+      <TD><FONT size="-1">サイクルスリップ検出閾値を衛星仰角で重み付けするかどうか指定します。ONにした場合、閾値=指定閾値/sin(仰角)でサイクルリップを検出します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Repair Steered Clock-Jump</FONT></TD>
+      <TD><FONT size="-1">Trimble, Ashtech等、定期的に受信機時計飛びが発生する受信機において、時計飛びの検出・修正を行うかどうか指定します。これらの受信機で時計飛び補正を行わない場合、時計飛びをサイクルスリップと誤認することがあります。ONの場合、時計飛びの検出・修正を行い時計飛び前後の擬似距離観測値が連続になるよう疑似距離観測値及び受信時刻タグの値を修正します。OFFの場合時計飛びの検出・修正を行いません。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Repair Cycle-Slip</FONT></TD>
+      <TD><FONT size="-1">サイクルスリップを検出した場合サイクルスリップを修正するかどうか指定します。ONの場合サイクルスリップ修正を行いサイクルスリップ前後のアークを結合します。OFFの場合、サイクルスリップ修正を行わず、サイクルスリップ前後のアークは別アークとして取り扱われます。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1"># of Points for Poly Fitting</FONT></TD>
+      <TD><FONT size="-1">サイクルスリップ修正を行う場合に使用するサイクルスリップ前後の観測データ数
+      (点) を指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Degree for Poly Fitting</FONT></TD>
+      <TD><FONT size="-1">サイクルスリップ修正を行う場合に使用する電離層フリー線形結合の多次多項式Fitting次数を指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Separate Arc at Eclipse In/Out</FONT></TD>
+      <TD><FONT size="-1">地球食/月食前後のアークを別アークとして扱うか同一アークとして扱うかを指定します。ONの場合</FONT><FONT size="-1">別アークとして扱かわれます。　</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Phase Mutipath Correction</FONT></TD>
+      <TD><FONT size="-1">(本バージョンでは使用できません)</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Phase MP Prorfile Start/End</FONT></TD>
+      <TD><FONT size="-1">(本バージョンでは使用できません)</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Adustment of Sidereal Day</FONT></TD>
+      <TD><FONT size="-1">(本バージョンでは使用できません)</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Code Multipath Profile</FONT></TD>
+      <TD><FONT size="-1"><FONT size="-1">(本バージョンでは使用できません)</FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">OK</FONT></TD>
+      <TD><FONT size="-1">設定変更を有効にして画面を閉じます。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Cancel</FONT></TD>
+      <TD><FONT size="-1">設定変更を無効にして画面を閉じます。</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE><BR>
+</CENTER>
+<HR>
+<TABLE width="100%" cellpadding="0">
+  <TBODY>
+    <TR>
+      <TD align="center"><FONT size="-2"><FONT size="-2">Copyright (C) 2004-2006, T.Takasu, All Rights
+      Reserved.</FONT></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+</BODY>
+</HTML>

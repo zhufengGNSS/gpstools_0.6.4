@@ -1,0 +1,533 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META name="GENERATOR" content="IBM HomePage Builder 2001 V5.0.3 for Windows">
+<TITLE>GpsTools : データ表示</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff" text="#666666" link="#33cc66" vlink="#006666" alink="#99ff00">
+<TABLE width="100%" cellspacing="0">
+  <TBODY>
+    <TR>
+      <TD><FONT size="-1"><A href="gpstools.htm">概要</A> | </FONT><FONT size="-1"><A href="gpstools0.htm">仕様</A> | <A href="gpstools1.htm">プログラム実行</A> | </FONT><FONT size="-1"><A href="gpstools2.htm">パラメータ推定</A> | </FONT><FONT size="-1">データ表示 | </FONT><FONT size="-1"><A href="gpstools4.htm">ユーティリティ</A> | </FONT><FONT size="-1"><A href="gpstools5.htm">データファイル</A> | <A href="gpstools6.htm">ライブラリ</A></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<TABLE width="100%" cellpadding="0" height="60">
+  <TBODY>
+    <TR>
+      <TD><FONT size="+1">GPS精密解析ソフトウェア GpsTools : データ表示
+      (4)</FONT><BR>
+      <FONT size="-1">GPS Precise Analysis Software GpsTools :
+      Plot Data</FONT></TD>
+      <TD valign="bottom" align="right"><FONT size="-1"><A href="../index.shtml"></A></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<HR>
+<TABLE>
+  <TBODY>
+    <TR>
+      <TD><FONT size="-1"><A href="gpstools3.htm">(1)</A> <A href="gpstools3_1.htm">(2)</A> <A href="gpstools3_2.htm">(3)</A> (4) <A href="gpstools3_4.htm">(5)</A> <A href="gpstools3_5.htm">(6)</A> <A href="gpstools3_6.htm">(7)</A> <A href="gpstools3_7.htm">(8)</A> <A href="gpstools3_8.htm">(9)</A> <A href="gpstools3_9.htm">(10)</A> <A href="gpstools3_10.htm">(11)</A> <A href="gpstools3_11.htm">(12)</A></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P><A name="plotpos"><U>受信機位置表示 <FONT size="-1">Plot Receiver Position</FONT></U></A></P>
+<P align="center"><FONT size="-1"><IMG src="image/image40.jpg" border="0" width="608" height="447"><BR>
+(受信機位置誤差(水平/垂直)表示)</FONT></P>
+<DIV align="center">
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="20">
+  <COL span="1" width="180">
+  <COL span="1" width="600">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0" colspan="2" width="191"><FONT size="-1">項目</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0" width="578"><FONT size="-1">操作</FONT></TH>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">メニュー</FONT></TD>
+      <TD><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Data</FONT></TD>
+      <TD><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="left" rowspan="6"><FONT size="-1">　</FONT></TD>
+      <TD align="left"><FONT size="-1">Read...</FONT></TD>
+      <TD><FONT size="-1"><A href="#readdata">データ読み込み</A>画面を表示し、データを読み込みます。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">New Window</FONT></TD>
+      <TD><FONT size="-1">現在表示中のデータを再読込し、別ウインドウを開いて表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Output...</FONT></TD>
+      <TD><FONT size="-1">現在表示中のデータをCSV形式で出力します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Export Plot...</FONT></TD>
+      <TD><FONT size="-1"><A href="#exportplots">画像出力</A>画面を表示し、一連の画面を画像ファイルに保存します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Map Area...</FONT></TD>
+      <TD><FONT size="-1"><A href="#maparea">地図表示条件</A>画面を表示し、地図表示条件を設定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Options...</FONT></TD>
+      <TD><FONT size="-1"><A href="#options">表示オプション</A>画面を表示し、表示オプションを変更します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Plot</FONT></TD>
+      <TD><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD rowspan="18"><FONT size="-1">　</FONT></TD>
+      <TD><FONT size="-1">Position Error</FONT></TD>
+      <TD><FONT size="-1">基準受信機位置と比較した受信機位置の誤差(水平/垂直)をグラフ表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Position Error X/Y/Z</FONT></TD>
+      <TD><FONT size="-1">基準受信機位置と比較した受信機位置の誤差(X/Y/Z成分)をグラフ表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1"><FONT size="-1">Position Error E/N/U</FONT></FONT></TD>
+      <TD><FONT size="-1"><FONT size="-1">基準受信機位置と比較した受信機位置の誤差(E/N/U成分)をグラフ表示します。</FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Position Displacement</FONT></TD>
+      <TD><FONT size="-1"><FONT size="-1"><FONT size="-1">受信機位置変動(E/N/U)グラフ表示します。</FONT></FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Position Displacement 3D</FONT></TD>
+      <TD><FONT size="-1"><FONT size="-1"><FONT size="-1"><FONT size="-1">受信機位置変動を3Dグラフに表示します。</FONT></FONT></FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Position Error North</FONT></TD>
+      <TD><FONT size="-1"><FONT size="-1"><FONT size="-1">基準受信機位置と比較した複数受信機位置の誤差(N成分)をグラフ表示します。</FONT></FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Position Error East</FONT></TD>
+      <TD><FONT size="-1"><FONT size="-1"><FONT size="-1"><FONT size="-1">基準受信機位置と比較した複数受信機位置の誤差(E成分)をグラフ表示します。</FONT></FONT></FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Position Error Up</FONT></TD>
+      <TD><FONT size="-1"><FONT size="-1"><FONT size="-1"><FONT size="-1">基準受信機位置と比較した複数受信機位置の誤差(U成分)をグラフ表示します。</FONT></FONT></FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Position Mean Error by Receivers</FONT></TD>
+      <TD><FONT size="-1">受信機毎の受信機位置平均誤差をバーグラフ表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Position RMS Error by Receivers</FONT></TD>
+      <TD><FONT size="-1">受信機毎の受信機位置RMS誤差をバーグラフ表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Position Error by Dates</FONT></TD>
+      <TD><FONT size="-1">日付毎の受信機位置RMS誤差をバーグラフ表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Horizontal Error Map</FONT></TD>
+      <TD><FONT size="-1">受信機毎の受信機位置平均誤差水平成分を地図表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Vertical Error Map</FONT></TD>
+      <TD><FONT size="-1">受信機毎の受信機位置平均誤差垂直成分を地図表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Horizontal Variation Map</FONT></TD>
+      <TD><FONT size="-1">受信機毎の受信機位置変動水平成分を地図表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Vertical Variation Map</FONT></TD>
+      <TD><FONT size="-1">受信機毎の受信機位置変動垂直成分を地図表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Trans Parameters</FONT></TD>
+      <TD><FONT size="-1">推定Helmert変換係数をグラフ表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Summary...</FONT></TD>
+      <TD><FONT size="-1">基準受信機位置と比較した受信機位置の誤差サマリを出力します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Transformation Params...</FONT></TD>
+      <TD><FONT size="-1">推定Helmert変換係数をテキスト出力します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="left" colspan="2"><FONT size="-1">Receivers</FONT></TD>
+      <TD><FONT size="-1">表示する受信機を選択します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">&lt; &gt; (受信機切替ボタン)</FONT></TD>
+      <TD><FONT size="-1">ボタンを押す毎に表示する受信機を切り替えます。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">(グラフ表示画面)</FONT></TD>
+      <TD><FONT size="-1">グラフ下の時間軸近くでマウスの左ボタンをクリックすることによりカーソルが移動カーソルに変わり、左右にドラッグすることにより時間軸を移動することができます。<BR>
+      グラフ下の時間軸近くでマウスの右ボタンをクリックすることによりカーソルが拡大/縮小カーソル変わり、左右にドラッグすることにより時間軸を拡大/縮小することができます。<BR>
+      グラフ左の値軸近くでマウスの左ボタンをクリックすることによりカーソルが移動カーソルに変わり、上下にドラッグすることにより値軸を移動することができます。<BR>
+      グラフ左の値軸近くでマウスの右ボタンをクリックすることによりカーソルが拡大/縮小カーソル変わり、上下にドラッグすることにより値軸を拡大/縮小することができます。</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<BR>
+</DIV>
+<DIV align="center"></DIV>
+<HR>
+<P><U><A name="readdata">データ読み込み<FONT size="-1"> Read Data Dialog</FONT></A></U></P>
+<P align="center"><IMG src="image/image116.jpg" border="0" width="320" height="425"></P>
+<DIV align="center">
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="20">
+  <COL span="1" width="180">
+  <COL span="1" width="600">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0" colspan="2" width="191"><FONT size="-1">項目</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0" width="578"><FONT size="-1">操作</FONT></TH>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Start Time (GPST)</FONT></TD>
+      <TD><FONT size="-1">読み込む受信機位置データの開始日時を指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">End Time (GPST)</FONT></TD>
+      <TD><FONT size="-1">読み込む受信機位置データの終了日時を指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Time Interval</FONT></TD>
+      <TD><FONT size="-1">読み込む受信機位置データの時間間隔(秒)を指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Processing Unit Time</FONT></TD>
+      <TD><FONT size="-1">推定結果を読み込む場合に解析時間単位(hr)を指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="left" colspan="2"><FONT size="-1">Receivers</FONT></TD>
+      <TD><FONT size="-1">受信機を選択します。<BR>
+      [...]ボタンを押して表示される受信機選択画面で受信機を選択してください。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Receiver/Station Position</FONT></TD>
+      <TD><FONT size="-1">読み込む受信機位置データの種別を指定します。<BR>
+      <FONT size="-1">・Est(Forward) : Forward推定値<BR>
+      <FONT size="-1">・Est(Backward) : Backward推定値<BR>
+      </FONT><FONT size="-1"><FONT size="-1">・Est(Smoothed) : Smoothed推定値<BR>
+      </FONT></FONT>・ITRF97 : ITRF97基準局座標<BR>
+      ・ITRF2000 : ITRF2000基準局座標<BR>
+      ・IGS00 : IGS00基準局座標<BR>
+      ・IGb00 : IGb00基準局座標<BR>
+      ・IGS Final : IGS Final座標解<BR>
+      ・GPS POS : 国土地理院座標解 (F1/F2)</FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Reference Position</FONT></TD>
+      <TD><FONT size="-1"><FONT size="-1">基準となる受信機位置データの種別を指定します。<BR>
+      ・Average : 平均位置<BR>
+      ・Linear Fit : 線形Fit位置 (デトレンド後平均位置)<BR>
+      ・Poly Fit : 2次Fitting位置<BR>
+      ・開始日時位置<BR>
+      ・終了日時位置<BR>
+      <FONT size="-1"><FONT size="-1">・ITRF97 : ITRF97基準局座標<BR>
+      ・ITRF2000 : ITRF2000基準局座標<BR>
+      ・IGS00 : IGS00基準局座標<BR>
+      ・IGb00 : IGb00基準局座標<BR>
+      ・IGS Final : IGS Final座標解<BR>
+      ・GPS POS : 国土地理院座標解 (F1/F2)</FONT></FONT></FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Adjust To Reference Frame</FONT></TD>
+      <TD><FONT size="-1">Helmert変換による基準座標系へFittingを行うか否かを設定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Bandpass Filter</FONT></TD>
+      <TD><FONT size="-1">バンドパスフィルタを適用する場合のローカット周波数(Hz)、ハイカット周波数(Hz)を指定します。ローカット周波数&gt;=ハイカット周波数の場合バンドパスフィルタは適用しません。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Sidereal Filter Day/Adjust</FONT></TD>
+      <TD><FONT size="-1">Sidereal Filterを適用する相対日付開始/終了(days)及びmodified
+      sidereal filter衛星周回時間のsidereal
+      day
+      (23h56m4s)に対するオフセットを指定します。例えば[-2,
+      -1, -8]と設定した場合-2日～-1日の測位解を使用しsidereal
+      dayオフセットは-8秒としてsidereal filterを適用します。開始日&gt;=終了日の場合sidereal
+      filterは適用しません。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Sidereal Filter Bandpass</FONT></TD>
+      <TD><FONT size="-1">Sidereal Filterを適用する場合のバンドパスフィルタのローカット周波数(Hz)及びハイカット周波数(Hz)を指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1"><FONT size="-1">Receiver Position Directory</FONT></FONT></TD>
+      <TD><FONT size="-1"><FONT size="-1">読み込む受信機位置データのディレクトリパスを指定します。<BR>
+      ディレクトリパス中にキーワードが含まれている場合、<A href="gpstools2_7.htm#keyword">ディレクトリパス中のキーワード置換</A>に従い置換されます。</FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Reference Position Directory</FONT></TD>
+      <TD><FONT size="-1">基準となる受信機位置データのディレクトリパスを指定します。<BR>
+      ディレクトリパス中にキーワードが含まれている場合、<A href="gpstools2_7.htm#keyword">ディレクトリパス中のキーワード置換</A>に従い置換されます。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Coordinate Transformation Parameters</FONT></TD>
+      <TD><FONT size="-1">Herbert変換による座標変換を行う場合その変換係数ファイルを指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">OK</FONT></TD>
+      <TD><FONT size="-1">設定に従い受信機位置データを読み込みます。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Cancel</FONT></TD>
+      <TD><FONT size="-1">設定変更を無効にして画面を閉じます。</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<BR>
+</DIV>
+<DIV align="center"></DIV>
+<HR>
+<P><U><A name="exportplots">画像出力 <FONT size="-1">Export Plots Dialog</FONT></A></U></P>
+<P align="center"><IMG src="image/image117.jpg" border="0" width="280" height="165"></P>
+<DIV align="center">
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="20">
+  <COL span="1" width="180">
+  <COL span="1" width="600">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0" colspan="2" width="191"><FONT size="-1">項目</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0" width="578"><FONT size="-1">操作</FONT></TH>
+    </TR>
+    <TR>
+      <TD align="left" colspan="2"><FONT size="-1">File Name</FONT></TD>
+      <TD><FONT size="-1">出力する画像ファイルの名前を入力します。一連の画像を出力する場合は名前の後ろに01,
+      02, 03, ...と連番が付加されます。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">File Format</FONT></TD>
+      <TD><FONT size="-1">出力する画像ファイル形式を選択します。</FONT><BR>
+      <FONT size="-1">・EPS : EPSファイル<BR>
+      ・JPEG : JPEGファイル<BR>
+      ・TIFF : TIFFファイル<BR>
+      ・META FILE : Windows Metaファイル</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Directory</FONT></TD>
+      <TD><FONT size="-1">出力する画像を格納するディレクトリを指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">OK</FONT></TD>
+      <TD><FONT size="-1">設定に従い画像を出力します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Cancel</FONT></TD>
+      <TD><FONT size="-1">設定変更を無効として画面を閉じます。</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE><BR>
+</DIV>
+<HR>
+<P><U><A name="maparea">地図表示条件<FONT size="-1"> Map Area Dialog</FONT></A></U></P>
+<P align="center"><IMG src="image/image118.jpg" border="0" width="596" height="370"></P>
+<DIV align="center">
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="20">
+  <COL span="1" width="180">
+  <COL span="1" width="600">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0" colspan="2" width="191"><FONT size="-1">項目</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0" width="578"><FONT size="-1">操作</FONT></TH>
+    </TR>
+    <TR>
+      <TD align="left" colspan="2"><FONT size="-1">Map Projection</FONT></TD>
+      <TD><FONT size="-1">地図投影法を指定します。<BR>
+      ・Equidistant Cylindrical : 等緯度経度図法<BR>
+      ・Miller Cylindrical : ミラー図法<BR>
+      ・Mercator : メルカトル図法<BR>
+      ・Orthographic : オルソ図法<BR>
+      ・Lambert Conformal : ランバート等角図法<BR>
+      ・Polar Stereo N : 北半球ポーラステレオ図法<BR>
+      ・Polar Stereo S : 南半球ポーラステレオ図法<BR>
+      ・Mollified : モルワイデ図法</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Center Lat/Lon</FONT></TD>
+      <TD><FONT size="-1">中心位置緯度/経度(度)を指定します。(東経/北緯:+,
+      西経/南緯: -)</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Base Lon</FONT></TD>
+      <TD><FONT size="-1">垂直子午線経度(度)を指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Scale</FONT></TD>
+      <TD><FONT size="-1">地図縮尺を指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Grid Int/Label Int</FONT></TD>
+      <TD><FONT size="-1">緯度経度グリッド間隔(度)及び緯度経度ラベル間隔(度)を指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Land Color/Sea Color</FONT></TD>
+      <TD><FONT size="-1">陸域/海域の表示色を指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Coast Line/Grid Line</FONT></TD>
+      <TD><FONT size="-1">海岸線/緯度経度グリッドの表示色を指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-2">Update</FONT></TD>
+      <TD><FONT size="-1">ダイアログの地図表示を更新します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Reset</FONT></TD>
+      <TD><FONT size="-1">パラメータを初期値にリセットします。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Map List</FONT></TD>
+      <TD><FONT size="-1">地図領域に名前を付けてを登録します。また登録した地図領域を呼び出します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">(Scale Slide Bar)</FONT></TD>
+      <TD><FONT size="-1">上下に動かすことにより地図縮尺を変更します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">(地図表示領域)</FONT></TD>
+      <TD><FONT size="-1">マウスでドラッグすることにより地図領域をスクロールすることができます。<BR>
+      またダブルクリックすることによりクリックした位置を地図中心に移動します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">OK</FONT></TD>
+      <TD><FONT size="-1">設定変更を有効として画面を閉じます。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Cancel</FONT></TD>
+      <TD><FONT size="-1">設定変更を無効として画面を閉じます。</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<BR>
+</DIV>
+<HR>
+<P><U><A name="options">表示オプション<FONT size="-1"> Options Dialog</FONT></A></U></P>
+<P align="center"><IMG src="image/image119.jpg" border="0" width="326" height="320"></P>
+<DIV align="center">
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="20">
+  <COL span="1" width="180">
+  <COL span="1" width="600">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0" colspan="2" width="191"><FONT size="-1">項目</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0" width="578"><FONT size="-1">操作</FONT></TH>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Show Estimated Position</FONT></TD>
+      <TD><FONT size="-1">表示する推定受信機位置を選択します。<BR>
+      ・All : 全推定値を表示します。<BR>
+      ・Final Only : 最終測位解のみ表示します。(Static測位用)</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Show Reference Position</FONT></TD>
+      <TD><FONT size="-1">基準受信機位置(ラベル)をグラフ中に表示するか否か選択します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Show Mean and RMS Error</FONT></TD>
+      <TD><FONT size="-1">平均及びRMS誤差の値をグラフ中に表示するか否か選択します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Show Estimation Date</FONT></TD>
+      <TD><FONT size="-1">グラフ中に推定日付を表示するか否か選択します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Show Receiver Name in Map</FONT></TD>
+      <TD><FONT size="-1">受信機名を地図上に表示するか選択します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Show Est Std Dev</FONT></TD>
+      <TD><FONT size="-1">グラフ中に表示する推定標準偏差の倍率を指定します。<BR>
+      0を指定した場合は標準偏差の値は表示しません。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Plot Style</FONT></TD>
+      <TD><FONT size="-1">グラフ表示スタイルを選択します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Plot Line Width / Marker Size</FONT></TD>
+      <TD><FONT size="-1">グラフの線幅、マーカーサイズを指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Receiver Name Font</FONT></TD>
+      <TD><FONT size="-1">受信機名を地図上に表示する場合のフォントを選択します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Detrend Position</FONT></TD>
+      <TD><FONT size="-1">デトレンドを行うか否か選択します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1"><FONT size="-1">Plot Axis Range</FONT></FONT></TD>
+      <TD><FONT size="-1">グラフの値域 (上下限値)を指定します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">OK</FONT></TD>
+      <TD><FONT size="-1">設定に従い表示画面を更新します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="2"><FONT size="-1">Cancel</FONT></TD>
+      <TD><FONT size="-1">設定変更を無効にして画面を閉じます。</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE><BR>
+</DIV>
+<HR>
+<P><U>受信機位置誤差X/Y/Z成分表示 <FONT size="-1">Plot Receiver Position Error X/Y/Z Components</FONT></U></P>
+<P align="center"><IMG src="image/image41.jpg" border="0" width="608" height="447"><BR>
+</P>
+<P><U>受信機位置誤差E/N/U成分表示 <FONT size="-1">Plot Receiver Position Error E/N/U Components</FONT></U></P>
+<P align="center"><IMG src="image/image42.jpg" border="0" width="608" height="447"><BR>
+</P>
+<P><U>受信機位置変動表示 <FONT size="-1">Plot Receiver Position Displacements</FONT></U></P>
+<P align="center"><IMG src="image/image43.jpg" border="0" width="608" height="447"><BR>
+</P>
+<P><U>受信機位置変動3D表示 <FONT size="-1">Plot Receiver Position 3D Displacements</FONT></U></P>
+<P align="center"><IMG src="image/image44.jpg" border="0" width="608" height="447"><BR>
+</P>
+<P><U>受信機位置平均誤差受信機毎バーグラフ表示
+<FONT size="-1">Plot Mean Receiver Position Errors<FONT size="-1"> by Receivers</FONT></FONT></U></P>
+<P align="center"><IMG src="image/image45.jpg" border="0" width="608" height="447"><BR>
+</P>
+<P><U>受信機位置RMS誤差受信機毎バーグラフ表示 <FONT size="-1">Plot RMS Receiver Position Errors by Receivers</FONT></U></P>
+<P align="center"><IMG src="image/image46.jpg" border="0" width="608" height="447"><BR></P>
+<P><U>受信機位置RMS誤差日付毎バーグラフ表示 <FONT size="-1">Plot RMS Receiver Position Errors by Dates</FONT></U></P>
+<P align="center"><IMG src="image/image49.jpg" border="0" width="608" height="447"><BR>
+</P>
+<P><U>受信機位置平均誤差地図表示(水平/垂直) <FONT size="-1">Plot Mean Receiver Position Errors in Map
+(Horizontal/Vertical)</FONT></U></P>
+<P align="center"><IMG src="image/image47.jpg" border="0" width="608" height="447"></P>
+<P align="center"><IMG src="image/image48.jpg" border="0" width="608" height="447"><BR>
+</P>
+<P><U>受信機位置変動地図表示(水平/垂直) <FONT size="-1">Plot Mean Receiver Position Variations in
+Map (Horizontal/Vertical)</FONT></U></P>
+<P align="center"><IMG src="image/image50.jpg" border="0" width="608" height="447"></P>
+<P align="center"><IMG src="image/image51.jpg" border="0" width="608" height="447"><BR>
+</P>
+<P><U>推定座標変換パラメータ表示 <FONT size="-1">Plot Estimated Transformation Parameters</FONT></U></P>
+<P align="center"><IMG src="image/image52.jpg" border="0" width="608" height="447"><BR>
+</P>
+<P><U>受信機位置座標出力<FONT size="-1"> Receiver Position Text Output View</FONT></U></P>
+<P align="center"><IMG src="image/image53.jpg" border="0" width="608" height="427"><BR>
+</P>
+<P><U>受信機位置誤差サマリ出力<FONT size="-1"> Receiver Position Error Summary View</FONT></U></P>
+<P align="center"><IMG src="image/image54.jpg" border="0" width="608" height="427"></P>
+<HR>
+<TABLE width="100%" cellpadding="0">
+  <TBODY>
+    <TR>
+      <TD align="center"><FONT size="-2"><FONT size="-2">Copyright (C) 2004-2006, T.Takasu, All Rights
+      Reserved.</FONT></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+</BODY>
+</HTML>

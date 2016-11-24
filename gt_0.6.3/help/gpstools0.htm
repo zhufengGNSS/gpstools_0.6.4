@@ -1,0 +1,597 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META name="GENERATOR" content="IBM HomePage Builder 2001 V5.0.3 for Windows">
+<TITLE>GpsTools : 仕様</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff" text="#666666" link="#33cc66" vlink="#006666" alink="#99ff00">
+<TABLE width="100%" cellspacing="0">
+  <TBODY>
+    <TR>
+      <TD><FONT size="-1"><A href="gpstools.htm">概要</A> | </FONT><FONT size="-1">仕様 | <A href="gpstools1.htm">プログラム実行</A> | </FONT><FONT size="-1"><A href="gpstools2.htm">パラメータ推定</A> | </FONT><FONT size="-1"><A href="gpstools3.htm">データ表示</A> | </FONT><FONT size="-1"><A href="gpstools4.htm">ユーティリティ</A> | </FONT><FONT size="-1"><A href="gpstools5.htm">データファイル</A> | <A href="gpstools6.htm">ライブラリ</A></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<TABLE width="100%" cellpadding="0" height="60">
+  <TBODY>
+    <TR>
+      <TD>
+      <P><FONT size="+1">GPS精密解析ソフトウェア GpsTools : 仕様</FONT><BR>
+      <FONT size="-1">GPS Precise Analysis Software GpsTools :
+      Specifications</FONT></P>
+      </TD>
+      <TD align="right" valign="bottom"></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<HR>
+<TABLE cellspacing="0">
+  <TBODY>
+    <TR>
+      <TD align="left"><A href="#systemreq"><FONT size="-1">システム要件</FONT></A><FONT size="-1"> | </FONT><FONT size="-1"><A href="#obsedit">観測データ編集</A></FONT><FONT size="-1"> | </FONT><FONT size="-1"><A href="#gpsest">パラメータ推定</A></FONT><FONT size="-1"> | </FONT><FONT size="-1"><A href="#utilities">ユーティリティ</A></FONT><FONT size="-1"> | <FONT size="-1"><A href="#libraries">共通ライブラリ</A></FONT><FONT size="-1"> | </FONT></FONT><FONT size="-1"><A href="#supportformat">サポートデータ形式</A></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P><A name="systemreq"><U>システム要件<FONT size="-1"> System Requirements</FONT></U></A></P>
+<CENTER>
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="200">
+  <COL span="1" width="600">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">項目</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">仕様</FONT></TH>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">オペレーティングシステム</FONT></TD>
+      <TD><FONT size="-1">Windows 2000、Windows XP</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">ソフトウェア環境</FONT></TD>
+      <TD><FONT size="-1"><A href="http://www.cybernet.co.jp/matlab/">MATLAB</A> 6.5.1 or 7.0.1以上</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">支援ソフトウェア</FONT></TD>
+      <TD><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・データ圧縮・解凍</FONT></TD>
+      <TD><FONT size="-1"><A href="http://www.gzip.org/">gzip</A></FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・圧縮RINEX生成・伸張</FONT></TD>
+      <TD><FONT size="-1"><A href="http://sopac.ucsd.edu/dataArchive/hatanaka.html">crx2rnx, rnx2crx</A></FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・海洋潮汐予測プログラム</FONT></TD>
+      <TD><FONT size="-1"><A href="http://www.miz.nao.ac.jp/staffs/nao99/">GOTIC2</A> (海洋荷重係数生成)</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">メモリ容量<FONT size="-1"></FONT></FONT></TD>
+      <TD><FONT size="-1">512MByte以上</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<BR>
+</CENTER><P><A name="obsedit"><U>観測データ編集<FONT size="-1"> Observation Data Editor</FONT></U></A></P>
+<CENTER>
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="200">
+  <COL span="1" width="600">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">項目</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">仕様</FONT></TH>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">入力観測データ</FONT></TD>
+      <TD><FONT size="-1">RINEX 2.10 (高レートRINEX含む</FONT>)</TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">擬似距離コード</FONT></TD>
+      <TD><FONT size="-1">P1+P2 またはC1+P2+P1-C1バイアス補正</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">P1-C1バイアス</FONT></TD>
+      <TD><FONT size="-1">IGS解析センタ標準パラメータ</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">サイクルスリップ検出</FONT></TD>
+      <TD><FONT size="-1"><FONT size="-1">幾何学フリー線形結合変化率 (電離層遅延変化率)</FONT><BR>
+      Melbourne-Wubbena Wide-Lane変化率 :
+      Moving
+      Average、Moving Standard Deviation</FONT><BR>
+      <FONT size="-1">電離層フリー搬送波位相-擬似距離線形結合変化率<BR>
+      MP1, MP2 線形結合変化率</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">サイクルスリップ補修</FONT></TD>
+      <TD><FONT size="-1">Melbourne-Wubbenaアーク平均差によるスリップ量推定</FONT><BR>
+      <FONT size="-1">幾何学フリーn次多項式FITによるスリップ量推定</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">アウトライア検出・除去</FONT></TD>
+      <TD><FONT size="-1">Melbourne-Wubbena 標準偏差による。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">クロックジャンプ</FONT></TD>
+      <TD><FONT size="-1">クロックジャンプ検出、補修</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">コードスムージング</FONT></TD>
+      <TD><FONT size="-1">搬送波位相観測データによるL1, L2コードスムージング</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">アーク分割</FONT></TD>
+      <TD><FONT size="-1">アーク分割及び指定サンプリング時間に従ったデータ抽出</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">編集済観測データ出力</FONT></TD>
+      <TD><FONT size="-1">MATLABバイナリ形式</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<BR>
+</CENTER>
+<P><A name="gpsest"><U>パラメータ推定<FONT size="-1"> Parameter Estimator</FONT></U></A></P>
+<CENTER>
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="200">
+  <COL span="1" width="600">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">項目</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">仕様</FONT></TH>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">推定方式</FONT></TD>
+      <TD><FONT size="-1">拡張カルマンフィルタ/スムーザ (EKF/S)</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">推定パス</FONT></TD>
+      <TD><FONT size="-1">1パス、2パス、3パス</FONT></TD>
+    </TR>
+    <TR>
+      <TD valign="middle"><FONT size="-1">推定可能パラメータ</FONT></TD>
+      <TD><FONT size="-1">受信機位置座標 (地球固定座標系)<BR>
+      対流圏天頂全遅延 (ZTD) 及び水平勾配
+      (North/East/2次項成分)<BR>
+      衛星・受信機時計誤差 (時計基準局相対時計バイアス・ドリフト)<BR>
+      衛星軌道 (衛星重心位置・速度)<BR>
+      衛星太陽輻射圧 (SRP) モデルパラメータ<BR>
+      地球回転パラメータ (ERP : Xp, Yp, UT1-UTC)<BR>
+      地球中心オフセット (Geocenter Offset
+      : dx,
+      dy, dz, Scale)</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">観測モデル</FONT></TD>
+      <TD><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・基本観測量</FONT></TD>
+      <TD><FONT size="-1">電離層フリー搬送波位相</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・差分観測量</FONT></TD>
+      <TD><FONT size="-1">ゼロ差/PPP、二重差</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・測距モデル</FONT></TD>
+      <TD><FONT size="-1">地球重力を考慮した衛星運動二次近似及びLight
+      Time Iteration</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・衛星時計バイアス</FONT></TD>
+      <TD><FONT size="-1">推定または入力</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・受信機時計バイアス</FONT></TD>
+      <TD><FONT size="-1">放送暦及び擬似距離観測値による単独測位で一次推定</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・衛星アンテナオフセット</FONT></TD>
+      <TD><FONT size="-1">Block II/IIA : X=0.279, Y=0, Z=1.023 m, Block
+      IIR : X=0, Y=0, Z=0m</FONT> <FONT size="-1">(衛星固定座標系)<BR>
+      衛星アンテナ位相中心モデル入力可能
+      (ANTEX)</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・受信アンテナオフセット</FONT></TD>
+      <TD><FONT size="-1">受信機アンテナ位相中心モデル (IGS_01.PCVまたはANTEX)</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・対流圏遅延</FONT></TD>
+      <TD><FONT size="-1"><FONT size="-1">A prioriモデル : </FONT>Saastamoinen</FONT><BR>
+      <FONT size="-1">マッピング関数 : COSZ, NMF (Niell Mapping
+      Function)、またはGMF (Global Mapping
+      Function)</FONT><BR>
+      <FONT size="-1"><FONT size="-1">全遅延モデル :<BR>
+      </FONT>Mdry(EL)*Tropdry+Mwet(EL)(1+(Gnorth*cosAZ+Geast*sinAZ)</FONT><FONT size="-1">/tanEL)*</FONT><FONT size="-1">(ZTD-Tropdry)</FONT><FONT size="-1"><BR>
+      (Mdry,Mwet : マッピング関数dry,wet項,
+      Tropdry:
+      A prioriモデルdry項、Gnorth,Geast :
+      水平勾配
+      North,East成分, AZ,EL: 方位仰角)、2次勾配項推定可能。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・電離層遅延　</FONT></TD>
+      <TD><FONT size="-1">一次項 : 電離層フリー線形結合で除去<BR>
+      高次項 : なし</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・観測点位置変位<BR>
+      　(Site-Displacement)</FONT></TD>
+      <TD><FONT size="-1"><FONT size="-1">固体地球潮汐 :<BR>
+      </FONT><A href="http://www.iers.org/iers/products/conv/">IERS Conventions</A> 1996 Ch.7<BR>
+      Step1 : in-phase degree2 and 3, out-of-phase,
+      latitude dependence<BR>
+      Step2 : contribution from the diurnal
+      band
+      : K1 only<BR>
+      </FONT><FONT size="-1">海洋荷重</FONT> :<BR>
+      <FONT size="-1">IERS Conventions 1996 Ch.7 <BR>
+      11分潮モデル (M2,S2,N2,K2,K1,O1,P1,Q1,Mf,Mm,Ssa)<BR>
+      モデル係数は任意の海洋潮汐モデル (BLQ形式)を入力可能<BR>
+      <FONT size="-1">極運動潮汐 : </FONT><FONT size="-1">IERS Conventions 1996 Ch.7<BR>
+      </FONT><FONT size="-1">永年変位項 : </FONT><FONT size="-1">除去可能<BR>
+      </FONT><FONT size="-1">大気荷重 : </FONT><FONT size="-1">なし</FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・相対論効果</FONT></TD>
+      <TD><FONT size="-1">衛星時計及びBending Effect</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・Phase-Windup効果</FONT></TD>
+      <TD><FONT size="-1">Wuモデル</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・マルチパス</FONT></TD>
+      <TD><FONT size="-1">搬送波位相マルチパスプロファイルによる補正<BR>
+      Sidereal Filterによる補正</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・観測雑音</FONT></TD>
+      <TD><FONT size="-1">天頂観測雑音 : ユーザ定義<BR>
+      仰角依存性 : sqrt(1+f(1/sin(EL)^2-1))</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・搬送波位相バイアス</FONT></TD>
+      <TD><FONT size="-1">一次推定 : アーク毎に電離層フリー擬似距離により一次推定<BR>
+      推定モデル : アーク毎に電離層フリー搬送波位相バイアス残差推定
+      (Float解)<BR>
+      バイアス整数化 : なし</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">衛星運動モデル</FONT></TD>
+      <TD><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・地球重力モデル </FONT></TD>
+      <TD><FONT size="-1">JGM-3、最大12 次</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・他天体重力　</FONT></TD>
+      <TD><FONT size="-1">月及び太陽 (質点)</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・天体暦</FONT></TD>
+      <TD><FONT size="-1"><A href="http://ssd.jpl.nasa.gov/eph_info.html">JPL DE/LE405</A></FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・食モデル</FONT></TD>
+      <TD><FONT size="-1">円筒モデルまたは半影・本影モデル (地球及び月)</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・太陽輻射圧 (SRP) モデル</FONT></TD>
+      <TD><FONT size="-1">単純モデル (Cannonballモデル)+Scaleパラメータ<BR>
+      ROCK4/42 (T20,T30)+Scale,Ybiasパラメータ<BR>
+      <A href="http://ipnpr.jpl.nasa.gov/tmo/progress_report/42-159/159I.pdf">GSPM.04b</A>モデル+Scale,Ybias,Along-Track,Cross-Track加速度パラメータ<BR>
+      <A href="http://igscb.jpl.nasa.gov/mail/igsmail/1998/msg00069.html">CODE RPR</A>モデル (D0,Y0,B0,Z0,X10,X30パラメータ)</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・地球潮汐効果</FONT></TD>
+      <TD><FONT size="-1">地球固体潮汐 :<BR>
+      IERS Conventions 1996 Ch.6, frequency
+      independent項2,3次、frequency
+      dependent項K1 only<BR>
+      海洋潮汐 : IERS Conventions 1996 Ch.6
+      主要8分潮
+      2,3次 (CSR2.0)<BR>
+      極運動潮汐 : IERS Conventions 1996
+      Ch.6 ΔC21,ΔS21</FONT></TD>
+    </TR>
+    <TR>
+      <TD>・<FONT size="-1">相対論効果</FONT></TD>
+      <TD><FONT size="-1">IERS Conventions 1996 Ch.11</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・地球アルベド</FONT></TD>
+      <TD><FONT size="-1"><FONT size="-1">なし</FONT></FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・大気抵抗</FONT></TD>
+      <TD><FONT size="-1">なし</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・任意加速度ΔV</FONT></TD>
+      <TD><FONT size="-1">パラメータ入力可能</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・数値積分</FONT></TD>
+      <TD><FONT size="-1">固定ステップ4次Runge-Kuttaまたは可変ステップ可変次数Adams-Bashforth-Moulton</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">状態遷移モデル</FONT></TD>
+      <TD><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・衛星・受信機時計</FONT></TD>
+      <TD><FONT size="-1">White-Noiseまたは1次Gauss-Marcov過程</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・対流圏遅延パラメータ</FONT></TD>
+      <TD><FONT size="-1">Random-Walk過程</FONT><FONT size="-1">または1次Gauss-Marcov過程</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・地球回転パラメータ</FONT></TD>
+      <TD><FONT size="-1">Random-Walk過程</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・地球中心オフセット</FONT></TD>
+      <TD><FONT size="-1">Random-Walk過程</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・観測局位置</FONT></TD>
+      <TD><FONT size="-1">固定またはRandom-Walk過程(Static), またはWhite-Noise過程
+      (Kinematic)</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・搬送波位相バイアス</FONT></TD>
+      <TD><FONT size="-1">アーク内固定, Cycle-Slip時再初期化, Float値推定</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">基準座標系</FONT></TD>
+      <TD></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・地球固定座標</FONT></TD>
+      <TD><FONT size="-1"><A href="http://www.iers.org/iers/products/itrf/">ITRF</A></FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・慣性座標</FONT></TD>
+      <TD><FONT size="-1"><A href="http://www.iers.org/iers/products/icrf/">ICRF</A> (J2000.0平均赤道座標)</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・歳差・章動</FONT></TD>
+      <TD><FONT size="-1">IAU1976歳差、IAU1980章動＋章動補正 (dpsi/deps)</FONT><FONT size="-1">、IERS1996歳差章動</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・ERP変動</FONT></TD>
+      <TD><FONT size="-1">Subdaily-Variation補正 (Ray model)</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・地球回転パラメータ</FONT></TD>
+      <TD><FONT size="-1">IERS Bulletin B、C04、IGS ERP または推定</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・地球中心オフセット</FONT></TD>
+      <TD><FONT size="-1">0固定または推定</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">初期・既知状態量</FONT></TD>
+      <TD><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・衛星位置・速度</FONT></TD>
+      <TD><FONT size="-1">放送暦または精密暦 (SP3)＋運動モデルによる補間</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・衛星時計</FONT></TD>
+      <TD><FONT size="-1">放送暦または精密時計 (SP3, RINEX CLK)</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・受信機時計</FONT></TD>
+      <TD><FONT size="-1">単独測位による推定または精密時計 (RINEX CLK)</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・対流圏遅延</FONT></TD>
+      <TD><FONT size="-1">A priori対流圏遅延モデル+標準大気</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・観測点位置座標</FONT></TD>
+      <TD><FONT size="-1"><A href="http://itrf.ensg.ign.fr/ITRF_solutions/">ITRF97</A>、<A href="http://itrf.ensg.ign.fr/ITRF_solutions/">ITRF2000</A>、<A href="http://igscb.jpl.nasa.gov/mail/igsmail/2001/msg00450.html">IGS00</A>, <A href="http://igscb.jpl.nasa.gov/mail/igsmail/2003/msg00418.html">IGb00</A>, IGS推定値(SINEX), <A href="http://terras.gsi.go.jp/ja/index.html">GSI推定値</A>, またはユーザ定義</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・地球回転パラメータ</FONT></TD>
+      <TD><FONT size="-1"><A href="http://igscb.jpl.nasa.gov/mail/igsmail/1998/msg00170.html">IGS ERP</A>、<A href="http://www.iers.org/iers/products/eop/monthly.html">IERS Bulletin B</A></FONT><FONT size="-1">, IERS C04</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<BR>
+</CENTER>
+<P><A name="utilities"><U>ユーティリティ<FONT size="-1"> Utilities</FONT></U></A></P>
+<CENTER>
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="200">
+  <COL span="1" width="600">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">項目</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">仕様</FONT></TH>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">ファイル操作・管理ツール</FONT></TD>
+      <TD><FONT size="-1">ファイル一覧表示、表示フィルタ、ファイルコピー、移動、リネーム、削除、伸張、圧縮、テキストファイル表示、Matlabバイナリファイル内容表示、画像ファイル表示</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">データ表示</FONT></TD>
+      <TD><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・観測データ表示</FONT></TD>
+      <TD><FONT size="-1">生観測データ/編集済み観測データ表示、データ有効期間表示、観測生データ表示、観測データ線形結合表示、サイクルスリップ位置表示、RINEX観測データテキスト表示、TEQCユーティリティ起動</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・衛星軌道表示</FONT></TD>
+      <TD><FONT size="-1">衛星軌道基準衛星軌道比較誤差表示(3D,Radial/Along-Track/Cross-Track,XYZ)、衛星毎/日付毎誤差表示、SRPパラメータ表示、ERP表示、CSV出力、サマリ出力</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・衛星/受信機時計誤差表示</FONT></TD>
+      <TD><FONT size="-1">衛星/受信機時計バイアス表示、基準時計比較誤差表示、衛星/受信機毎/日付毎誤差表示、時計安定度(Allan
+      Deviation)表示、CSV出力、サマリ出力</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・対流圏パラメータ表示</FONT></TD>
+      <TD><FONT size="-1">ZTD表示、基準ZTD比較誤差表示、受信機毎/日付毎誤差表示、地図表示、CSV出力、サマリ出力</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・GPVデータ表示</FONT></TD>
+      <TD><FONT size="-1">気象庁数値予報モデル(MSM、RSM, GSM), ジオイド、地図表示、等高線表示、階調表示、メッシュ表示、サーフェス表示、ベクトル表示、ストリームライン表示</FONT><FONT size="-1">、カラーマップ変更</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・電離層パラメータ表示</FONT></TD>
+      <TD><FONT size="-1">IONEX形式電離層パラメータ読み込み、VTEC地図表示、等高線表示</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・LEO衛星軌道表示</FONT></TD>
+      <TD><FONT size="-1">GRACE/CHAMP形式軌道データ読み込み、</FONT><FONT size="-1">衛星軌道基準衛星軌道比較誤差表示(3D,Radial/Along-Track/Cross-Track,XYZ)、</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・残差・統計情報表示</FONT></TD>
+      <TD><FONT size="-1">全残差表示、残差ENU成分表示、残差方位角/仰角成分表示、残差衛星Heading/Nadir角成分表示、残差スカイプロット表示、残差3Dスカイプロット表示、統計情報出力、衛星アンテナPCV出力</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・マルチパスプロファイル表示</FONT></TD>
+      <TD><FONT size="-1">搬送波位相マルチパスプロファイルスカイプロット表示、方位角/仰角グラフ表示、衛星方位軌跡表示、等高線表示</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">・衛星直下点/受信機位置表示</FONT></TD>
+      <TD><FONT size="-1">衛星直下点軌跡地図表示、受信機位置地図表示、覆域表示、基線長表示、Voronoi領域表示、衛星方位軌跡スカイプロット表示、衛星仰角グラフ表示、衛星食期間表示、衛星-太陽角グラフ表示、DOP表示</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">データ・プロダクトダウンローダ</FONT></TD>
+      <TD><FONT size="-1">FTPによるデータ・プロダクトダウンロード、開始/終了日時指定によるダウンロードパスの自動展開、圧縮ファイル自動伸張、ダウンロード済みファイルスキップ、ダウンロードログ表示、ダウンロード自動再試行</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">推定結果プロダクト生成</FONT></TD>
+      <TD><FONT size="-1">衛星軌道(SP3)出力、衛星/受信機時計(RINEX
+      CLK)出力、受信機位置(SINEX)出力</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">衛星精密暦補間</FONT></TD>
+      <TD><FONT size="-1">精密運動モデルによる衛星軌道補間</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">海洋荷重パラメータ推定 </FONT></TD>
+      <TD><FONT size="-1">GOTIC2 (海洋潮汐予測プログラム) フロントエンド、BLQ形式係数ファイル出力</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">マルチパスプロファイル推定</FONT></TD>
+      <TD><FONT size="-1">Postfit残差スタッキングによる搬送波位相マルチパスプロファイル推定、指定次数球面調和関数展開</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<BR>
+</CENTER>
+<P><A name="libraries"><U>共通ライブラリ<FONT size="-1"> Common Libraries</FONT><BR>
+</U></A></P>
+<CENTER>
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="200">
+  <COL span="1" width="600">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">項目</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">仕様</FONT></TH>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">共通ライブラリ</FONT></TD>
+      <TD><FONT size="-1">Matlabインタフェース、ユーザプログラムからの利用可。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">サポートモデル</FONT></TD>
+      <TD><FONT size="-1">観測データ編集、パラメータ推定仕様による。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">サポートデータ形式</FONT></TD>
+      <TD><FONT size="-1">内部バイナリ形式(編集済観測データ, 推定結果データ,
+      推定残差, 解析パラメータ), テキスト/CSV形式,
+      RINEX OBS/NAV, SP3/SP3c, RINEX CLK, SINEX
+      TROP, SINEX, GSI F1/F2, IONEX, IERS Bulletin
+      B, IERS C04, IGS ERP, BLQ, IGS_01.PCV, ANTEX
+      他</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">バイナリコード</FONT></TD>
+      <TD><FONT size="-1">MEX-interfaceによるのC-MEXライブラリ (一部m-file)。</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<BR>
+</CENTER>
+<P><A name="supportformat"><U>サポートデータ形式<FONT size="-1"> Supported Data Formats</FONT><BR>
+</U></A></P>
+<CENTER>
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="200">
+  <COL span="1" width="600">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">項目</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">仕様</FONT></TH>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">観測データ</FONT></TD>
+      <TD><FONT size="-1"><A href="http://igscb.jpl.nasa.gov/igscb/data/format/rinex210.txt">RINEX 2.10 OBS</A> (Daily, 3H, 1H, High-Rate:15min)</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">放送暦メッセージ</FONT></TD>
+      <TD><FONT size="-1"><A href="http://igscb.jpl.nasa.gov/igscb/data/format/rinex210.txt">RINEX 2.10 NAV</A></FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">衛星精密暦</FONT></TD>
+      <TD><FONT size="-1"><A href="http://igscb.jpl.nasa.gov/igscb/data/format/sp3_docu.txt">NGS SP3</A>、<A href="http://igscb.jpl.nasa.gov/igscb/data/format/sp3c.txt">SP3c</A></FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">衛星・受信機時計</FONT></TD>
+      <TD><FONT size="-1"><A href="http://igscb.jpl.nasa.gov/igscb/data/format/rinex_clock.txt">RINEX CLK</A></FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">対流圏遅延パラメータ</FONT></TD>
+      <TD><FONT size="-1"><A href="http://igscb.jpl.nasa.gov/igscb/data/format/sinex_tropo.txt">SINEX TROP</A></FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">観測局位置</FONT></TD>
+      <TD><FONT size="-1"><A href="http://tau.fesg.tu-muenchen.de/~iers/web/sinex/format.php">SINEX</A>、<A href="http://terras.gsi.go.jp/ja/index.html">GSI F1/F2</A></FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">電離層遅延パラメータ</FONT></TD>
+      <TD><FONT size="-1"><A href="http://igscb.jpl.nasa.gov/igscb/data/format/ionex1.pdf">IONEX</A></FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">地球回転パラメータ</FONT></TD>
+      <TD><FONT size="-1"><A href="http://www.iers.org/iers/products/eop/monthly.html">IERS Bulletin B</A>、<A href="http://igscb.jpl.nasa.gov/mail/igsmail/1998/msg00170.html">IGS ERP</A></FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">海洋荷重パラメータ</FONT></TD>
+      <TD><FONT size="-1">BLQ形式</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">アンテナ位相中心パラメータ</FONT></TD>
+      <TD><FONT size="-1">IGS_01.PCV形式、ANTEX形式</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE><BR>
+</CENTER>
+<HR>
+<TABLE width="100%" cellpadding="0">
+  <TBODY>
+    <TR>
+      <TD align="center"><FONT size="-2">Copyright (C) 2004-2006, T.Takasu, All Rights
+      Reserved.</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+</BODY>
+</HTML>

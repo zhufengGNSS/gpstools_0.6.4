@@ -1,0 +1,151 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META name="GENERATOR" content="IBM HomePage Builder 2001 V5.0.3 for Windows">
+<TITLE>GpsTools : パラメータ推定</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff" text="#666666" link="#33cc66" vlink="#006666" alink="#99ff00">
+<TABLE width="100%" cellspacing="0">
+  <TBODY>
+    <TR>
+      <TD><FONT size="-1"><A href="gpstools.htm">概要</A> | </FONT><FONT size="-1"><A href="gpstools0.htm">仕様</A> | <A href="gpstools1.htm">プログラム実行</A> | </FONT><FONT size="-1">パラメータ推定 | </FONT><FONT size="-1"><A href="gpstools3.htm">データ表示</A> | </FONT><FONT size="-1"><A href="gpstools4.htm">ユーティリティ</A> | </FONT><FONT size="-1"><A href="gpstools5.htm">データファイル</A> | <A href="gpstools6.htm">ライブラリ</A></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<TABLE width="100%" cellpadding="0" height="60">
+  <TBODY>
+    <TR>
+      <TD width="90%">
+      <P><FONT size="+1">GPS精密解析ソフトウェア GpsTools </FONT><FONT size="+1">: 観測データ編集/パラメータ推定 (7)</FONT><BR>
+      <FONT size="-1">GPS Precise Analysis Software GpsTools</FONT> : <FONT size="-1">Obs Data Editor/Parameter Estimator</FONT><FONT size="-1"> </FONT></P>
+      </TD>
+      <TD valign="bottom" align="right"><FONT size="-1"><A href="../index.shtml"></A></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<HR>
+<TABLE>
+  <TBODY>
+    <TR>
+      <TD><FONT size="-1"><A href="gpstools2.htm">(1)</A> <A href="gpstools2_1.htm">(2)</A> <A href="gpstools2_2.htm">(3)</A> <A href="gpstools2_3.htm">(4)</A> <A href="gpstools2_4.htm">(5)</A> <A href="gpstools2_5.htm">(6)</A> (7) <A href="gpstools2_7.htm">(8)</A></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P align="left"><A name="qualityctr"><U>品質管理設定<FONT size="-1"> Quality Control Settings</FONT></U></A></P>
+<P align="center"><IMG src="image/image16.jpg" border="0" width="303" height="415"></P>
+<CENTER>
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="200">
+  <COL span="1" width="600">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">項目</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">操作</FONT></TH>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Re-Estimate without Excluded </FONT></TD>
+      <TD><FONT size="-1">異常衛星/受信機の除外後、ロールバック/再推定を行うか否か指定します。<BR>
+      OFFの場合除外のみ行いロールバック/再推定は行いません。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Outlier Thres. of Prefit Res.</FONT></TD>
+      <TD><FONT size="-1">観測値-観測モデル(O-C)のPrefit残差が指定値(σ)を超える場合アウトライアとして破棄します。<BR>
+      0が指定された場合Prefit残差によるアウトライアチェックは行いません。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Outlier Thres. of Prefit Res</FONT></TD>
+      <TD><FONT size="-1">観測値-観測モデル(O-C)のPostfit残差が指定値(σ)を超える場合アウトライアとして破棄し再フィルタを実行します。<BR>
+      0が指定された場合Postfit残差によるアウトライアチェックは行いません。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Arc Max Outlier Rate</FONT></TD>
+      <TD><FONT size="-1">アークのアウトライア率の上限を指定します。<BR>
+      アウトライア率上限を超えたアークがあった場合はそのアークの観測データを異常として除外します。<BR>
+      0が指定された場合アウトライア率によるアーク除外は行いません。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Arc Max Postfit Residual</FONT></TD>
+      <TD><FONT size="-1">アークのPostfit残差RMSの上限(m)を指定します。<BR>
+      Postfit残差RMS上限を超えたアークがあった場合はそのアークの観測データを異常として除外します。<BR>
+      0が指定された場合Postfit残差RMSによるアーク除外は行いません。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Satellite Max Outlier Rate</FONT></TD>
+      <TD><FONT size="-1">衛星のアウトライア率の上限を指定します。<BR>
+      アウトライア率上限を超えた衛星があった場合はその衛星の観測データを異常として除外します。<BR>
+      0が指定された場合アウトライア率による衛星除外は行いません。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Satellite Max Postfit Residual</FONT></TD>
+      <TD><FONT size="-1">衛星のPostfit残差RMSの上限(m)を指定します。<BR>
+      Postfit残差RMS上限を超えた衛星があった場合はその衛星の観測データを異常として除外します。<BR>
+      0が指定された場合Postfit残差RMSによる衛星除外は行いません。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Receiver Max Outlier Rate</FONT></TD>
+      <TD><FONT size="-1">受信機のアウトライア率の上限を指定します。<BR>
+      アウトライア率上限を超えた受信機があった場合はその受信機の観測データを異常として除外します。<BR>
+      0が指定された場合アウトライア率による受信機除外は行いません。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Receiver Max Postfit Residual</FONT></TD>
+      <TD><FONT size="-1">受信機のPostfit残差RMSの上限(m)を指定します。<BR>
+      Postfit残差RMS上限を超えた受信機があった場合はその受信機の観測データを異常として除外します。<BR>
+      0が指定された場合Postfit残差RMSによる受信機除外は行いません。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Sat. Max Outage of Valid Obs</FONT></TD>
+      <TD><FONT size="-1">有効観測データの欠測が指定時間(秒)より長く続く衛星があった場合その衛星を異常として除外します。<BR>
+      0が指定された場合有効観測データ欠測継続時間による衛星除外は行いません。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Sta. Max Outage of Valid Obs</FONT></TD>
+      <TD><FONT size="-1">有効観測データの欠測が指定時間(秒)より長く続く受信機があった場合その受信機を異常として除外します。<BR>
+      0が指定された場合有効観測データ欠測継続時間による受信機除外は行いません。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Satellite Clock Max Std Dev</FONT></TD>
+      <TD><FONT size="-1">衛星時計推定値の標準偏差が指定値より大きい推定値を除外します。<BR>
+      0が指定された場合推定値の除外は行いません。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Receiver Clock Max Std Dev</FONT></TD>
+      <TD><FONT size="-1">受信機時計推定値の標準偏差が指定値より大きい推定値を除外します。<BR>
+      0が指定された場合推定値の除外は行いません。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Receiver Position Max Std Dev</FONT></TD>
+      <TD><FONT size="-1">受信機位置推定値の標準偏差が指定値より大きい推定値を除外します。<BR>
+      0が指定された場合推定値の除外は行いません。</FONT></TD>
+    </TR>
+    <TR>
+      <TD>Output Statistics/Residuals</TD>
+      <TD><FONT size="-1">残差を出力するか否か指定します。</FONT><FONT size="-1"><BR>
+      ONの場合、残差ファイルに推定残差を出力します。OFFの場合出力しません。ONに設定した場合余分なメモリ領域が必要になります。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Debug Error Stop/Output Debug Info</FONT></TD>
+      <TD><FONT size="-1">エラー発生時にデバッグモードに移行するかどうか、デバッグ用情報をファイル出力するかどうか指定します。エラーが発生した場合等にエラー発生状況を確認するためにはONに設定してください。<BR>
+      通常はOFFに設定して下さい。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">OK</FONT></TD>
+      <TD><FONT size="-1">設定変更を有効にして画面を閉じます。</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">Cancel</FONT></TD>
+      <TD><FONT size="-1">設定変更を無効にして画面を閉じます。</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE><BR>
+</CENTER><HR>
+<TABLE width="100%" cellpadding="0">
+  <TBODY>
+    <TR>
+      <TD align="center"><FONT size="-2"><FONT size="-2">Copyright (C) 2004-2006, T.Takasu, All Rights
+      Reserved.</FONT></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+</BODY>
+</HTML>

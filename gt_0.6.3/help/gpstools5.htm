@@ -1,0 +1,535 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META name="GENERATOR" content="IBM HomePage Builder 2001 V5.0.3 for Windows">
+<TITLE>GpsTools : データファイル</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff" text="#666666" link="#33cc66" vlink="#006666" alink="#99ff00">
+<TABLE width="100%" cellspacing="0">
+  <TBODY>
+    <TR>
+      <TD><FONT size="-1"><A href="gpstools.htm">概要</A> | </FONT><FONT size="-1"><A href="gpstools0.htm">仕様</A> | <A href="gpstools1.htm">プログラム実行</A> | </FONT><FONT size="-1"><A href="gpstools2.htm">パラメータ推定</A> | </FONT><FONT size="-1"><A href="gpstools3.htm">データ表示</A> | </FONT><FONT size="-1"><A href="gpstools4.htm">ユーティリティ</A> | </FONT><FONT size="-1">データファイル | <A href="gpstools6.htm">ライブラリ</A></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<TABLE width="100%" cellpadding="0" height="60">
+  <TBODY>
+    <TR>
+      <TD><FONT size="+1">GPS精密解析ソフトウェア GpsTools : データファイル</FONT><BR>
+      <FONT size="-1">GPS Precise Analysis Software GpsTools :
+      Data Files</FONT></TD>
+      <TD valign="bottom" align="right"></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<HR>
+<TABLE>
+  <TBODY>
+    <TR>
+      <TD><FONT size="-1"><A href="#directory">ディレクトリ</A> | <A href="#datafile">データファイル</A> | <A href="#outfiles">出力ファイル</A> | <A href="#formatcobs">編集済観測データ</A> | <A href="#formatest">推定結果データ</A></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P><U><A name="directory">ディレクトリ構造<FONT size="-1"> Directory Structures</FONT></A></U></P>
+<DIV align="left">
+<TABLE cellspacing="0">
+  <COL span="1">
+  <COL span="1" width="80">
+  <TBODY>
+    <TR>
+      <TD><FONT size="-1">&lt;install_directory&gt; </FONT></TD>
+      <TD><FONT size="-1">\</FONT></TD>
+      <TD><FONT size="-1">コマンド/ライブラリ関数 Command/Library Function
+      m-files</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">　</FONT></TD>
+      <TD><FONT size="-1">\private</FONT></TD>
+      <TD><FONT size="-1">内部使用コマンド/ライブラリ関数 Private Command/Library
+      Function m-files</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">　</FONT></TD>
+      <TD><FONT size="-1">\mexsrc</FONT></TD>
+      <TD><FONT size="-1">ライブラリ関数C-MEXソースプログラム Library
+      Function C-Mex Source Programs</FONT> </TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">　</FONT></TD>
+      <TD><FONT size="-1">\data</FONT></TD>
+      <TD><A href="#datafile"><FONT size="-1">データファイル</FONT></A><FONT size="-1"> Data Files</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">　</FONT></TD>
+      <TD><FONT size="-1">\parames</FONT></TD>
+      <TD><FONT size="-1">解析パラメータ(サンプル)</FONT><FONT size="-1"> Sample Processing Parameter Files</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">　</FONT></TD>
+      <TD><FONT size="-1">\help</FONT></TD>
+      <TD><FONT size="-1">ヘルプ/文書ファイル Help/Document Files</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">　</FONT></TD>
+      <TD><FONT size="-1">\settings</FONT></TD>
+      <TD><FONT size="-1">各種設定デフォルト値/設定保存値 Default Settings/Saved
+      Settings</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">　</FONT></TD>
+      <TD><FONT size="-1">\util</FONT></TD>
+      <TD><FONT size="-1">ユーティリティ Utilities</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1">　</FONT></TD>
+      <TD><FONT size="-1">\history</FONT></TD>
+      <TD><FONT size="-1">解析実行ヒストリ Processing History</FONT></TD>
+    </TR>
+    <TR>
+      <TD>　</TD>
+      <TD><FONT size="-1">\test</FONT></TD>
+      <TD><FONT size="-1">試験用プログラム/データ Test Programs/Data</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE><BR>
+<FONT size="-1">(&lt;install_directory&gt; : 本プログラムパッケージを解凍したディレクトリ...\gt_&lt;ver&gt;)</FONT><BR>
+</DIV>
+<HR>
+<P><U><A name="datafile">データファイル<FONT size="-1"> Data Files</FONT></A></U></P>
+<CENTER>
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="200">
+  <COL span="1" width="100">
+  <COL span="1" width="500">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">ファイル名</FONT></TH>
+      <TH bgcolor="#f0f0f0"><FONT size="-1">形式</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">内容</FONT></TH>
+    </TR>
+    <TR>
+      <TD align="left"><FONT size="-1">utc_tai.txt</FONT></TD>
+      <TD align="center"><FONT size="-1">csv</FONT></TD>
+      <TD><FONT size="-1">UTC-TAIパラメータ</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="left"><FONT size="-1">sats_params.txt</FONT></TD>
+      <TD align="center"><FONT size="-1"><FONT size="-1">csv</FONT></FONT></TD>
+      <TD><FONT size="-1">衛星パラメータ</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="left"><FONT size="-1">rcvs_params.txt</FONT></TD>
+      <TD align="center"><FONT size="-1"><FONT size="-1">csv</FONT></FONT></TD>
+      <TD><FONT size="-1">受信機定義</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="left"><FONT size="-1">rcvs_poss.txt</FONT></TD>
+      <TD align="center"><FONT size="-1"><FONT size="-1">csv</FONT></FONT></TD>
+      <TD><FONT size="-1">受信機概算位置パラメータ</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="left"><FONT size="-1">rcvs_noncc.txt</FONT></TD>
+      <TD align="center"><FONT size="-1">text</FONT></TD>
+      <TD><FONT size="-1">NON-CCタイプ受信機リスト</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="left"><FONT size="-1">dcbs_p1c1.m</FONT></TD>
+      <TD align="center"><FONT size="-1">m-file</FONT></TD>
+      <TD><FONT size="-1">衛星P1-C1 DCB(疑似距離バイアス) パラメータ</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="left"><FONT size="-1">prm_gpssrcs.m</FONT></TD>
+      <TD align="center"><FONT size="-1">m-file</FONT></TD>
+      <TD><FONT size="-1">データ・プロダクトのダウンロードアドレス定義</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="left"><FONT size="-1">ants_alias.txt</FONT></TD>
+      <TD align="center"><FONT size="-1"><FONT size="-1">csv</FONT></FONT></TD>
+      <TD><FONT size="-1">アンテナエイリアスパラメータ</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="left"><FONT size="-1">gshhs_w.mat</FONT></TD>
+      <TD align="center"><FONT size="-1">mat-file</FONT></TD>
+      <TD><FONT size="-1">NOAA GSHHS海岸線データ</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="left"><FONT size="-1">gshhs_c.mat</FONT></TD>
+      <TD align="center"><FONT size="-1">mat-file</FONT></TD>
+      <TD><FONT size="-1">NOAA GSHHS海岸線データ</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="left"><FONT size="-1">gshhs_l.mat</FONT></TD>
+      <TD align="center"><FONT size="-1">mat-file</FONT></TD>
+      <TD><FONT size="-1">NOAA GSHHS海岸線データ</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="left"><FONT size="-1">gshhs_i.mat</FONT></TD>
+      <TD align="center"><FONT size="-1">mat-file</FONT></TD>
+      <TD><FONT size="-1">NOAA GSHHS海岸線データ</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="left"><FONT size="-1">geoid_gsi2000.mat</FONT></TD>
+      <TD align="center"><FONT size="-1">mat-file</FONT></TD>
+      <TD><FONT size="-1">国土地理院「日本のジオイド2000」ジオイドモデルデータ</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="left"><FONT size="-1">geoid_egm96.mat</FONT></TD>
+      <TD align="center"><FONT size="-1">mat-file</FONT></TD>
+      <TD><FONT size="-1">NASA GSFC/NIMA EGM96ジオイドモデルデータ</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="left"><FONT size="-1">ephem2000.405</FONT></TD>
+      <TD align="center"><FONT size="-1">binary</FONT></TD>
+      <TD><FONT size="-1">NASA JPL DE405 天体暦データ(2000-2020年)</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="left"><FONT size="-1">igs_01.pcv</FONT></TD>
+      <TD align="center"><FONT size="-1"><FONT size="-1">csv</FONT></FONT></TD>
+      <TD><FONT size="-1">IGS標準アンテナ位相中心オフセット/変動モデル</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="left"><FONT size="-1">igs_05.atx</FONT></TD>
+      <TD align="center"><FONT size="-1">ANTEX</FONT></TD>
+      <TD><FONT size="-1">IGSアンテナ位相中心オフセット/変動モデル</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="left"><FONT size="-1">oload_igs.blq</FONT></TD>
+      <TD align="center"><FONT size="-1">BLQ</FONT></TD>
+      <TD><FONT size="-1">IGS観測点海洋荷重係数データ</FONT></TD>
+    </TR>
+    <TR>
+      <TD align="left"><FONT size="-1">oload_gsi.blq</FONT></TD>
+      <TD align="center"><FONT size="-1">BLQ</FONT></TD>
+      <TD><FONT size="-1">国土地理院GEONET観測点海洋荷重係数データ</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE><BR>
+</CENTER>
+<HR>
+<P><A name="outfiles"><U>出力ファイル <FONT size="-1">Output Files</FONT></U></A></P>
+<CENTER>
+<TABLE border="1" cellspacing="0">
+  <COL span="1" width="200">
+  <COL span="1" width="100">
+  <COL span="1" width="500">
+  <TBODY>
+    <TR>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">ファイル名</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">形式</FONT></TH>
+      <TH align="center" bgcolor="#f0f0f0"><FONT size="-1">内容</FONT></TH>
+    </TR>
+    <TR>
+      <TD><FONT size="-1"><FONT size="-1">obsc_{rcv}_yyyymmddhh.mat</FONT></FONT></TD>
+      <TD align="center"><FONT size="-1">mat-flle</FONT></TD>
+      <TD><FONT size="-1">編集済観測データ</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1"><FONT size="-1">eph{fb}_{sat}_yyyymmddhh.mat</FONT></FONT></TD>
+      <TD align="center"><FONT size="-1"><FONT size="-1">mat-flle</FONT></FONT></TD>
+      <TD><FONT size="-1">衛星軌道推定結果</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1"><FONT size="-1">clk{fb}_{sat}_yyyymmddhh.mat</FONT></FONT></TD>
+      <TD align="center"><FONT size="-1"><FONT size="-1">mat-flle</FONT></FONT></TD>
+      <TD><FONT size="-1">衛星時計推定結果</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1"><FONT size="-1">pos{fb}_{rcv}_yyyymmddhh.mat</FONT></FONT></TD>
+      <TD align="center"><FONT size="-1"><FONT size="-1">mat-flle</FONT></FONT></TD>
+      <TD><FONT size="-1">受信機位置推定結果</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1"><FONT size="-1">clk{fb}_{rcv}_yyyymmddhh.mat</FONT></FONT></TD>
+      <TD align="center"><FONT size="-1"><FONT size="-1">mat-flle</FONT></FONT></TD>
+      <TD><FONT size="-1">受信機時計推定結果</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1"><FONT size="-1">zpd{fb}_{rcv}_yyyymmddhh.mat</FONT></FONT></TD>
+      <TD align="center"><FONT size="-1"><FONT size="-1">mat-flle</FONT></FONT></TD>
+      <TD><FONT size="-1">対流圏パラメータ推定結果</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1"><FONT size="-1">bcp{fb}_{rcv}_yyyymmddhh.mat</FONT></FONT></TD>
+      <TD align="center"><FONT size="-1"><FONT size="-1">mat-flle</FONT></FONT></TD>
+      <TD><FONT size="-1">搬送波位相バイアス推定結果</FONT></TD>
+    </TR>
+    <TR>
+      <TD><FONT size="-1"><FONT size="-1">res{fb}_{rcv}_yyyymmddhh.mat</FONT></FONT></TD>
+      <TD align="center"><FONT size="-1"><FONT size="-1">mat-flle</FONT></FONT></TD>
+      <TD><FONT size="-1">残差・統計情報</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="3"><FONT size="-1">{rcv} : receiver name, {sat} : satellite
+      name (GPS01=GPS PRN1,GPS02=GPS PRN2,...),
+      <BR>
+      {fb}: estimation direction (f=forward,
+      b=backward),
+      <BR>
+      yyyy : year (4digit), mm : month, dd
+      : day
+      *, hh : hour **<BR>
+      <BR>
+      * 2日以上にまたがったデータの場合先頭データの受信日付によりファイル名がつけられる。<BR>
+      ** 解析単位時間(Processing/Estimation
+      Unit
+      Time) (hr)の整数倍の値がつけられる。<BR>
+      例えば解析時間範囲が2004/12/3 4:00-9:30、解析単位時間3
+      hr、時間間隔1分の場合、*2004120303.matに4:00-5:59のデータ、*2004120306.matに6:00-8:59のデータ、*2004120309.matに9:00-9:30のデータが格納される。</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<BR>
+</CENTER>
+<HR>
+<P><U><A name="formatcobs">編集済観測データファイル形式 <FONT size="-1">File Format of Clean Observation Data</FONT></A></U></P>
+<CENTER>
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="150">
+  <COL span="1" width="450">
+  <COL span="1" width="200">
+  <TBODY>
+    <TR>
+      <TH bgcolor="#f0f0f0">
+      <P align="center"><FONT size="-1">変数名</FONT></P>
+      </TH>
+      <TH bgcolor="#f0f0f0">
+      <P align="center"><FONT size="-1">内容</FONT></P>
+      </TH>
+      <TH bgcolor="#f0f0f0">
+      <P align="center"><FONT size="-1">備考</FONT></P>
+      </TH>
+    </TR>
+    <TR>
+      <TD>
+      <P align="center"><FONT size="-1">epoch</FONT></P>
+      </TD>
+      <TD>
+      <P align="justify"><FONT size="-1">start epoch [year,month,day,hour,min,sec]</FONT></P>
+      </TD>
+      <TD><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD>
+      <P align="center"><FONT size="-1">time</FONT></P>
+      </TD>
+      <TD>
+      <P align="justify"><FONT size="-1">time vector relative to epoch (sec)</FONT></P>
+      </TD>
+      <TD><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD>
+      <P align="center"><FONT size="-1">sats</FONT></P>
+      </TD>
+      <TD>
+      <P align="justify"><FONT size="-1">satellite list (cell array)</FONT></P>
+      </TD>
+      <TD><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD>
+      <P align="center"><FONT size="-1">rcv</FONT></P>
+      </TD>
+      <TD>
+      <P align="justify"><FONT size="-1">receiver name</FONT></P>
+      </TD>
+      <TD><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD>
+      <P align="center"><FONT size="-1">data</FONT></P>
+      </TD>
+      <TD>
+      <P align="justify"><FONT size="-1">observation data</FONT><BR>
+      <FONT size="-1">data(n,1): time(n) L1 carrier phase (cycle)</FONT><BR>
+      <FONT size="-1">data(n,2): time(n) L2 carrier phase (cycle)</FONT><BR>
+      <FONT size="-1">data(n,3): time(n) L1 pseudorange (m)</FONT><BR>
+      <FONT size="-1">data(n,4): time(n) L2 pseudorange (m)</FONT><BR>
+      <FONT size="-1">data(n,5): time(n) LC smoothed code (m)</FONT><BR>
+      <FONT size="-1">data(n,6): time(n) L1 smoothed code (m)</FONT><BR>
+      <FONT size="-1">data(n,7): time(n) L2 smoothed code (m)</FONT></P>
+      </TD>
+      <TD><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD>
+      <P align="center"><FONT size="-1">index</FONT></P>
+      </TD>
+      <TD>
+      <P align="justify"><FONT size="-1">observation data index [s,0,f;...]</FONT><BR>
+      <FONT size="-1">(s=satellite index,f=1:arc-start,2:arc-end)</FONT></P>
+      </TD>
+      <TD><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD>
+      <P align="center"><FONT size="-1">rstat</FONT></P>
+      </TD>
+      <TD>
+      <P align="justify"><FONT size="-1">receiver states</FONT><BR>
+      <FONT size="-1">rstat(n,1): time relative to epoch (sec)</FONT><BR>
+      <FONT size="-1">rstat(n,2:7):receiver pos/vel (m,m/sec)</FONT><BR>
+      <FONT size="-1">rstat(n,8): receiver clock bias (m)</FONT></P>
+      </TD>
+      <TD><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD>
+      <P align="center"><FONT size="-1">azel</FONT></P>
+      </TD>
+      <TD>
+      <P align="justify"><FONT size="-1">satellite azimath/elevation angle (rad)</FONT><BR>
+      <FONT size="-1">azel(n,1): satellite azimath angle (rad)</FONT><BR>
+      <FONT size="-1">azel(n,2): satellite elevation angle (rad)</FONT></P>
+      </TD>
+      <TD><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD>
+      <P align="center"><FONT size="-1">slip</FONT></P>
+      </TD>
+      <TD>
+      <P align="justify"><FONT size="-1">cycle-slip positions [t,s,f,...]</FONT><BR>
+      <FONT size="-1">(t=time, s=satellite index, f=1:mw, 2:gf,
+      3:if, 4:td)</FONT></P>
+      </TD>
+      <TD><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD>
+      <P align="center"><FONT size="-1">rpos</FONT></P>
+      </TD>
+      <TD>
+      <P align="justify"><FONT size="-1">receiver approx. position (m)(ecef)[x;y;z]</FONT></P>
+      </TD>
+      <TD><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD>
+      <P align="center"><FONT size="-1">adel</FONT></P>
+      </TD>
+      <TD>
+      <P align="justify"><FONT size="-1">receiver antenna delta(up/east/north) (m)</FONT></P>
+      </TD>
+      <TD><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD>
+      <P align="center"><FONT size="-1">atype</FONT></P>
+      </TD>
+      <TD>
+      <P align="justify"><FONT size="-1">receiver antenna type</FONT></P>
+      </TD>
+      <TD><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD>
+      <P align="center"><FONT size="-1">rtype</FONT></P>
+      </TD>
+      <TD>
+      <P align="justify"><FONT size="-1">receiver model type</FONT></P>
+      </TD>
+      <TD><FONT size="-1">　</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE><BR>
+　</CENTER>
+<HR>
+<P><A name="formatest"><U>推定結果データファイル形式 <FONT size="-1">File Format of Estimation Results</FONT></U></A></P>
+<CENTER>
+<TABLE cellspacing="0" border="1">
+  <COL span="1" width="150">
+  <COL span="1" width="450">
+  <COL span="1" width="200">
+  <TBODY>
+    <TR>
+      <TH bgcolor="#f0f0f0">
+      <P align="center"><FONT size="-1">変数名</FONT></P>
+      </TH>
+      <TH bgcolor="#f0f0f0">
+      <P align="center"><FONT size="-1">内容</FONT></P>
+      </TH>
+      <TH bgcolor="#f0f0f0">
+      <P align="center"><FONT size="-1">備考</FONT></P>
+      </TH>
+    </TR>
+    <TR>
+      <TD>
+      <P align="center"><FONT size="-1">epoch</FONT></P>
+      </TD>
+      <TD>
+      <P align="justify"><FONT size="-1">start epoch [year,month,day,hour,min,sec]</FONT></P>
+      </TD>
+      <TD><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD>
+      <P align="center"><FONT size="-1">time</FONT></P>
+      </TD>
+      <TD>
+      <P align="justify"><FONT size="-1">time vector relative to epoch (sec)</FONT></P>
+      </TD>
+      <TD><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD>
+      <P align="center"><FONT size="-1">sat</FONT></P>
+      </TD>
+      <TD>
+      <P align="justify"><FONT size="-1">satellite name</FONT></P>
+      </TD>
+      <TD><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD>
+      <P align="center"><FONT size="-1">rcv</FONT></P>
+      </TD>
+      <TD>
+      <P align="justify"><FONT size="-1">receiver name</FONT></P>
+      </TD>
+      <TD><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD>
+      <P align="center"><FONT size="-1">data</FONT></P>
+      </TD>
+      <TD>
+      <P align="justify"><FONT size="-1">estimation results</FONT><BR>
+      <FONT size="-1">data(n,:) : time(n) estimation results)</FONT></P>
+      </TD>
+      <TD><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD>
+      <P align="center"><FONT size="-1">covs</FONT></P>
+      </TD>
+      <TD>
+      <P align="justify"><FONT size="-1">estimation results variance</FONT><BR>
+      <FONT size="-1">covs(n,:) : time(n) estimation results variance</FONT></P>
+      </TD>
+      <TD><FONT size="-1">　</FONT></TD>
+    </TR>
+    <TR>
+      <TD>
+      <P align="center"><FONT size="-1">prm</FONT></P>
+      </TD>
+      <TD>
+      <P align="justify"><FONT size="-1">processing parameters struct</FONT></P>
+      </TD>
+      <TD><FONT size="-1">　</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+</CENTER>
+<P align="justify">　</P>
+<HR>
+<TABLE width="100%" cellpadding="0">
+  <TBODY>
+    <TR>
+      <TD align="center"><FONT size="-2"><FONT size="-2">Copyright (C) 2004-2006, T.Takasu, All Rights
+      Reserved.</FONT></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+</BODY>
+</HTML>
